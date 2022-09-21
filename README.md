@@ -2,7 +2,7 @@
 
 ## Database Schema Design
 
-<a href="https://drive.google.com/uc?export=view&id=1eqwQnfIHFan0M17rNAsTq8dX06uNN-Eu"><img src="https://drive.google.com/uc?export=view&id=1eqwQnfIHFan0M17rNAsTq8dX06uNN-Eu" style="width: 650px; max-width: 100%; height: auto" title="AirBnB Schema" />
+<a href="https://drive.google.com/uc?export=view&id=1QxBdguhRK9BYZ5cepyiDhgXGUWPpeOJU"><img src="https://drive.google.com/uc?export=view&id=1QxBdguhRK9BYZ5cepyiDhgXGUWPpeOJU" style="width: 650px; max-width: 100%; height: auto" title="AirBnB Schema" />
 
 
 ## API Documentation
