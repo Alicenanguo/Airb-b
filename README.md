@@ -2,7 +2,7 @@
 
 ## Database Schema Design
 
-<a href="https://drive.google.com/uc?export=view&id=1QxBdguhRK9BYZ5cepyiDhgXGUWPpeOJU"><img src="https://drive.google.com/uc?export=view&id=1QxBdguhRK9BYZ5cepyiDhgXGUWPpeOJU" style="width: 650px; max-width: 100%; height: auto" title="AirBnB Schema" />
+<a href="https://drive.google.com/uc?export=view&id=1jrlzcapkwwDrWe_ZX7kk2uDkgBo3m_9l"><img src="https://drive.google.com/uc?export=view&id=1jrlzcapkwwDrWe_ZX7kk2uDkgBo3m_9l" style="width: 650px; max-width: 100%; height: auto" title="AirBnB Schema" />
 
 
 ## API Documentation
@@ -53,7 +53,7 @@ Returns the information about the current user that is logged in.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /api/user-account
+  * URL: /api/session
   * Body: none
 
 * Successful Response
@@ -80,7 +80,7 @@ information.
 * Require Authentication: false
 * Request
   * Method: POST
-  * URL: /api/user-account
+  * URL: /api/session
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -147,7 +147,7 @@ user's information.
 * Require Authentication: false
 * Request
   * Method: POST
-  * URL: /api/users/user-account
+  * URL: /api/users
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -279,7 +279,7 @@ Returns all the spots owned (created) by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /api/spots/current-user
+  * URL: /api/spots/current
   * Body: none
 
 * Successful Response
@@ -385,7 +385,7 @@ Creates and returns a new spot.
 * Require Authentication: true
 * Request
   * Method: POST
-  * URL: /api/spots/spot-new
+  * URL: /api/spots
   * Headers:
     * Content-Type: application/json
   * Body:
@@ -633,7 +633,7 @@ Returns all the reviews written by the current user.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /api/reviews/current-user
+  * URL: /api/reviews/current
   * Body: none
 
 * Successful Response
@@ -689,7 +689,7 @@ Returns all the reviews that belong to a spot specified by id.
 * Require Authentication: false
 * Request
   * Method: GET
-  * URL: api/spots/:spotId/reviews
+  * URL: /api/spots/:spotId/reviews
   * Body: none
 
 * Successful Response
@@ -991,7 +991,7 @@ Return all the bookings that the current user has made.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /api/bookings/current-user
+  * URL: /api/bookings/current
   * Body: none
 
 * Successful Response
@@ -1036,7 +1036,7 @@ Return all the bookings for a spot specified by id.
 * Require Authentication: true
 * Request
   * Method: GET
-  * URL: /api/boookings/spots/:spotId
+  * URL: /api/spots/:spotId/bookings
   * Body: none
 
 * Successful Response: If you ARE NOT the owner of the spot.
@@ -1285,7 +1285,7 @@ Delete an existing booking.
   Spot must belong to the current user
 * Request
   * Method: DELETE
-  * URL:/api/bookings/:bookingId
+  * URL: /api/bookings/:bookingId
   * Body: none
 
 * Successful Response
@@ -1337,7 +1337,7 @@ Delete an existing image for a Spot.
 * Require proper authorization: Spot must belong to the current user
 * Request
   * Method: DELETE
-  * URL: /api/spots/:spotId/images
+  * URL: /api/spot-images/:imageId
   * Body: none
 
 * Successful Response
@@ -1374,7 +1374,7 @@ Delete an existing image for a Review.
 * Require proper authorization: Review must belong to the current user
 * Request
   * Method: DELETE
-  * URL: /api/reviews/:reviewId/images
+  * URL: /api/review-images/:imageId
   * Body: none
 
 * Successful Response
@@ -1412,8 +1412,8 @@ Return spots filtered by query parameters.
   * Method: GET
   * URL: /api/spots
   * Query Parameters
-    * page: integer, minimum: 0, maximum: 10, default: 0
-    * size: integer, minimum: 0, maximum: 20, default: 20
+    * page: integer, minimum: 1, maximum: 10, default: 1
+    * size: integer, minimum: 1, maximum: 20, default: 20
     * minLat: decimal, optional
     * maxLat: decimal, optional
     * minLng: decimal, optional
@@ -1464,8 +1464,8 @@ Return spots filtered by query parameters.
       "message": "Validation Error",
       "statusCode": 400,
       "errors": {
-        "page": "Page must be greater than or equal to 0",
-        "size": "Size must be greater than or equal to 0",
+        "page": "Page must be greater than or equal to 1",
+        "size": "Size must be greater than or equal to 1",
         "maxLat": "Maximum latitude is invalid",
         "minLat": "Minimum latitude is invalid",
         "minLng": "Maximum longitude is invalid",
