@@ -50,6 +50,19 @@ module.exports = (sequelize, DataTypes) => {
 
     static associate(models) {
       // define association here
+      User.hasMany(
+        models.Spot,
+        {foreignKey:'ownerId',onDelete:'CASCADE',hooks:true}
+      )
+      User.hasMany(
+        models.Booking,
+        {foreignKey:'userId',onDelete:'CASCADE',hooks:true}
+      )
+      User.hasMany(
+        models.Review,
+        {foreignKey:'userId',onDelete:'CASCADE',hooks:true}
+      )
+
     }
   }
   User.init({
@@ -89,7 +102,7 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       len:[60,60]
     },
-    
+
   }, {
     sequelize,
     modelName: 'User',
