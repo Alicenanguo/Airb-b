@@ -10,11 +10,15 @@ module.exports = {
       },
       OwnerId: {
         type: Sequelize.INTEGER,
-        allowNull:false
+        allowNull: false,
+        references: {
+          model:"Users",
+        },
+        onDelete:"CASCADE"
       },
       address: {
         type: Sequelize.STRING,
-        allowNull:false
+        allowNull: false,
       },
       city: {
         type: Sequelize.STRING,
@@ -29,17 +33,20 @@ module.exports = {
         allowNull:false
       },
       lat: {
-        type: Sequelize.DECIMAL
+        type: Sequelize.DECIMAL,
+        allowNull:false
       },
       lng: {
-        type: Sequelize.DECIMAL
+        type: Sequelize.DECIMAL,
+        allowNull:false
       },
       name: {
         type: Sequelize.STRING,
         allowNull:false
       },
       description: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull:false
       },
       price: {
         type: Sequelize.DECIMAL,
@@ -47,11 +54,13 @@ module.exports = {
       },
       createdAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       },
       updatedAt: {
         allowNull: false,
-        type: Sequelize.DATE
+        type: Sequelize.DATE,
+        defaultValue: Sequelize.literal('CURRENT_TIMESTAMP')
       }
     });
   },
