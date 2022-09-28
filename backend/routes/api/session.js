@@ -38,7 +38,7 @@ router.post(
       } else {
 
         let istoken = await setTokenCookie(res, user);
-      
+
         user.dataValues.token = istoken
 
          res.json(
@@ -74,10 +74,13 @@ router.get(
     (req, res) => {
       const { user } = req;
       if (user) {
-        return res.json({
-          user: user.toSafeObject()
-        });
-      } else return res.json({});
+        console.log("user",user)
+        return res.json(
+          user.dataValues
+        );
+      } else {
+        return res.json({});
+      }
     }
   );
 
