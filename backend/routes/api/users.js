@@ -78,7 +78,6 @@ router.post("/", validateSignup, async (req, res) => {
 
     let istoken = await setTokenCookie(res, user);
       //console.log("user",user)
-      //console.log(istoken)
     user.dataValues.token = istoken
 
    res.json(

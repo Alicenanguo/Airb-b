@@ -15,6 +15,7 @@ const validateLogin = [
   check('password')
     .exists({ checkFalsy: true })
     .withMessage('Please provide a password.'),
+
   handleValidationErrors
 ];
 
@@ -23,24 +24,37 @@ router.post(
     '/',
     validateLogin,
     async (req, res, next) => {
-      const { credential, password } = req.body;
+      const {credential, password } = req.body;
 
       const user = await User.login({ credential, password });
 
-
       if (!user) {
-        const err = new Error('Login failed');
-        err.status = 401;
-        err.title = 'Login failed';
-        err.errors = ['The provided credentials were invalid.'];
-        return next(err);
-      }
+        res.status(401).json(
+          {
+            "message": "Invalid credentials",
+            "statusCode": 401
+          }
+          )
+      } else {
 
-      await setTokenCookie(res, user);
+        let istoken = await setTokenCookie(res, user);
 
-      return res.json({
-        user
-      });
+        user.dataValues.token = istoken
+
+         res.json(
+          user.dataValues
+        );
+        }
+
+
+      // if (!user) {
+      //   const err = new Error('Login failed');
+      //   err.status = 401;
+      //   err.title = 'Login failed';
+      //   err.errors = ['The provided credentials were invalid.'];
+      //   return next(err);
+      // }
+
     }
 );
 
@@ -60,10 +74,13 @@ router.get(
     (req, res) => {
       const { user } = req;
       if (user) {
-        return res.json({
-          user: user.toSafeObject()
-        });
-      } else return res.json({});
+        console.log("user",user)
+        return res.json(
+          user.dataValues
+        );
+      } else {
+        return res.json({});
+      }
     }
   );
 
