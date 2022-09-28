@@ -34,7 +34,7 @@ module.exports = (sequelize, DataTypes) => {
     }
   }
   Spot.init({
-    OwnerId: {
+    ownerId: {
       type: DataTypes.INTEGER,
       allowNull: false
     },
