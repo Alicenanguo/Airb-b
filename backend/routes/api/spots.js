@@ -1,78 +1,55 @@
-<<<<<<< HEAD
-checkouconst express = require("express");
-
-const { setTokenCookie, requireAuth } = require("../../utils/auth");
-const { Spot,User,} = require("../../db/models");
-=======
 const express = require("express");
+
 
 const { setTokenCookie, requireAuth } = require("../../utils/auth");
 const { Spot,User,Review,SpotImage,sequelize} = require("../../db/models");
->>>>>>> f28d80721385a00b92ac8e395fccd8d8eaec533e
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 
 const router = express.Router();
 
 const validateSpot = [
-    check("ownerId")
-        .exists({ checkFalsy: true })
-        .isInt()
-        .withMessage("Please provide a valid ownerId."),
-    check("address")
-<<<<<<< HEAD
-    .exists({ checkFalsy: true })
-    .notNull()
-        .withMessage("Please provide a valid address."),
-    check("state")
-        .exists({ checkFalsy: true })
-        .notNull()
-        .withMessage("Please provide a valid state name."),
-    check("country")
-        .exists({ checkFalsy: true })
-        .notNull()
-        .withMessage("Please provide a valid country name."),
-    check("lat")
-        .exists({ checkFalsy: true })
-        .notNull()
-        .withMessage("Please provide a valid city name."),
 
-]
-=======
-        .exists({ checkFalsy: true })
-       // .notNull()
-        .withMessage("Please provide a valid address."),
-    check("state")
-        .exists({ checkFalsy: true })
-       // .notNull()
-        .withMessage("Please provide a valid state name."),
-    check("country")
+     check("address")
         .exists({ checkFalsy: true })
         //.notNull()
-        .withMessage("Please provide a valid country name."),
+        .withMessage("Street address is required"),
+    check("city")
+            .exists({ checkFalsy: true })
+            .withMessage("City is required"),
+    check("state")
+        .exists({ checkFalsy: true })
+       // .notNull()
+        .withMessage("State is required"),
+    check("country")
+        .exists({ checkFalsy: true })
+       // .notNull()
+        .withMessage("Country is required"),
     check("lat")
         .exists({ checkFalsy: true })
         .isDecimal()
-        .withMessage("Please provide a lat between -90 to +90"),
+        .withMessage("Latitude is not valid"),
     check("lng")
         .exists({ checkFalsy: true })
         .isDecimal()
-        .withMessage("Please provide a lng between -180 to +180"),
+        .withMessage("Longitude is not valid"),
     check("name")
         .exists({ checkFalsy: true })
         //.notNull()
-        .withMessage("Please provide a valid name"),
+        .withMessage("Name must be less than 50 characters"),
     check("description")
         .exists({ checkFalsy: true })
         //.notNull()
-        .withMessage("Please provide valid description"),
+        .withMessage("Description is required"),
     check("price")
         .exists({ checkFalsy: true })
         .isDecimal()
-        .withMessage("The price should not less than 1"),
+        .withMessage("Price per day is required"),
 
     handleValidationErrors,
 ];
+
+
 
 //get spot from id
 router.get('/:spotId', async (req, res) => {
@@ -94,6 +71,24 @@ router.get('/:spotId', async (req, res) => {
 })
 
 
+//create a spot
+router.post("/", requireAuth, validateSpot, async (req, res) => {
+    const { address, city, state, country, lat, lng, name, description, price } = req.body
+
+    const createSpot = await Spot.create({
+        ownerId: req.user.id,
+        address,
+        city,
+        state,
+        country,
+        lat,
+        lng,
+        name,
+        description,
+        price
+    })
+    res.status(201).json(createSpot)
+})
 
 
 
@@ -142,4 +137,3 @@ router.get('/',async (req, res) => {
 
 
 module.exports = router;
->>>>>>> f28d80721385a00b92ac8e395fccd8d8eaec533e
