@@ -34,11 +34,19 @@ module.exports = {
       },
       lat: {
         type: Sequelize.DECIMAL,
-        allowNull:false
+        allowNull: false,
+        validate: {
+          min: -90,
+          max: +90
+        }
       },
       lng: {
         type: Sequelize.DECIMAL,
-        allowNull:false
+        allowNull: false,
+        validate: {
+          min: -180,
+          max: +180
+        }
       },
       name: {
         type: Sequelize.STRING,
@@ -50,7 +58,10 @@ module.exports = {
       },
       price: {
         type: Sequelize.DECIMAL,
-        allowNull:false
+        allowNull: false,
+        validate: {
+          min:1
+        }
       },
       createdAt: {
         allowNull: false,
