@@ -126,6 +126,7 @@ router.get('/',async (req, res) => {
 
     const getAllspot = await Spot.findAll()
 
+
     console.log("getAllspot", getAllspot)
     //console.log(getAllspot.length)
 
@@ -146,15 +147,16 @@ router.get('/',async (req, res) => {
                 where: {
                     spotId:getAllspot[i].dataValues.id
                 },
-            //attributes: ["url"],
-                raw: true,
-                nest:true
+            attributes: ["url"],
+                 raw: true,
+                // nest:true
 
         })
-        getAllspot[i].dataValues.avgRating = parseFloat(Number(countRating[0].dataValues.avgRating).toFixed(1))
+        const result = getAllspot[i].toJSON()
+        result.avgRating = parseFloat(Number(countRating[0].dataValues.avgRating).toFixed(1))
         console.log("getImage",getImage)
-       //getAllspot[i].dataValues.previewImage = getImage[0].dataValues.url
-       getAllspot[i].dataValues.previewImage = getImage.url
+       result.previewImage = getImage
+       //getAllspot[i].dataValues.previewImage = getImage.url
     }
 
 
