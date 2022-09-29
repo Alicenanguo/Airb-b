@@ -35,7 +35,7 @@ const validateSpot = [
         .withMessage("Longitude is not valid"),
     check("name")
         .exists({ checkFalsy: true })
-        //.notNull()
+        .isLength({max:50})
         .withMessage("Name must be less than 50 characters"),
     check("description")
         .exists({ checkFalsy: true })
@@ -48,7 +48,29 @@ const validateSpot = [
 
     handleValidationErrors,
 ];
+//create an image to a spot
+router.post("/:spotId/images", requireAuth, async (req, res) => {
+    const { url, preview } = req.body;
 
+    const findbyId = await Spot.findByPk(req.params.spotId)
+    console.log("findbyId",findbyId)
+
+    if (!findbyId) {
+        res.status(404).json({
+            "message": "Spot couldn't be found",
+            "statusCode": 404
+        })
+    } else {
+        const createImg = await SpotImage.create({
+            url,
+            preview,
+            SpotId:req.params.spotId
+
+
+        })
+        res.status(200).json(createImg )
+    }
+})
 
 
 //get spot from id
@@ -96,6 +118,8 @@ router.post("/", requireAuth, validateSpot, async (req, res) => {
 
 
 
+
+
 //get all Spots
 router.get('/',async (req, res) => {
 
@@ -118,15 +142,19 @@ router.get('/',async (req, res) => {
        // console.log("countRating",countRating)
 
        // let aveRating = countRating[0].dataValues.avgRating
-        const getImage = await SpotImage.findAll({
+        const getImage = await SpotImage.findOne({
                 where: {
                     spotId:getAllspot[i].dataValues.id
                 },
-                attributes: ["url"]
+            //attributes: ["url"],
+                raw: true,
+                nest:true
 
         })
         getAllspot[i].dataValues.avgRating = parseFloat(Number(countRating[0].dataValues.avgRating).toFixed(1))
-        getAllspot[i].dataValues.previewImage = getImage[0].url
+        console.log("getImage",getImage)
+       //getAllspot[i].dataValues.previewImage = getImage[0].dataValues.url
+       getAllspot[i].dataValues.previewImage = getImage.url
     }
 
 
