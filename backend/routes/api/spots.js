@@ -5,6 +5,7 @@ const { setTokenCookie, requireAuth,restoreUser } = require("../../utils/auth");
 const { Spot,User,Review,SpotImage,ReviewImage,Booking,sequelize} = require("../../db/models");
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
+const user = require("../../db/models/user");
 
 const router = express.Router();
 
@@ -89,6 +90,58 @@ router.get('/current', requireAuth, async (req, res) => {
     res.status(200).json({ "Spots":findSpot } )
 })
 
+//Create a Review for a Spot
+const validateReview = [
+    check("review")
+        .exists({ checkFalsy: true })
+        .withMessage("Review text is required"),
+   check("stars")
+        .exists({ checkFalsy: true })
+        .withMessage("Stars must be an integer from 1 to 5"),
+
+]
+
+
+router.post('/:spotId/reviews', requireAuth, validateReview,async (req,res) => {
+    const findSpot = await Spot.findByPk(req.params.spotId)
+
+    const existReview = await Review.findAll({
+        where:
+        {
+            userId: req.user.id,
+            spotId: req.params.spotId
+    }
+    })
+
+    if (!findSpot) {
+        res.status(404).json({
+      "message": "Spot couldn't be found",
+      "statusCode": 404
+        })
+    }
+    else if (existReview) {
+        res.status(403).json({
+            "message": "User already has a review for this spot",
+            "statusCode": 403
+
+        })
+    }
+    else {
+        const {userId,spotId,review, stars} = req.body
+        const newReview = await Review.create({
+            userId: req.user.id,
+            spotId: findSpot.id,
+            review,
+            stars
+        })
+        res.status(201).json(newReview)
+    }
+
+})
+
+
+
+
 
 
 //create an image to a spot
@@ -96,7 +149,7 @@ router.post("/:spotId/images", requireAuth, async (req, res) => {
     const { url, preview } = req.body;
 
     const findbyId = await Spot.findByPk(req.params.spotId)
-    console.log("findbyId",findbyId)
+    //console.log("findbyId",findbyId)
 
     if (!findbyId) {
         res.status(404).json({
@@ -135,7 +188,7 @@ router.get('/:spotId', async (req, res) => {
 
     const findbyId = await Spot.findByPk(req.params.spotId)
 
-    console.log("findbyId",findbyId)
+   // console.log("findbyId",findbyId)
     if (!findbyId) {
         res.status(404).json({
             "message": "Spot couldn't be found",
@@ -236,7 +289,7 @@ router.get('/',async (req, res) => {
     const getAllspot = await Spot.findAll()
 
 
-    console.log("getAllspot", getAllspot)
+    //console.log("getAllspot", getAllspot)
     //console.log(getAllspot.length)
 
     for (let i = 0; i < getAllspot.length; i++){
@@ -270,7 +323,7 @@ router.get('/',async (req, res) => {
 
             //const result = getAllspot[i].toJSON()
             getAllspot[i].dataValues.avgRating = parseFloat(Number(countRating[0].dataValues.avgRating).toFixed(1))
-            console.log("getImage",getImage)
+            //console.log("getImage",getImage)
             getAllspot[i].dataValues.previewImage = url
 
             //getAllspot[i].dataValues.previewImage = getImage.url
