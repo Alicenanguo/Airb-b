@@ -2,7 +2,7 @@ const express = require("express");
 
 
 const { setTokenCookie, requireAuth,restoreUser } = require("../../utils/auth");
-const { Spot,User,Review,SpotImage,ReviewImage,sequelize} = require("../../db/models");
+const { Spot,User,Review,SpotImage,ReviewImage,Booking,sequelize} = require("../../db/models");
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 
@@ -48,6 +48,49 @@ const validateSpot = [
 
     handleValidationErrors,
 ];
+
+//get spot of current user
+router.get('/current', requireAuth, async (req, res) => {
+    const findSpot = await Spot.findAll({
+        where: {
+            ownerId: req.user.id
+        }
+    })
+    console.log("findSpot",findSpot)
+    for (let i = 0; i < findSpot.length; i++){
+
+        const countRating = await Review.findAll({
+            where: {
+                userId: req.user.id,
+
+            },
+            attributes: [
+                    [sequelize.fn("AVG", sequelize.col("stars")), 'avgRating'],
+                ]
+            })
+
+        const getImage = await SpotImage.findOne({
+            where: {
+                spotId: findSpot[i].dataValues.id
+            },
+            attributes: ["url"],
+        })
+
+        if (getImage) {
+            url = getImage.url
+        } else {
+            url = null
+        }
+        findSpot[i].dataValues.avgRating = parseFloat(Number(countRating[0].dataValues.avgRating).toFixed(1))
+
+        findSpot[i].dataValues.previewImage = url
+    }
+
+    res.status(200).json({ "Spots":findSpot } )
+})
+
+
+
 //create an image to a spot
 router.post("/:spotId/images", requireAuth, async (req, res) => {
     const { url, preview } = req.body;
@@ -80,6 +123,11 @@ router.post("/:spotId/images", requireAuth, async (req, res) => {
         })
     }
 })
+
+
+
+
+
 
 
 //get spot from id
@@ -174,50 +222,6 @@ res.status(200).json(updateSpot)
 
 
 
-
-
-
-
-
-//get spot of current user
-router.get('/current', requireAuth, async (req, res) => {
-    const findSpot = await Spot.findAll({
-        where: {
-            ownerId: req.user.id
-        }
-    })
-    console.log("findSpot",findSpot)
-    for (let i = 0; i < findSpot.length; i++){
-
-        const countRating = await Review.findAll({
-            where: {
-                userId: req.user.id,
-
-            },
-            attributes: [
-                    [sequelize.fn("AVG", sequelize.col("stars")), 'avgRating'],
-                ]
-            })
-
-        const getImage = await SpotImage.findOne({
-            where: {
-                spotId: findSpot[i].dataValues.id
-            },
-            attributes: ["url"],
-        })
-
-        if (getImage) {
-            url = getImage.url
-        } else {
-            url = null
-        }
-        findSpot[i].dataValues.avgRating = parseFloat(Number(countRating[0].dataValues.avgRating).toFixed(1))
-
-        findSpot[i].dataValues.previewImage = url
-    }
-
-    res.status(200).json({ "Spots":findSpot } )
-})
 
 
 
