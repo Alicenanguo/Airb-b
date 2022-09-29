@@ -13,7 +13,7 @@ module.exports = {
     */
     await queryInterface.bulkInsert('Spots', [
       {
-        id:1,
+
         ownerId: 1,
         address: "123 Ave",
         city: "San Jose",
@@ -26,7 +26,7 @@ module.exports = {
         price:123
       },
       {
-        id:2,
+
         ownerId: 2,
         address: "456 Ave",
         city: "Cupertino",
@@ -39,7 +39,7 @@ module.exports = {
         price:456
       },
       {
-        id:3,
+       
         ownerId: 3,
         address: "789 Ave",
         city: "Sunnyvale",
