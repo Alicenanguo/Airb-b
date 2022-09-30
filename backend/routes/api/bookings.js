@@ -107,12 +107,12 @@ router.put("/:bookingId", requireAuth, validateBooking, async (req, res) => {
       "statusCode": 404
         })
     }
-    else if (new Date(endDate) < updateBooking.toJSON().endDate) {
-        res.status(403).json({
-            "message": "Past bookings can't be modified",
-      "statusCode": 403
-        })
-    }
+    // else if (new Date(endDate) < updateBooking.toJSON().endDate) {
+    //     res.status(403).json({
+    //         "message": "Past bookings can't be modified",
+    //   "statusCode": 403
+    //     })
+    //}
     else if ((updateBooking.toJSON().startDate <= new Date(endDate) && updateBooking.toJSON().endDate >= new Date(endDate)) || (updateBooking.toJSON().startDate <= new Date(startDate) && updateBooking.toJSON().endDate >= new Date(startDate))) {
         res.status(403).json({
             "message": "Sorry, this spot is already booked for the specified dates",
