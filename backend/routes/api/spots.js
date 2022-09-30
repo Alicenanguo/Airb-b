@@ -6,6 +6,7 @@ const { Spot,User,Review,SpotImage,ReviewImage,Booking,sequelize} = require("../
 const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 const user = require("../../db/models/user");
+const { parse } = require("pg-protocol");
 
 const router = express.Router();
 
@@ -215,6 +216,52 @@ router.post("/:spotId/images", requireAuth, async (req, res) => {
     }
 })
 
+//Get All Bookings for a Spot By Id
+router.get('/:spotId/bookings', requireAuth, async (req, res) => {
+    const findSpot = await Spot.findByPk(req.params.spotId)
+
+    if (!findSpot) {
+        res.status(404).json({
+            "message": "Spot couldn't be found",
+      "statusCode": 404
+        })
+    }
+   else if (findSpot.ownerId !== req.user.id) {
+
+
+        const notOwnerBooking = await Booking.findAll({
+            where: {
+                spotId:req.params.spotId
+            },
+            attributes: [
+                'spotId', 'startDate', 'endDate'
+            ],
+
+        })
+
+        res.status(200).json({"Bookings":notOwnerBooking})
+    }
+   else if (findSpot.ownerId === req.user.id) {
+
+
+        const OwnerBooking = await Booking.findAll({
+            where: {
+                spotId: req.params.spotId
+            },
+            include: [
+                {
+                    model: User,
+                    attributes: ['id', 'firstName', 'lastName']
+                }
+            ],
+        })
+        res.status(200).json({"Bookings":OwnerBooking})
+    }
+ })
+
+
+
+
 //Create a Booking Based on a Spot Id
 const validateBooking = [
     check("startDate")
@@ -374,11 +421,65 @@ res.status(200).json(updateSpot)
 
 
 
-//get all Spots
-router.get('/',async (req, res) => {
+//get all Spots && add page
+const validatePage = [
+    check("page")
+        .exists({ checkFalsy: true })
+        .isInt({min:1,max:10})
+        .withMessage("Page must be greater than or equal to 1"),
+    check("size")
+        .exists({ checkFalsy: true })
+        .isInt({min:1,max:20})
+        .withMessage("Size must be greater than or equal to 1"),
+     check("minLat")
+          .optional()
+            .isDecimal()
+        .withMessage("Minimum latitude is invalid"),
+    check("minLat")
+        .optional()
+         .isDecimal()
+        .withMessage("Minimum latitude is invalid"),
+    check("minLng")
+        .optional()
+          .isDecimal()
+        .withMessage("Minimum longitude is invalid"),
+     check("maxLng")
+        .optional()
+          .isDecimal()
+        .withMessage("Maximum longitude is invalid"),
+    check("minPrice")
+        .optional()
+        .isDecimal({min:0})
+        .withMessage("Minimum price must be greater than or equal to"),
+    check("maxPrice")
+        .optional()
+        .isDecimal({min:0})
+        .withMessage("Maximum price must be greater than or equal to"),
+
+        handleValidationErrors,
+    ]
+router.get('/',validatePage,async (req, res) => {
 
 
-    const getAllspot = await Spot.findAll()
+    let { page, size, minLat, maxLat, minLng, maxLng, minPrice, maxPrice } = req.query;
+    if (!page) {
+        page = 1
+    }
+    if(!size) {
+        size = 20
+    }
+    page = parseInt(page),
+    size = parseInt(size)
+
+    const pagination = {};
+        if (page >= 1 && size >= 1) {
+            pagination.limit = size;
+            pagination.offset = size * (page - 1);
+        }
+
+        const getAllspot = await Spot.findAll({
+        ...pagination
+    })
 
 
     //console.log("getAllspot", getAllspot)
@@ -422,7 +523,11 @@ router.get('/',async (req, res) => {
         }
 
 
-        res.status(200).json({ "Spots": getAllspot } )
+    res.status(200).json({
+        "Spots": getAllspot,
+        "page": page,
+        "size":size
+    })
     })
 
 
@@ -445,6 +550,32 @@ router.get('/',async (req, res) => {
         })
         res.status(201).json(createSpot)
     })
+
+
+
+    //DELETE a SPOT
+    router.delete('/:spotId', requireAuth, async (req, res) => {
+        const findSpot = await Spot.findByPk(req.params.spotId)
+
+
+        if (!findSpot) {
+            res.status(404).json({
+                "message":"Spot couldn't be found",
+                "statusCode": 404
+
+            })
+        } else {
+            findSpot.destroy()
+            res.status(200).json({
+                "message": "Successfully deleted",
+                "statusCode": 200
+            })
+        }
+    })
+
+   
+
+
 
 
 module.exports = router;
