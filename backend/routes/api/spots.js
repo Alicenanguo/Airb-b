@@ -107,12 +107,12 @@ router.post('/:spotId/reviews', requireAuth, validateReview,async (req,res) => {
     const findSpot = await Spot.findByPk(req.params.spotId)
    // console.log("findSpot",findSpot)
     const { review, stars } = req.body
-    const id = req.user.id
+    const userId = req.user.id
 
     const existReview = await Review.findOne({
         where:
         {
-            userId:id,
+            userId:userId,
            spotId:req.params.spotId,
     }
     })
@@ -132,7 +132,7 @@ router.post('/:spotId/reviews', requireAuth, validateReview,async (req,res) => {
     }
     else {
         const newReview = await Review.create({
-            userId: id,
+            userId:userId,
             spotId: req.params.spotId,
             review,
             stars
@@ -150,8 +150,8 @@ router.get('/:spotId/reviews', async (req, res) => {
 
     if (!findSpot) {
         res.status(404).json({
-      "message": "Spot couldn't be found",
-      "statusCode": 404
+            "message": "Spot couldn't be found",
+            "statusCode": 404
 
         })
     } else {
@@ -168,17 +168,33 @@ router.get('/:spotId/reviews', async (req, res) => {
                 },
                 {
                     model: ReviewImage,
-                    attributes: {
-                        exclude: ['reviewId', 'createdAt', 'updatedAt']
-                    }
+                    attributes: ["id", "url"],
+
                 }
             ]
         })
+        // const obj = {};
+        // obj.Reviews = [];
 
-        res.status(200).json({
-            "Reviews":findReview
-        })
+        // for (let i = 0; i < findReview.length; i++) {
+        //     const review = findReview[i].toJSON();
+
+        //     const findReviewImg = await ReviewImage.findOne({
+        //         where: {
+        //             reviewId: review.userId
+        //         },
+        //     });
+        //     //console.log("review",review)
+        //     //console.log('findReviewimg',findReviewImg)
+
+
+        //     review.ReviewImages = findReviewImg
+        //     obj.Reviews.push(review);
+        // }
+
+        res.status(200).json(findReview );
     }
+
 })
 
 
@@ -285,13 +301,15 @@ const validateBooking = [
             spotId:req.params.spotId
         }
     })
+      const arr = [];
     bookingDate.forEach(booking => {
         //console.log("booking",booking)
         // console.log(booking.toJSON().startDate)
         // console.log("start", new Date(startDate))
         // console.log("endDate",new Date(endDate))
         if ((booking.toJSON().startDate <= new Date(endDate) && booking.toJSON().endDate >= new Date(endDate)) || (booking.toJSON().startDate <= new Date(startDate) && booking.toJSON().endDate >= new Date(startDate)) ){
-            res.status(403).json({
+             arr.push("test")
+            return res.status(403).json({
                 "message": "Sorry, this spot is already booked for the specified dates",
                 "statusCode": 403,
                 "errors": {
@@ -306,7 +324,8 @@ const validateBooking = [
             "message": "Spot couldn't be found",
             "statusCode": 404
         })
-    } else {
+    }if(!arr.length){
+    // else {
 
         const newBookingdate = await Booking.create({
             spotId: findSpot.id,
@@ -314,6 +333,7 @@ const validateBooking = [
             startDate: startDate,
             endDate:endDate
         })
+        console.log("newbooking",newBookingdate)
         res.status(200).json(newBookingdate)
     }
   })

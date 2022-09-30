@@ -40,7 +40,7 @@ router.post("/:reviewId/images", requireAuth, async (req, res) => {
   } else {
     const { url } = req.body;
     const newImg = await ReviewImage.create({
-      reviewId: req.user.id,
+      reviewId: req.params.reviewId,
 
       url,
     });
@@ -109,26 +109,37 @@ router.get("/current", requireAuth, async (req, res) => {
         },
       },
       {
-        model: ReviewImage,
-        attributes: ["id", "url"],
-      },
-    ],
+          model: ReviewImage,
+          attributes: ["id", "url"],
+    },
+],
   });
-  //console.log("getAllreviews",getAllreviews)
-  // console.log(req.user.id)
-  const obj = {};
+
+
+//console.log("getAllreviews",getAllreviews)
+// console.log(req.user.id)
+const obj = {};
   obj.Reviews = [];
 
   for (let i = 0; i < getAllreviews.length; i++) {
-    const review = getAllreviews[i].toJSON();
-    const findUrl = await SpotImage.findOne({
-      where: {
-        spotId: review.spotId,
-      },
-    });
+      const review = getAllreviews[i].toJSON();
+
+      const findUrl = await SpotImage.findOne({
+          where: {
+              spotId: review.spotId,
+            },
+      });
+      //console.log("review",review)
+    //   const findReviewImg = await ReviewImage.findAll({
+    //       where: {
+    //           reviewId: review.id
+    //         },
+    //   });
+    //   console.log('findReviewimg',findReviewImg)
     //console.log("findUrl", findUrl.toJSON().url)
     // console.log("spot",review.Spot)
-    review.Spot.previewImage = findUrl.toJSON().url;
+      review.Spot.previewImage = findUrl.toJSON().url;
+      //review.ReviewImages = findReviewImg.toJSON()
     obj.Reviews.push(review);
   }
   res.status(200).json(obj);
