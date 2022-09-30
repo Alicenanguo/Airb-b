@@ -498,7 +498,7 @@ router.get('/',validatePage,async (req, res) => {
             })
             // console.log("countRating",countRating)
 
-           
+
             const getImage = await SpotImage.findOne({
                 where: {
                     spotId:getAllspot[i].dataValues.id
@@ -515,7 +515,7 @@ router.get('/',validatePage,async (req, res) => {
         }
 
             //const result = getAllspot[i].toJSON()
-            getAllspot[i].dataValues.avgRating = parseFloat(Number(countRating[0].dataValues.avgRating).toFixed(1))
+            getAllspot[i].dataValues.avgRating = Number(countRating[0].dataValues.avgRating).toFixed(1)
             //console.log("getImage",getImage)
             getAllspot[i].dataValues.previewImage = url
 
