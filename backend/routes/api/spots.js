@@ -58,7 +58,7 @@ router.get('/current', requireAuth, async (req, res) => {
             ownerId: req.user.id
         }
     })
-    console.log("findSpot",findSpot)
+    //console.log("findSpot",findSpot)
     for (let i = 0; i < findSpot.length; i++){
 
         const countRating = await Review.findAll({
@@ -105,7 +105,7 @@ const validateReview = [
 
 router.post('/:spotId/reviews', requireAuth, validateReview,async (req,res) => {
     const findSpot = await Spot.findByPk(req.params.spotId)
-    console.log("findSpot",findSpot)
+   // console.log("findSpot",findSpot)
     const { review, stars } = req.body
     const id = req.user.id
 
@@ -424,11 +424,11 @@ res.status(200).json(updateSpot)
 //get all Spots && add page
 const validatePage = [
     check("page")
-        .exists({ checkFalsy: true })
+    .optional()
         .isInt({min:1,max:10})
         .withMessage("Page must be greater than or equal to 1"),
     check("size")
-        .exists({ checkFalsy: true })
+     .optional()
         .isInt({min:1,max:20})
         .withMessage("Size must be greater than or equal to 1"),
      check("minLat")
@@ -498,7 +498,7 @@ router.get('/',validatePage,async (req, res) => {
             })
             // console.log("countRating",countRating)
 
-            // let aveRating = countRating[0].dataValues.avgRating
+           
             const getImage = await SpotImage.findOne({
                 where: {
                     spotId:getAllspot[i].dataValues.id
@@ -519,7 +519,7 @@ router.get('/',validatePage,async (req, res) => {
             //console.log("getImage",getImage)
             getAllspot[i].dataValues.previewImage = url
 
-            //getAllspot[i].dataValues.previewImage = getImage.url
+
         }
 
 
@@ -573,7 +573,7 @@ router.get('/',validatePage,async (req, res) => {
         }
     })
 
-   
+
 
 
 

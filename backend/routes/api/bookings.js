@@ -56,7 +56,7 @@ router.get("/current", requireAuth, async (req, res) => {
             },
             attributes:["url"]
         })
-        console.log('url', findUrl.toJSON())
+        //console.log('url', findUrl.toJSON())
         if (findUrl) {
             url = findUrl.toJSON().url;
         } else {

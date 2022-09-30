@@ -50,7 +50,7 @@ router.post("/", validateSignup, async (req, res) => {
        username:username
      }
   })
-  console.log("hasemail",hasEmail.length)
+ // console.log("hasemail",hasEmail.length)
 
   if (hasEmail.length) {
     res.status(403).json(

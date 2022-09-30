@@ -19,7 +19,7 @@ const router = express.Router();
 //Create an Image for a Review
 router.post("/:reviewId/images", requireAuth, async (req, res) => {
   const findImg = await Review.findByPk(req.params.reviewId);
-  console.log("findImg", findImg);
+ // console.log("findImg", findImg);
 
   const imgNum = await ReviewImage.findAll({
     where: {
@@ -44,7 +44,7 @@ router.post("/:reviewId/images", requireAuth, async (req, res) => {
 
       url,
     });
-    console.log("newImg", newImg);
+    //console.log("newImg", newImg);
 
     res.status(200).json({
       id: newImg.dataValues.id,
@@ -141,7 +141,7 @@ router.delete('/:reviewId', requireAuth, async (req, res) => {
 
 
     if (!findReview) {
-        res.status(404).json({ 
+        res.status(404).json({
             "message": "Review couldn't be found",
             "statusCode": 404
 
