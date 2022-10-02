@@ -45,7 +45,7 @@ router.get("/current", requireAuth, async (req, res) => {
 
    // console.log("getallbooking",getAllbookings)
     const obj = {};
-    obj.Booking = [];
+    obj.Bookings = [];
 
     for (let i = 0; i < getAllbookings.length; i++) {
         const booking = getAllbookings[i].toJSON();
@@ -76,7 +76,7 @@ router.get("/current", requireAuth, async (req, res) => {
             createdAt:booking.createdAt,
             updatedAt:booking.updatedAt
         }
-        obj.Booking.push(result);
+        obj.Bookings.push(result);
     }
     res.status(200).json(obj);
   });

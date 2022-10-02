@@ -192,7 +192,7 @@ router.get('/:spotId/reviews', async (req, res) => {
         //     obj.Reviews.push(review);
         // }
 
-        res.status(200).json(findReview );
+        res.status(200).json({ "Reviews": findReview });
     }
 
 })
