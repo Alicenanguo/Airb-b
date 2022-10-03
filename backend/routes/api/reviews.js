@@ -64,7 +64,17 @@ const validateReview = [
         handleValidationErrors,
 ];
 router.put("/:reviewId", requireAuth, validateReview, async (req, res) => {
-  const updateReview = await Review.findByPk(req.params.reviewId);
+  const updateReview = await Review.findByPk(req.params.reviewId, {
+    attributes: [
+      "id",
+      "userId",
+      "spotId",
+      "review",
+      "stars",
+      "createdAt",
+      "updatedAt",
+    ]
+  });
 
   if (!updateReview) {
       res.status(200).json({
@@ -73,7 +83,8 @@ router.put("/:reviewId", requireAuth, validateReview, async (req, res) => {
         });
     } else {
       const { review, stars } = req.body;
-      updateReview.set({
+    updateReview.update({
+
           review: review,
           stars:stars
 
