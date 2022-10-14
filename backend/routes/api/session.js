@@ -71,7 +71,7 @@ router.delete(
 router.get(
     '/',
   restoreUser,
-  requireAuth,
+  //requireAuth,
     (req, res) => {
       const { user } = req;
       if (user) {
@@ -80,7 +80,7 @@ router.get(
           user.dataValues
         );
       } else {
-        return res.json({});
+        res.json(null);
       }
     }
   );
