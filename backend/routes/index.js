@@ -2,6 +2,11 @@
 const express = require('express');
 const router = express.Router();
 
+
+
+
+
+
 router.get('/hello/world', function(req, res) {
   res.cookie('XSRF-TOKEN', req.csrfToken());
   res.send('Hello World!');
@@ -28,7 +33,7 @@ if (process.env.NODE_ENV === 'production') {
   // Serve the frontend's index.html file at the root route
   router.get('/', (req, res) => {
     res.cookie('XSRF-TOKEN', req.csrfToken());
-    return res.sendFile(
+    res.sendFile(
       path.resolve(__dirname, '../../frontend', 'build', 'index.html')
     );
   });
