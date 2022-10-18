@@ -9,9 +9,9 @@ const GetSpots = () => {
     const dispatch = useDispatch();
 
 
-    const spots = useSelector(state => state.spots)
-   // console.log("spots",spots)
-    const spotsArr = Object.values(spots)
+    const spotsArr  = Object.values(useSelector(state => state.spots.allSpots))
+    console.log("spots-getall",spotsArr)
+   // const spotsArr = Object.values(spots)
    // console.log("spotArr:",spotsArr)
 
 
@@ -20,25 +20,25 @@ const GetSpots = () => {
     dispatch(getAllSpots());
   }, [dispatch]);
 
-  if (!spots) {
+  if (spotsArr.length <= 0) {
     return null;
   }
     return (
         <div className="all_spots">
             {spotsArr.map(spot => (
                 <div className='spot_id' key={spot.id}>
-                    <NavLink to={`/spots/${spot.id}`}>
-                        <img className='spot_img' src={spot.previewImage} alt={spot.name} />
+                    <NavLink  to={`/spots/${spot.id}`}>
+                        <img  className='spot_img' src={spot.previewImage} alt={spot.name} />
                     </NavLink>
                     <div className='spot_address'>
-                        <p>{spot.city},{spot.state}</p>
+                        <p>{spot.city},{spot.state},{spot.country}</p>
                         <p>{spot.name}</p>
                     </div>
                     <div className='spot_price'>
                         <p>{`$${spot.price} /night`}</p>
                     </div>
                     <div>
-                        <i className='fa-solid fa-satr' />
+                        <i className='fa-solid fa-star' />
                         {`${spot.avgRating}`}
                         </div>
                     </div>
