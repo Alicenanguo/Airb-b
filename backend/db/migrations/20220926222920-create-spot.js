@@ -34,7 +34,7 @@ module.exports = {
       },
       lat: {
         type: Sequelize.DECIMAL,
-        allowNull: false,
+        allowNull: true,
         validate: {
           min: -90,
           max: +90
@@ -42,7 +42,7 @@ module.exports = {
       },
       lng: {
         type: Sequelize.DECIMAL,
-        allowNull: false,
+        allowNull: true,
         validate: {
           min: -180,
           max: +180

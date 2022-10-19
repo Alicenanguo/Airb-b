@@ -27,14 +27,14 @@ const validateSpot = [
         .exists({ checkFalsy: true })
        // .notNull()
         .withMessage("Country is required"),
-    check("lat")
-        .exists({ checkFalsy: true })
-        .isDecimal()
-        .withMessage("Latitude is not valid"),
-    check("lng")
-        .exists({ checkFalsy: true })
-        .isDecimal()
-        .withMessage("Longitude is not valid"),
+    // check("lat")
+    //     .exists({ checkFalsy: true })
+    //     .isDecimal()
+    //     .withMessage("Latitude is not valid"),
+    // check("lng")
+    //     .exists({ checkFalsy: true })
+    //     .isDecimal()
+    //     .withMessage("Longitude is not valid"),
     check("name")
         .exists({ checkFalsy: true })
         .isLength({max:50})
@@ -451,22 +451,22 @@ const validatePage = [
      .optional()
         .isInt({min:1,max:20})
         .withMessage("Size must be greater than or equal to 1"),
-     check("minLat")
-          .optional()
-            .isDecimal()
-        .withMessage("Minimum latitude is invalid"),
-    check("minLat")
-        .optional()
-         .isDecimal()
-        .withMessage("Minimum latitude is invalid"),
-    check("minLng")
-        .optional()
-          .isDecimal()
-        .withMessage("Minimum longitude is invalid"),
-     check("maxLng")
-        .optional()
-          .isDecimal()
-        .withMessage("Maximum longitude is invalid"),
+    //  check("minLat")
+    //       .optional()
+    //         .isDecimal()
+    //     .withMessage("Minimum latitude is invalid"),
+    // check("minLat")
+    //     .optional()
+    //      .isDecimal()
+    //     .withMessage("Minimum latitude is invalid"),
+    // check("minLng")
+    //     .optional()
+    //       .isDecimal()
+    //     .withMessage("Minimum longitude is invalid"),
+    //  check("maxLng")
+    //     .optional()
+    //       .isDecimal()
+    //     .withMessage("Maximum longitude is invalid"),
     check("minPrice")
         .optional()
         .isDecimal({min:0})
