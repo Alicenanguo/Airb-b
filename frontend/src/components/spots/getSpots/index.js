@@ -17,7 +17,7 @@ const GetSpots = () => {
 
 
   useEffect(() => {
-    dispatch(getAllSpots());
+    dispatch(getAllSpots(spotsArr));
   }, [dispatch]);
 
   if (spotsArr.length <= 0) {

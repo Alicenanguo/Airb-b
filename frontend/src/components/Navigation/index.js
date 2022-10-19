@@ -3,6 +3,7 @@ import { NavLink } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 import ProfileButton from './ProfileButton';
 import LoginFormModal from '../LoginFormModal';
+import SignupFromModal from '../SignupFormModal'
 import './Navigation.css';
 
 function Navigation({ isLoaded }){
@@ -11,13 +12,20 @@ function Navigation({ isLoaded }){
   let sessionLinks;
   if (sessionUser) {
     sessionLinks = (
-      <ProfileButton user={sessionUser} />
-    );
+      <>
+        <div className='nav_button'>
+          <NavLink id='add_host' to='/spots/create'>
+            Host your Spot
+          </NavLink>
+          <ProfileButton user={sessionUser} />
+          </div>
+        </>
+        );
   } else {
     sessionLinks = (
       <>
         <LoginFormModal />
-        <NavLink to="/signup">Sign Up</NavLink>
+        <SignupFromModal />
       </>
     );
   }
