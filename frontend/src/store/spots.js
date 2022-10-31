@@ -7,7 +7,7 @@ const LOAD_CURRENT = "spots/LOAD_CURRENT";
 const CREATE = "spots/CREATE";
 //const ADDIMG ='spot/ADD_IMG'
 const UPDATE = "spots/UPDATE";
-const REMOVE = "spots/REMOVE";
+const DELETE = "spots/DELETE";
 
 // todo:define action creators
 
@@ -33,13 +33,14 @@ const actioCreate = (newSpot) => ({
 
 
 
-const actionUpdate = () => ({
+const actionUpdate = (updateSpot) => ({
   type: UPDATE,
+  updateSpot
 });
 
-const actionRemove = (id) => ({
-  type: REMOVE,
-  id,
+const actionRemove = (spotId) => ({
+  type: DELETE,
+  spotId,
 });
 
 // todo:thunks section
@@ -98,12 +99,36 @@ export const createSpot = (spot,img) => async (dispatch) => {
     if (resImg.ok) {
         const newImg = await resImg.json()
      //   newSpot.previewImage = newImg.url
-        dispatch(actioCreate(newSpot))
+        dispatch(actioCreate(newSpot,newImg))
         return newSpot
 
     }
   }
 };
+
+export const updateSpot = (spot) => async dispatch => {
+  const res = await csrfFetch(`/api/spots/${spot.id}`, {
+    method: 'PUT',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(spot)
+  })
+  if (res.ok) {
+    const update = await res.json();
+    dispatch(actionUpdate(update));
+    return update;
+  }
+}
+
+export const deleteSpot = (spotId) => async dispatch => {
+  const res = await csrfFetch(`/api/spots/${spotId}`, {
+    method: 'DELETE',
+  })
+  if (res.ok) {
+    dispatch(actionRemove(spotId))
+  }
+}
+
+
 
 // todo: reduce stuff
 const initialState = { allSpots: {}, singleSpot: {} };
@@ -134,11 +159,22 @@ const spotReducer = (state = initialState, action) => {
       // let newCreate = { ...state }
       let newCreate = {};
       newCreate[action.newSpot.id] = action.newSpot;
+      console.log('newstate:', newState)
       return newCreate;
 
-    default:
-      return state;
-  }
+      case UPDATE:
+        const newUpdate = { ...state }
+        newUpdate[action.updateSpot.id] = action.updateSpot
+      return newUpdate
+
+    case DELETE:
+      const deleted = { ...state }
+      delete deleted[action.spotId]
+      return newState
+
+        default:
+          return state;
+      }
 };
 
 export default spotReducer;
