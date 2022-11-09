@@ -49,13 +49,13 @@ export const getAllSpots = () => async (dispatch) => {
 
   if (res.ok) {
     const list = await res.json();
-    // console.log("list-thunk",list)
+   //console.log("list-thunk",list)
     dispatch(actionLoad(list));
   }
 };
 
 export const getSpotsDetail = (spotId) => async (dispatch) => {
-  // console.log("spotId-thunk:",spotId)
+  console.log("spotId-thunk:",spotId)
   const res = await csrfFetch(`/api/spots/${spotId}`);
 
   if (res.ok) {
@@ -87,7 +87,7 @@ export const createSpot = (spot,img) => async (dispatch) => {
     const newSpot = await res.json();
     // dispatch(actioCreate(newSpot));
     // return newSpot;
-    //console.log("createSpot",createSpot)
+    console.log("createSpot",createSpot)
     const resImg = await csrfFetch(`/api/spots/${newSpot.id}/images`, {
         method: 'POST',
         headers: {
@@ -99,7 +99,8 @@ export const createSpot = (spot,img) => async (dispatch) => {
     if (resImg.ok) {
         const newImg = await resImg.json()
      //   newSpot.previewImage = newImg.url
-        dispatch(actioCreate(newSpot,newImg))
+      dispatch(actioCreate(newSpot, newImg))
+      console.log('newSpot',newSpot)
         return newSpot
 
     }
@@ -141,7 +142,7 @@ const spotReducer = (state = initialState, action) => {
       let allSpots = {};
       action.all.Spots.forEach((spot) => (allSpots[spot.id] = spot));
       newState.allSpots = allSpots;
-      //  console.log('newstate:', newState)
+        console.log('newState_getall:', newState)
       return newState;
 
     case LOAD_ONE:
@@ -156,16 +157,29 @@ const spotReducer = (state = initialState, action) => {
       return { allSpots: current };
 
     case CREATE:
-      // let newCreate = { ...state }
-      let newCreate = {};
-      newCreate[action.newSpot.id] = action.newSpot;
-      console.log('newstate:', newState)
+      let newCreate = {
+        ...state,
+        allSpots: {
+          ...state.allSpots,
+          [action.newSpot.id]: action.newSpot,
+          singleSpot: {
+            ...state.singleSpot
+          }
+        }
+      }
+      console.log('newState_create:', newCreate)
       return newCreate;
+      // let newCreate = { ...state }
+      // let newCreate = {};
+      // newCreate[action.newSpot.id] = action.newSpot;
+      // console.log('newstate:', newCreate)
+      // return newCreate;
 
-      case UPDATE:
-        const newUpdate = { ...state }
-        newUpdate[action.updateSpot.id] = action.updateSpot
-      return newUpdate
+      // case UPDATE:
+      //   const newUpdate = { ...state }
+      // newUpdate[action.updateSpot.id] = action.updateSpot
+      // console.log('newUpdate',newUpdate)
+      // return newUpdate
 
     case DELETE:
       const deleted = { ...state }

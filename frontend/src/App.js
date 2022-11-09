@@ -9,8 +9,8 @@ import Header from './components/Header/Header'
 import GetSpots from "./components/spots/getSpots";
 import GetSingleSpot from "./components/spots/getSpotDetails";
 import GetCurrenSpot from "./components/spots/getCurrentSpot";
-import CreateSpot from "./components/spots/createSpot"
-import UpdateSpot from "./components/spots/updateSpot"
+import CreateSpotModal from "./components/spots/createSpotModal"
+import UpdateSpot from "./components/spots/updateSpotModal"
 
 function App() {
   const dispatch = useDispatch();
@@ -21,12 +21,12 @@ function App() {
 
   return (
     <>
-      <Header />
+
       <Navigation isLoaded={isLoaded} />
       {isLoaded && (
         <Switch>
           <Route exact path="/spots/create">
-            <CreateSpot />
+            <CreateSpotModal />
           </Route>
 
           <Route exact path="/spots/current">

@@ -1,0 +1,15 @@
+.createSpot_form {
+    border-radius: 12px;
+    border:2px solid;
+    width:600px;
+    height:800px;
+}
+
+.host {
+    display:flex;
+    justify-content: center;
+    border-bottom:0.6px solid grey;
+    font-family: 'Arial, Helvetica, sans-serif';
+    padding:10px;
+    margin:20px;
+}
