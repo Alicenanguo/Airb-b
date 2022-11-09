@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Route, useParams } from 'react-router-dom';
 import { updateSpot } from '../../../store/spots.js';
+import UpdateSpotModal from '../updateSpotModal'
 
 import DeleteSpot from '../deleteSpot/deleteSpot.js';
 
@@ -13,8 +14,10 @@ const GetSingleSpot = () => {
     const dispatch = useDispatch();
 
     const { spotId } = useParams();
-    //console.log("spotId",spotId)
+    console.log("spotId",spotId)
     const single = useSelector(state => state.spots.singleSpot)
+
+    const currentUser = useSelector((state) => state.session.user)
 
     useEffect(() => {
         dispatch(getSpotsDetail(spotId));
@@ -54,20 +57,22 @@ const GetSingleSpot = () => {
 
                     </div>
 
-                    {currentUser && (
+                    {currentUser && currentUser.id === single.ownerId &&
+
                         <div className="edit_delete_button">
                             <button>
                                 <NavLink id="edit_button" to={`/spots/${spotId}/edit`}>
-                                    Edit Listing
+                                   <UpdateSpotModal />
                                 </NavLink>
                             </button>
                             <DeleteSpot />
                         </div>
+                    }
 
-                    )}
+
                 </>
             )
-})
+}
         </div>
     )
             {/* <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500"

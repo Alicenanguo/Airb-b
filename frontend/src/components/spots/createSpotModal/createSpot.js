@@ -1,15 +1,17 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Route, useParams, useHistory } from 'react-router-dom';
-import {createSpot} from '../../../store/spots'
+import { createSpot } from '../../../store/spots'
+import './createSpot.css'
 
-const CreateSpot = () => {
+const CreateSpot = ({ setShowModal }) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
     const user = useSelector(state => state.session.user)
     console.log('user_create', user)
     const spot = useSelector(state => state.spots.singleSpot)
+
     console.log('spot_create', spot)
 
     const [address, setAddress] = useState("");
@@ -26,6 +28,8 @@ const CreateSpot = () => {
     const [validationErrors, setValidationErrors] = useState([]);
     const [hasSubmitted, setHasSubmitted] = useState(false);
 
+
+
     useEffect(() => {
         const errors = [];
         if (!address) errors.push("please input a vaild address")
@@ -39,7 +43,7 @@ const CreateSpot = () => {
         setValidationErrors(errors)
     }, [address, city, state, country, name, description, price, previewImage])
 
-    const onSubmit = async e => {
+    const onSubmit = async(e)=> {
         e.preventDefault();
 
         setHasSubmitted(true);
@@ -56,8 +60,14 @@ const CreateSpot = () => {
         }
         //console.log(submitInfo)
         if (validationErrors.length === 0) {
-            const result = await dispatch(createSpot(spotInfo,imgInfo));
-            if(result)    history.push(`/spots/${result.id}`)
+            const result = await dispatch(createSpot(spotInfo, imgInfo));
+            console.log('createSpot_result', result)
+
+
+            if (result) {
+                setShowModal(false)
+                history.push(`/spots/${result.id}`)
+            }
 
         }
 
@@ -75,16 +85,22 @@ const CreateSpot = () => {
     }
 
     return (
+        <>
         <form
             className="createSpot_form"
             onSubmit={onSubmit}
-        >
-            <h2>Create your hosting</h2>
-            <ul className="errors">
-        {validationErrors.map(erros => (
-          <li key={erros}>{erros}</li>
-        ))}
-            </ul>
+            >
+
+             <h2 className='host'>Become a Host</h2>
+
+                {hasSubmitted && validationErrors.length > 0 && (
+        <div className='err-div'>
+          <ul className='error_info'>
+          {validationErrors.map((error, idx) => <li className='error' key={idx}>{error}</li>)}
+          </ul>
+        </div>
+        )}
+
             <label>
                 Name
                 <input
@@ -92,9 +108,11 @@ const CreateSpot = () => {
                     type='text'
                     name='name'
                     onChange={e => setName(e.target.value)}
-                    value={name}
+                        value={name}
+                        
                   />
             </label>
+
             <label>
                 Address
                 <input
@@ -188,7 +206,7 @@ const CreateSpot = () => {
             <button
                 type="submit"
                 id="submit_button"
-        disabled={validationErrors.length >0}
+        // disabled={validationErrors.length >0}
       >
         Submit
             </button>
@@ -196,7 +214,7 @@ const CreateSpot = () => {
 
 
         </form>
-
+</>
     )
 }
 export default CreateSpot;

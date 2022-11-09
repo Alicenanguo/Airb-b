@@ -168,13 +168,15 @@ const UpdateSpot = () => {
                 value={price}
               />
         </label>
-        
+
         <div
             type="submit"
             id="submit_button"
             >
                 <button>
-                Update
+                <NavLink id='cancel_button' to={`/spots/${spotId}`}>
+                       Update
+                    </NavLink>
                 </button>
                 <button>
                     <NavLink id='cancel_button' to={`/spots/${spotId}`}>

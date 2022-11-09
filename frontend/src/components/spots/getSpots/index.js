@@ -9,15 +9,17 @@ const GetSpots = () => {
     const dispatch = useDispatch();
 
 
-    const spotsArr  = Object.values(useSelector(state => state.spots.allSpots))
-    console.log("spots-getall",spotsArr)
+    let spot = useSelector(state => state.spots.allSpots)
+    const spotsArr = Object.values(spot)
+    console.log('spot_getAll',spot)
+
    // const spotsArr = Object.values(spots)
    // console.log("spotArr:",spotsArr)
 
 
 
   useEffect(() => {
-    dispatch(getAllSpots(spotsArr));
+    dispatch(getAllSpots());
   }, [dispatch]);
 
   if (spotsArr.length <= 0) {

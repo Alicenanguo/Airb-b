@@ -1,1 +1,88 @@
+.model_login {
+    border-radius: 12px;
+    border:2px solid;
+    width:400px;
+    height:450px;
+}
+.model_form {
+    display:flex;
+    flex-direction:column;
 
+    font-family:'Arial, Helvetica, sans-serif';
+    font-weight:300;
+    padding:0 24px;
+    font-size: 25px;
+
+
+}
+
+.title_login {
+    display:flex;
+    justify-content: center;
+    border-bottom:0.6px solid grey;
+    font-family: 'Arial, Helvetica, sans-serif';
+    padding:10px
+
+}
+
+
+.welcome {
+    display:flex;
+    justify-content: center;
+    font-family:'Arial, Helvetica, sans-serif';
+    margin-top:20px;
+
+}
+
+.placeholder_info {
+    display:flex;
+    justify-content: center;
+    width:340px;
+    height: 40px;
+    border-radius: 10px;
+    border: 1px solid #222222;
+
+}
+
+.submit {
+    display:flex;
+    justify-content: center;
+    width:350px;
+    height: 40px;
+    border-radius: 12px;
+    margin-top:40px;
+    background-color: #ff385c;
+    color:white;
+    align-items:center;
+    border:none;
+    font-size:15px;
+
+}
+
+#demoUser {
+    display:flex;
+    justify-content: center;
+    width:350px;
+    height: 40px;
+    border-radius: 12px;
+    margin-top:15px;
+    background-color: #ff385c;
+    color:white;
+    align-items:center;
+    border:none;
+    font-size:15px;
+}
+
+.login_signup_button {
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+
+
+}
+
+#log_in {
+   
+    margin-right:10px;
+
+}
