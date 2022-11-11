@@ -16,14 +16,15 @@ const DeleteSpot = () => {
         e.preventDefault();
 
         const result = await dispatch(deleteSpot(deleteItem.id))
-        if (result) history.push('/')
+        if (result) history.push('/spots/current')
+        console.log('result_delete',result)
 
     }
     return (
         <button onClick={onSubmit}>
-            <NavLink id="delte_button" to={'/spots/current'}>
+            {/* <NavLink id="delte_button" to={'/spots/current'}> */}
                 Delete Listing
-            </NavLink>
+            {/* </NavLink> */}
         </button>
     )
 }
