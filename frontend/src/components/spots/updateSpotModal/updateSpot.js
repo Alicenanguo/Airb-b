@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Route, useParams, useHistory } from "react-router-dom";
 import { getSpotsDetail, updateSpot } from "../../../store/spots";
 
-const UpdateSpot = () => {
+const UpdateSpot = ({ setShowModal }) => {
   const dispatch = useDispatch();
   const history = useHistory();
   const { spotId } = useParams();
@@ -50,6 +50,7 @@ const UpdateSpot = () => {
     setHasSubmit(true);
 
     const spotInfo = {
+      ...spot,
       address,
       city,
       state,
@@ -60,12 +61,25 @@ const UpdateSpot = () => {
       description,
       price,
     };
-
+    console.log('spotInfo',spotInfo)
+    // console.log('validation',validationErrors,validationErrors.length)
     if (validationErrors.length === 0) {
+      console.log('validation',validationErrors)
       const result = await dispatch(updateSpot(spotInfo));
-      if (result) history.push(`/spots/${result.id}`);
+      console.log('update_result', result)
+      console.log('--------------')
+      if (result)
+      setShowModal(false)
+        history.push(`/spots/${result.id}`);
     }
   };
+
+
+  const cancelSubmit = async (e) => {
+    e.preventDefault();
+    setShowModal(false)
+    history.push(`/spots/${spotId}`);
+  }
 
     return (
         <form
@@ -173,15 +187,16 @@ const UpdateSpot = () => {
             type="submit"
             id="submit_button"
             >
-                <button>
-                <NavLink id='cancel_button' to={`/spots/${spotId}`}>
+                <button type='submit' className="update_button">
+                {/* <id='cancel_button' to={`/spots/${spotId}`}> */}
                        Update
-                    </NavLink>
+
                 </button>
-                <button>
-                    <NavLink id='cancel_button' to={`/spots/${spotId}`}>
-                        Cancel
-                    </NavLink>
+           <button className="cancel_button" onClick={cancelSubmit}>
+                    {/* <NavLink id='cancel_button' to={`/spots/${spotId}`}> */}
+
+            Cancel
+                    {/* </NavLink> */}
                 </button>
 
 </div>

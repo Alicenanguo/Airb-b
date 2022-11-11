@@ -60,11 +60,11 @@ const GetSingleSpot = () => {
                     {currentUser && currentUser.id === single.ownerId &&
 
                         <div className="edit_delete_button">
-                            <button>
-                                <NavLink id="edit_button" to={`/spots/${spotId}/edit`}>
+
+                                <div id="edit_button" to={`/spots/${spotId}/edit`}>
                                    <UpdateSpotModal />
-                                </NavLink>
-                            </button>
+                                </div>
+
                             <DeleteSpot />
                         </div>
                     }

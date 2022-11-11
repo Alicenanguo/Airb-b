@@ -115,6 +115,7 @@ export const updateSpot = (spot) => async dispatch => {
   })
   if (res.ok) {
     const update = await res.json();
+    console.log('update_in_thunk',update)
     dispatch(actionUpdate(update));
     return update;
   }
@@ -149,6 +150,7 @@ const spotReducer = (state = initialState, action) => {
       newState = { ...state };
       const singleSpot = action.one;
       newState.singleSpot = singleSpot;
+      console.log('getone_state',newState)
       return newState;
 
     case LOAD_CURRENT:
@@ -156,26 +158,49 @@ const spotReducer = (state = initialState, action) => {
       action.userSpot.Spots.forEach((spot) => (current[spot.id] = spot));
       return { allSpots: current };
 
-    case CREATE:
-      let newCreate = {
+      case CREATE:
+        let newCreate = {
+          ...state,
+          allSpots: {
+            ...state.allSpots,
+            [action.newSpot.id]: action.newSpot,
+            singleSpot: {
+              ...state.singleSpot
+            }
+          }
+        }
+        console.log('newState_create:', newCreate)
+        return newCreate;
+
+    case UPDATE:
+      // const updateState = { ...state };
+      // updateState.singleSpot[action.updateSpot.id] = { ...action.updateSpot };
+      // updateState.singleSpot = action.updateSpot
+      // return updateState;
+
+
+      let updateState = {
         ...state,
         allSpots: {
           ...state.allSpots,
-          [action.newSpot.id]: action.newSpot,
-          singleSpot: {
-            ...state.singleSpot
-          }
-        }
-      }
-      console.log('newState_create:', newCreate)
-      return newCreate;
-      // let newCreate = { ...state }
-      // let newCreate = {};
-      // newCreate[action.newSpot.id] = action.newSpot;
-      // console.log('newstate:', newCreate)
-      // return newCreate;
+          // [action.updateSpot.id]: action.updateSpot,
+          [action.updateSpot.id]: { ...state.allSpots[action.updateSpot.id], ...action.updateSpot },
 
-      // case UPDATE:
+          singleSpot: {
+            ...state.singleSpot, ...action.updateSpot
+          }
+        },
+        singleSpot:{ ...state.singleSpot, ...action.updateSpot}
+      }
+
+      console.log('newState_update:', updateState)
+
+        return updateState;
+
+      // newCreate1[action.updateSpot.id] = action.updateSpot;
+      // console.log('newstate:', newCreate1)
+      // return newCreate1;
+
       //   const newUpdate = { ...state }
       // newUpdate[action.updateSpot.id] = action.updateSpot
       // console.log('newUpdate',newUpdate)

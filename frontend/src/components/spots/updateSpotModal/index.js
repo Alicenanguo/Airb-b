@@ -13,9 +13,10 @@ function UpdateSpotModal() {
   return (
     <>
       <button onClick={() => setShowModal(true)}>Edit Listing</button>
+      
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <UpdateSpot />
+          <UpdateSpot setShowModal={setShowModal}/>
         </Modal>
       )}
     </>
