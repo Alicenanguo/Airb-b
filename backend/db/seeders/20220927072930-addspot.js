@@ -34,7 +34,7 @@ module.exports = {
           state: "California",
           country: "USA",
           lat: 156.1234567,
-          lng: -987.7654321,
+          lng: -87.7654321,
           name: "Stone Style",
           description:
             "This is the famous Kellogg Doolittle estate in Joshua Tree California. It is one of the most exclusive homes in the world,",
@@ -46,7 +46,7 @@ module.exports = {
           city: "Cedar City",
           state: "Utah",
           country: "USA",
-          lat: 678.1234567,
+          lat: 78.1234567,
           lng: 98.7654321,
           name: "Tree House",
           description:
