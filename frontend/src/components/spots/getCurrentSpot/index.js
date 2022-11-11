@@ -9,6 +9,7 @@ import { getCurrentSpot } from "../../../store/spots.js";
 const GetCurrentSpot = () => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const [isLoaded, setIsLoaded] = useState(false)
 
 
   const currentUser = useSelector((state) => state.session.user);
@@ -17,8 +18,8 @@ const GetCurrentSpot = () => {
   const currentSpot = useSelector((state) => state.spots.allSpots);
   console.log("spots_getCurrent", currentSpot);
 
-  const currentSpotArr = Object.values(currentSpot);
-  console.log("currentSpotArr", currentSpotArr);
+  // const currentSpotArr = Object.values(currentSpot);
+  // console.log("currentSpotArr", currentSpotArr);
 
   if (!currentUser) {
     history.push("/");
@@ -26,18 +27,35 @@ const GetCurrentSpot = () => {
 
   useEffect(() => {
     if (currentUser) {
-      dispatch(getCurrentSpot(currentSpotArr));
+      dispatch(getCurrentSpot())
+        .then(() => {
+          setIsLoaded(true)
+        })
     }
-  }, [dispatch, currentUser]);
+  }, [dispatch]);
 
-  if (currentSpotArr.length == 0) {
-    return "Sorry, you do not have any hosting";
+  let currentSpotArr;
+
+  if (isLoaded) {
+    currentSpotArr = Object.values(currentSpot)
+
+    // if (currentSpotArr.length === 0) {
+    //   return "Sorry, you do not have any hosting";
+    // }
   }
 
   return (
-    <div className="currentUser_spot">
+      isLoaded && (
+    <>
+        {
+        currentSpotArr.length === 0 && (
+          <div>
+            Sorry, you do not have any hosting
+        </div>
+      )}
+        < div className="currentUser_spot">
       <h1>All your hosting</h1>
-      {currentSpotArr.length > 0 &&
+      {currentSpotArr?.length > 0 &&
         currentSpotArr.map((spot) => (
           <>
             <div className="currentSpot_info" key={spot.id}>
@@ -61,6 +79,9 @@ const GetCurrentSpot = () => {
           </>
         ))}
     </div>
-  );
+
+      </>
+      )
+  )
 };
 export default GetCurrentSpot;

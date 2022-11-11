@@ -127,7 +127,9 @@ export const deleteSpot = (spotId) => async dispatch => {
   })
   if (res.ok) {
     dispatch(actionRemove(spotId))
+    return res
   }
+
 }
 
 
@@ -139,7 +141,7 @@ const spotReducer = (state = initialState, action) => {
   let newState = {};
   switch (action.type) {
     case LOAD:
-      newState = { ...state };
+      newState = { };
       let allSpots = {};
       action.all.Spots.forEach((spot) => (allSpots[spot.id] = spot));
       newState.allSpots = allSpots;
@@ -164,9 +166,9 @@ const spotReducer = (state = initialState, action) => {
           allSpots: {
             ...state.allSpots,
             [action.newSpot.id]: action.newSpot,
-            singleSpot: {
-              ...state.singleSpot
-            }
+          },
+          singleSpot: {
+            ...state.singleSpot
           }
         }
         console.log('newState_create:', newCreate)
@@ -177,21 +179,23 @@ const spotReducer = (state = initialState, action) => {
       // updateState.singleSpot[action.updateSpot.id] = { ...action.updateSpot };
       // updateState.singleSpot = action.updateSpot
       // return updateState;
-
+      console.log('action_sigspot', state.singleSpot)
+      console.log('action_update',action.updateSpot)
 
       let updateState = {
-        ...state,
-        allSpots: {
-          ...state.allSpots,
-          // [action.updateSpot.id]: action.updateSpot,
-          [action.updateSpot.id]: { ...state.allSpots[action.updateSpot.id], ...action.updateSpot },
+        //...state,
+        // allSpots: {
+        //   ...state.allSpots,
+        //   // [action.updateSpot.id]: action.updateSpot,
+        //   [action.updateSpot.id]: { ...state.allSpots[action.updateSpot.id], ...action.updateSpot },
 
-          singleSpot: {
-            ...state.singleSpot, ...action.updateSpot
-          }
-        },
+        //   singleSpot: {
+        //     ...state.singleSpot, ...action.updateSpot
+        //   }
+        // },
         singleSpot:{ ...state.singleSpot, ...action.updateSpot}
       }
+      // updateState.singleSpot = action.updateSpot
 
       console.log('newState_update:', updateState)
 
@@ -207,9 +211,13 @@ const spotReducer = (state = initialState, action) => {
       // return newUpdate
 
     case DELETE:
-      const deleted = { ...state }
-      delete deleted[action.spotId]
-      return newState
+      const deleted = {
+        ...state,
+        allSpots: { ...state.allSpots },
+        singleSpot:{}
+      }
+      delete deleted.allSpots[action.spotId]
+      return deleted;
 
         default:
           return state;
