@@ -44,7 +44,7 @@ module.exports = {
           ownerId: 3,
           address: "487 Monta Vista Ln",
           city: "Santa Cruz",
-          state: "california",
+          state: "California",
           country: "USA",
           lat: 79.1234567,
           lng: 99.7654321,
@@ -70,7 +70,7 @@ module.exports = {
           ownerId: 5,
           address: "369 Arnold Way",
           city: "Manchester",
-          state: "california",
+          state: "California",
           country: "USA",
           lat: 45.1234567,
           lng: 66.7654321,
@@ -78,6 +78,32 @@ module.exports = {
           description:
             "Private ocean-front home on bluff with unobstructed ocean views above Irish Beach. First-class amenities and furnishings to sleep six. Watch whales and sunsets from the hot tub on the deck. A spectacular getaway!",
           price: 355,
+        },
+        {
+          ownerId: 6,
+          address: "234 Poplar St",
+          city: "Manzanita",
+          state: "Oregon",
+          country: "USA",
+          lat: 46.1234567,
+          lng: 67.7654321,
+          name: "Beachfront home with a hot tub",
+          description:
+            "Ocean's Doorstep has spectacular views that will leave you breathless. The views from the home span from Neah-Kah-Nie mountain down the beautiful sandy beaches of Manzanita towards the jetty.",
+          price: 350,
+        },
+        {
+          ownerId: 7,
+          address: "888 Poplar St",
+          city: "Manzanita",
+          state: "Oregon",
+          country: "USA",
+          lat: 46.1234567,
+          lng: 67.7654321,
+          name: "Beachfront home with a hot tub",
+          description:
+            "Ocean's Doorstep has spectacular views that will leave you breathless. The views from the home span from Neah-Kah-Nie mountain down the beautiful sandy beaches of Manzanita towards the jetty.",
+          price: 350,
         },
 
 
