@@ -44,6 +44,10 @@ function App() {
           <Route exact path="/">
             <GetSpots />
           </Route>
+
+          <Route>
+            <h1>Page Could Not Found</h1>
+          </Route>
         </Switch>
       )}
     </>

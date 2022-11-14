@@ -148,7 +148,30 @@ module.exports = {
         stars: 4.7,
 
       },
-      
+      {
+
+        spotId: 6,
+        userId: 4,
+        review: "Excellent view! Manzanita is such a cool coast town. This spot is all bout location.",
+        stars: 4.8,
+
+      },
+      {
+
+        spotId: 6,
+        userId: 3,
+        review: "Unfortunately there was quite a bit of false advertising in this site. The first and foremost was the hot tub. Ada major highlight and of the house, the fact that it was not working super irritating. ",
+        stars: 3.5,
+
+      },
+      {
+
+        spotId: 6,
+        userId: 2,
+        review: "Excellent home with a great view and amenities. Close to everything in town and in a great spot to get to the beach quickly.",
+        stars: 4.5,
+
+      },
 
 
 
