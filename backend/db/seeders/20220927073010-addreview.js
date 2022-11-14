@@ -17,7 +17,7 @@ module.exports = {
         spotId: 1,
         userId: 1,
         review: "Amazing views and everything we needed for a comfortable stay. We saw a pod of about 20 dolphins and there were very few people on the beach. Already trying to figure out when we can come back.",
-        stars: 5,
+        stars: 5.0,
 
       },
       {
@@ -25,7 +25,7 @@ module.exports = {
         spotId: 1,
         userId: 2,
         review: "This property is great. Super easy beach access and you couldn not ask for a better view. We saw whales from the room! Josephine was responsive whenever I had a question.",
-        stars: 5,
+        stars: 5.0,
 
 
       },
@@ -49,7 +49,7 @@ module.exports = {
         spotId: 2,
         userId: 1,
         review: "This house was beautiful, we enjoyed the beach views and felt like Rajesh supplied everything any guest might need for a short visit. The master bed was so comfortable.",
-        stars: 5,
+        stars: 5.0,
 
       },
       {
@@ -113,7 +113,7 @@ module.exports = {
         spotId: 4,
         userId: 2,
         review: "Beautiful house and the garden was stunning. Great quiet location. The hot tub was super clean too. We had a great stay.",
-        stars: 5,
+        stars: 5.0,
 
       },
       {
@@ -137,7 +137,7 @@ module.exports = {
         spotId: 5,
         userId: 5,
         review: "Absolutely beautiful home! Very clean. Clear instructions, notebook with recommendations and labels on light switches.",
-        stars: 5,
+        stars: 5.0,
 
       },
       {

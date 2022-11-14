@@ -4,7 +4,7 @@ import { NavLink, Route, useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
 
 import { getCurrentSpot } from "../../../store/spots.js";
-
+import UserReviews from '../../reviews/userReviews'
 
 const GetCurrentSpot = () => {
   const dispatch = useDispatch();
