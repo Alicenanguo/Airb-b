@@ -80,7 +80,7 @@ module.exports = {
           price: 355,
         },
         {
-          ownerId: 6,
+          ownerId: 1,
           address: "234 Poplar St",
           city: "Manzanita",
           state: "Oregon",
@@ -92,19 +92,7 @@ module.exports = {
             "Ocean's Doorstep has spectacular views that will leave you breathless. The views from the home span from Neah-Kah-Nie mountain down the beautiful sandy beaches of Manzanita towards the jetty.",
           price: 350,
         },
-        {
-          ownerId: 7,
-          address: "888 Poplar St",
-          city: "Manzanita",
-          state: "Oregon",
-          country: "USA",
-          lat: 46.1234567,
-          lng: 67.7654321,
-          name: "Beachfront home with a hot tub",
-          description:
-            "Ocean's Doorstep has spectacular views that will leave you breathless. The views from the home span from Neah-Kah-Nie mountain down the beautiful sandy beaches of Manzanita towards the jetty.",
-          price: 350,
-        },
+
 
 
       ],
