@@ -17,7 +17,9 @@ function LoginForm() {
       async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);
-      }
+        if (res.status === 401)
+          setErrors(["The credential provided were inValid"])
+       }
     );
   };
 
@@ -34,7 +36,7 @@ function LoginForm() {
               <li key={idx}>{error}</li>
             ))}
           </ul>
-          <label>
+          <label className="label_info">
             {/* Username or Email */}
           <input
             className="placeholder_info"
