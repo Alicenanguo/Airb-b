@@ -4,6 +4,7 @@ import { NavLink, Route, useParams } from "react-router-dom";
 import { updateSpot } from "../../../store/spots.js";
 import UpdateSpotModal from "../updateSpotModal";
 import { getSpotsDetail } from "../../../store/spots.js";
+import CreateReviewsModal from "../../reviews/createReviewsModal/index.js";
 
 import DeleteSpot from "../deleteSpot/deleteSpot.js";
 
@@ -57,7 +58,7 @@ const GetSingleSpot = () => {
                             <div className="single_numReviews">
                                 {`${single.numReviews} reviews`}
                             </div>
-                            
+
                             <div className="single_host_description">
                                 <p className="single_hostInfo">{`Entire vacation home hosted by ${single.Owner.firstName}`}</p>
                                 <p className="single_description">{single.description}</p>
@@ -65,6 +66,11 @@ const GetSingleSpot = () => {
 
                             <div className="review_spotId">
                                 <GetSpotReviews spotId={spotId} />
+
+                            </div>
+
+                            <div className="create_review_spotList">
+                                <CreateReviewsModal spotId={spotId} />
 
                             </div>
 

@@ -61,7 +61,7 @@ const CreateSpot = ({ setShowModal }) => {
         //console.log(submitInfo)
         if (validationErrors.length === 0) {
             const result = await dispatch(createSpot(spotInfo, imgInfo));
-            console.log('createSpot_result', result)
+            //console.log('createSpot_result', result)
 
 
             if (result) {
@@ -109,7 +109,7 @@ const CreateSpot = ({ setShowModal }) => {
                     name='name'
                     onChange={e => setName(e.target.value)}
                         value={name}
-                        
+
                   />
             </label>
 
