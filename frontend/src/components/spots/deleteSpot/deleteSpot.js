@@ -5,17 +5,17 @@ import { useHistory } from "react-router-dom";
 
 import {deleteSpot} from '../../../store/spots'
 
-const DeleteSpot = () => {
+const DeleteSpot = ({spotId}) => {
     const dispatch = useDispatch();
     const history = useHistory();
 
-    const deleteItem = useSelector(state => state.spots.singleSpot)
-    console.log('deleteITEM',deleteItem)
+    // const deleteItem = useSelector(state => state.spots.singleSpot)
+    // console.log('deleteITEM',deleteItem)
 
     const onSubmit = async (e) => {
         e.preventDefault();
 
-        const result = await dispatch(deleteSpot(deleteItem.id))
+        const result = await dispatch(deleteSpot(spotId))
         if (result) history.push('/spots/current')
         console.log('result_delete',result)
 

@@ -70,7 +70,7 @@ export const getCurrentSpot = () => async (dispatch) => {
 
   if (res.ok) {
     const currentSpot = await res.json();
-    // console.log('current_thunk',currentSpot)
+     console.log('current_thunk',currentSpot)
     dispatch(actionCurrentSpot(currentSpot));
   }
 };
@@ -183,7 +183,7 @@ const spotReducer = (state = initialState, action) => {
       console.log('action_update',action.updateSpot)
 
       let updateState = {
-        //...state,
+        ...state,
         // allSpots: {
         //   ...state.allSpots,
         //   // [action.updateSpot.id]: action.updateSpot,

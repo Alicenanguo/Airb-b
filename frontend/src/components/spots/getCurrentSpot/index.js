@@ -2,14 +2,18 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Route, useParams } from "react-router-dom";
 import { useHistory } from "react-router-dom";
+import UpdateSpotModal from "../updateSpotModal";
 
-import { getCurrentSpot } from "../../../store/spots.js";
+import DeleteSpot from "../deleteSpot/deleteSpot.js";
+
+import { getAllSpots, getCurrentSpot } from "../../../store/spots.js";
 import UserReviews from '../../reviews/userReviews'
 
 const GetCurrentSpot = () => {
   const dispatch = useDispatch();
   const history = useHistory();
   const [isLoaded, setIsLoaded] = useState(false)
+  const { spotId } = useParams();
 
 
   const currentUser = useSelector((state) => state.session.user);
@@ -28,7 +32,7 @@ const GetCurrentSpot = () => {
   useEffect(() => {
     if (currentUser) {
       dispatch(getCurrentSpot())
-        .then(() => {
+              .then(() => {
           setIsLoaded(true)
         })
     }
@@ -74,6 +78,17 @@ const GetCurrentSpot = () => {
               </p>
             </div>
             <div className="spot_price">{`${spot.price} /night`}</div>
+
+
+                                <div className="edit_delete_button">
+                                    <div id="edit_button" to={`/spots/${spotId}/edit`}>
+                                        <UpdateSpotModal spot={spot} spotId={spot.id} />
+                                    </div>
+<div>
+                <DeleteSpot spotId={spot.id} />
+                </div>
+                                </div>
+
 
 
           </>

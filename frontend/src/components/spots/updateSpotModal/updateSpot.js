@@ -1,17 +1,17 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Route, useParams, useHistory } from "react-router-dom";
-import { getSpotsDetail, updateSpot } from "../../../store/spots";
+import { getSpotsDetail, updateSpot,getAllSpots } from "../../../store/spots";
 
-const UpdateSpot = ({ setShowModal }) => {
+const UpdateSpot = ({spot,spotId,setShowModal }) => {
   const dispatch = useDispatch();
   const history = useHistory();
-  const { spotId } = useParams();
+
 
   const user = useSelector((state) => state.session.user);
   console.log("user_update", user);
 
-  const spot = useSelector((state) => state.spots.singleSpot);
+  // const spot = useSelector((state) => state.spots.singleSpot);
   console.log("spot_update", spot);
 
   const [address, setAddress] = useState(spot.address);
@@ -68,6 +68,7 @@ const UpdateSpot = ({ setShowModal }) => {
       const result = await dispatch(updateSpot(spotInfo));
       console.log('update_result', result)
       console.log('--------------')
+      //await dispatch(getAllSpots())
       if (result)
       setShowModal(false)
         history.push(`/spots/${result.id}`);

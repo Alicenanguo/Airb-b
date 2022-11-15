@@ -78,6 +78,7 @@ export const deleteReview = (reviewId) => async (dispatch) => {
     if (res.ok) {
         dispatch(actionDelete(reviewId))
         return res
+
     }
 }
 
@@ -130,10 +131,11 @@ const reviewsReducer = (state = initialState, action) => {
         case DELETE:
             const deleted = {
                 ...state,
-                spotReviews: { ...state.spotReviews },
-                userReviews: {}
+                spotReviews: {},
+                userReviews: {...state.userReviews }
             }
-            delete deleted.spotReviews[action.reviewId]
+            delete deleted.userReviews[action.reviewId]
+
             return deleted;
 
             default:
