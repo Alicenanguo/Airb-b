@@ -1,3 +1,4 @@
+
 import { csrfFetch } from "./csrf";
 
 // todo:define types
@@ -43,11 +44,27 @@ export const getAllSpotReviews = (spotId) => async (dispatch) => {
 }
 
 export const getUserReview = () => async (dispatch) => {
-    const res = await csrfFetch(`/api/reviews/current`);
+    const res = await csrfFetch('/api/reviews/current');
     if (res.ok) {
         const review = await res.json();
         dispatch(actionGetUserReview(review));
         return review;
+    }
+}
+
+export const createReviews =(reviewInfo, spotId) => async(dispatch) => {
+    const resReview = await csrfFetch(`/api/spots/${spotId}/reviews`, {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(reviewInfo)
+    })
+    if (resReview.ok) {
+        const newReview = await resReview.json()
+        console.log('newReview_createReview________thunk', newReview)
+        dispatch(actionCreate(newReview))
+        return newReview;
     }
 }
 
@@ -73,12 +90,29 @@ const reviewsReducer = (state = initialState, action) => {
         case GET_BYUSER:
             newState = { ...state}
             let userReviews = {}
-            console.log('action_all_review_user', action.userReviewInfo.Reviews)
-            console.log('newState_getUserReviews:', newState)
+            // console.log('action_all_review_user', action.userReviewInfo.Reviews)
+            // console.log('newState_getUserReviews:', newState)
 
             action.userReviewInfo.Reviews.forEach((review) => (userReviews[review.id] = review));
-newState.userReviews = userReviews;
+            newState.userReviews = userReviews;
             return newState;
+
+        case CREATE:
+            let newCreate = {
+                ...state,
+                spotReviews: {
+                    ...state.spotReviews,
+                    [action.newReview.id]:action.spotReviews
+                },
+                userReviews: {
+                    ...state.userReviews,
+                    [action.newReview.id]:action.userReviews
+                }
+            }
+            console.log('newState_review_create:', newCreate)
+            return newCreate
+
+
 
             default:
                 return state;
