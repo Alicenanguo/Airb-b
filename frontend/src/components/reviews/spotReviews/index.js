@@ -28,8 +28,10 @@ const GetSpotReviews = ({spotId}) => {
     }, [dispatch])
 
     let reviewsArr;
+    console.log('reviewsArr____getspotReviews',reviews)
     if (isLoaded) {
         reviewsArr = Object.values(reviews)
+        
     }
     // if (reviewsArr.length === 0) return null;
 
