@@ -3,7 +3,8 @@ import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Route, useParams,useHistory } from 'react-router-dom';
 
 
-import { getUserReview  } from '../../../store/reviews';
+import { getUserReview } from '../../../store/reviews';
+import { deleteReview } from '../../../store/reviews';
 
 const UserReviews = () => {
     const dispatch = useDispatch();
@@ -26,6 +27,10 @@ const UserReviews = () => {
 
     }
 
+    const handleDeleted = async (reviewId) => {
+        await dispatch (deleteReview(reviewId))
+    }
+
     return (
         <div className='user_reviews_Info'>
             <p className='user_review_name'>{`${sessionUser.firstName},This is your Reviws`}</p>
@@ -44,6 +49,12 @@ const UserReviews = () => {
                                 {el?.createdAt.slice(0, 10)}
                                 </div>
                             <img className='user_review_preImg' src={el.Spot?.previewImage} />
+
+                            <div className='userReview_delete_button'>
+                                <button onClick={() => handleDeleted(el.id)}>delete Review</button>
+                                {console.log("el_______", el)}
+
+                            </div>
 
 
 

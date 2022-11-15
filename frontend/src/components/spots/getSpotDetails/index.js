@@ -2,11 +2,10 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Route, useParams } from "react-router-dom";
 import { updateSpot } from "../../../store/spots.js";
-import UpdateSpotModal from "../updateSpotModal";
 import { getSpotsDetail } from "../../../store/spots.js";
 import CreateReviewsModal from "../../reviews/createReviewsModal/index.js";
 
-import DeleteSpot from "../deleteSpot/deleteSpot.js";
+
 
 import  GetSpotReviews  from "../../reviews/spotReviews";
 
@@ -78,15 +77,7 @@ const GetSingleSpot = () => {
 
 
 
-                            {currentUser && currentUser.id === single.ownerId && (
-                                <div className="edit_delete_button">
-                                    <div id="edit_button" to={`/spots/${spotId}/edit`}>
-                                        <UpdateSpotModal />
-                                    </div>
 
-                                    <DeleteSpot />
-                                </div>
-                            )}
                         </>
                     )
                 }

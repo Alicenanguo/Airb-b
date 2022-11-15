@@ -3,7 +3,7 @@ import { useSelector } from 'react-redux';
 import { Modal } from '../../../context/Modal';
 import UpdateSpot from './updateSpot';
 
-function UpdateSpotModal() {
+function UpdateSpotModal({spot,spotId}) {
   const [showModal, setShowModal] = useState(false);
 
   const seesionUser = useSelector(state => state.session.user)
@@ -13,10 +13,10 @@ function UpdateSpotModal() {
   return (
     <>
       <button onClick={() => setShowModal(true)}>Edit Listing</button>
-      
+
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <UpdateSpot setShowModal={setShowModal}/>
+          <UpdateSpot setShowModal={setShowModal} spot={spot} spotId={spotId} />
         </Modal>
       )}
     </>
