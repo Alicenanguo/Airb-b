@@ -44,7 +44,7 @@ function Navigation({ isLoaded }) {
 
   return (
     <>
-      <nav className="header_right">
+      <nav className="header">
         <NavLink exact to="/">
           <img
             className="icon"
@@ -53,7 +53,6 @@ function Navigation({ isLoaded }) {
           />
         </NavLink>
         {isLoaded && sessionLinks}
-
         {/* {showLogInModal && (
       <div className='upper_right' onClose={() => setShowLogInModal(false)}>
         <LoginFormModal setShowLogInModal={setShowLogInModal} />
@@ -65,7 +64,7 @@ function Navigation({ isLoaded }) {
       </div>
     )}
       */}
-        <div className='button_host'>
+        <div className='host_button'>
        <CreateSpotModal />
         </div>
       </nav>
