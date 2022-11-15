@@ -1,7 +1,7 @@
 import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { NavLink, Route, useParams, useHistory } from 'react-router-dom';
-import { createReviews } from '../../../store/reviews'
+import { createReviews, getAllSpotReviews } from '../../../store/reviews'
 
 
 const CreateReviews = ({spotId,setShowModal}) => {
@@ -11,7 +11,7 @@ const CreateReviews = ({spotId,setShowModal}) => {
     const user = useSelector(state => state.session.user)
     const spot = useSelector(state => state.spots.singleSpot)
 
-
+console.log("-----------------------review")
     const [review, setReview] = useState('');
     const [stars, setStars] = useState(5);
 
@@ -21,7 +21,7 @@ const CreateReviews = ({spotId,setShowModal}) => {
     useEffect(() => {
         const errors = [];
         if (!review) errors.push('Review text is required')
-        if (stars < 0 || stars > 5) errors.push('Stars must be an number from 1 to 5')
+        // if (stars < 0 || stars > 5) errors.push('Stars must be an number from 1 to 5')
         setValidationErrors(errors)
     },[review,stars])
 
@@ -34,9 +34,12 @@ const CreateReviews = ({spotId,setShowModal}) => {
         const reviewInfo = {
             review, stars
         }
+        // console.log('reviewInfo', reviewInfo)
+        // console.log('validationEroors',validationErrors)
         if (validationErrors.length === 0) {
             const result = await dispatch(createReviews(reviewInfo, spotId))
             console.log('createReviews_result', result)
+            await dispatch(getAllSpotReviews(spotId))
 
             if (result) {
                 setShowModal(false)
@@ -72,7 +75,7 @@ const CreateReviews = ({spotId,setShowModal}) => {
                         value={stars}
                         required
                     >
-                        {ratingStar.map(el => (<option>{el}</option>))}
+                        {ratingStar.map(el => (<option key={el}>{el}</option>))}
                     </select>
                 </label>
 
