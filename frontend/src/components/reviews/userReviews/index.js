@@ -27,8 +27,14 @@ const UserReviews = () => {
 
     }
 
-    const handleDeleted = async (reviewId) => {
-        await dispatch (deleteReview(reviewId))
+    const handleDeleted =  async(reviewId) =>{
+
+        const result = await dispatch(deleteReview(reviewId))
+        console.log('resule_delte_reviews',result)
+        if(result)
+        // history.push('/reviews/current')
+            dispatch(getUserReview())
+
     }
 
     return (
@@ -51,7 +57,7 @@ const UserReviews = () => {
                             <img className='user_review_preImg' src={el.Spot?.previewImage} />
 
                             <div className='userReview_delete_button'>
-                                <button onClick={() => handleDeleted(el.id)}>delete Review</button>
+                                <button onClick={() => handleDeleted(el.id)}>Delete Review</button>
                                 {console.log("el_______", el)}
 
                             </div>

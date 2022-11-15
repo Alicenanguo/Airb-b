@@ -71,7 +71,7 @@ export const createReviews = (reviewInfo, spotId) => async (dispatch) => {
 }
 
 export const deleteReview = (reviewId) => async (dispatch) => {
-    const res = await (`/api/reviews/${reviewId}`, {
+    const res = await csrfFetch(`/api/reviews/${reviewId}`, {
         method: 'DELETE',
     })
 
@@ -135,6 +135,7 @@ const reviewsReducer = (state = initialState, action) => {
                 userReviews: {...state.userReviews }
             }
             delete deleted.userReviews[action.reviewId]
+            console.log("review_delete_reducer",deleted)
 
             return deleted;
 
