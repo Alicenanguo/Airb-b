@@ -37,26 +37,36 @@ const GetSpots = () => {
     return (
          isLoaded && (
 
-        <div className="all_spots">
+            <div className="all_spots">
+                <div className='all_spots_items'>
+
+
             {spotsArr.map(spot => (
-                <div className='spot_id' key={spot.id}>
+                <div className='spot_item' key={spot.id}>
                     <NavLink to={`/spots/${spot.id}`}>
                         <img className='spot_img' src={spot.previewImage} alt={spot.name} />
                     </NavLink>
-                    <div className='spot_address'>
-                        <p>{spot.city},{spot.state},{spot.country}</p>
-                        <p>{spot.name}</p>
-                    </div>
-                    <div className='spot_price'>
-                        <p>{`$${spot.price} /night`}</p>
-                    </div>
-                    <div>
+                    <div className='spot_info'>
+                    <div className='spot_city_state_star'>
+                        <div className='spot_city_state'>
+                            <p>{spot.city},{spot.state}</p>
+                            </div>
+                        <div className='star'>
                         <i className='fa-solid fa-star' />
                         {`${spot.avgRating}`}
                     </div>
+
+                    </div>
+                            <div className='spot_country'>
+                                <p>{spot.country}</p>
+                            </div>
+                    <div className='spot_price'>
+                        <p>{`$${spot.price} /night`}</p>
+                    </div>
+</div>
                 </div>
             ))}
-
+</div>
         </div>
     )
             )

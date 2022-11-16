@@ -1,13 +1,99 @@
 .all_spots{
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
-    margin: 60px 150px;
-    flex-wrap: wrap;
-    column-gap: 30px;
+    /* display: grid;
+    grid-template-columns: repeat(4, 1fr); */
+    display: flex;
+    /* justify-content: center;
+    margin-bottom: 48px;
+    font-family: Arial, Helvetica, sans-serif */
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
 }
 
 
-.spot_id {
-    width: 100%;
+.all_spots_items {
+    /* display: flex;
+    flex-wrap: wrap;
+    place-items: center;
+    justify-content: center;
+    gap: 25px; */
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    justify-content: center;
+    width: auto;
+    max-width: 2000px;
+    padding: 10px 5px;
+    margin: 10px 5px;
+    font-family: Roboto, sans-serif;
+    color: #222222;
+}
 
+.spot_item {
+    /* display: flex;
+  flex-direction: column;
+  align-content: center;
+  justify-content: center;
+  outline: 1px solid #e8e8e8;
+  padding: 20px;
+  border: none;
+  border-radius: 10px;
+  font-family: "Montserrat", sans-serif; */
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 300px;
+  height: auto;
+  padding: 5px;
+  margin: 10px 5px 5px 5px;
+}
+
+.spot_city_state_star {
+    display: flex;
+
+  justify-content: space-between;
+  /* font-weight: 200;
+  font-size: 2vh;
+  color: black; */
+  height: 38%;
+  padding: 3px;
+  margin: 2px;
+
+
+  text-decoration: none;
+}
+.star {
+    display: flex;
+    place-items: center;
+    justify-content: center;
+
+}
+
+.spot_info {
+    display: flex;
+    flex-direction: column;
+    justify-content:flex-start;
+
+
+}
+.spot_img {
+    width: 300px;
+    height: 300px;
+    padding: 5px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.spot_city_state {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    margin-left: 0;
+}
+.spot_country {
+    margin-left: 10px;
+}
+
+.spot_price {
+    margin-left: 10px;
 }
