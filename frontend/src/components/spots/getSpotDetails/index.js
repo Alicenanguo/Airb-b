@@ -4,6 +4,7 @@ import { NavLink, Route, useParams } from "react-router-dom";
 import { updateSpot } from "../../../store/spots.js";
 import { getSpotsDetail } from "../../../store/spots.js";
 import CreateReviewsModal from "../../reviews/createReviewsModal/index.js";
+import './getSpotDetails.css'
 
 
 
@@ -16,7 +17,10 @@ const GetSingleSpot = () => {
     const { spotId } = useParams();
     console.log("spotId", spotId);
     const single = useSelector((state) => state.spots.singleSpot);
-    console.log('single_state_getone', single)
+   console.log('single_state_getone', single)
+    //console.log('get_one_spot', single.SpotImages)
+
+
     const currentUser = useSelector((state) => state.session.user);
 
     useEffect(() => {
@@ -26,64 +30,76 @@ const GetSingleSpot = () => {
     if (!single) return null;
 
     return (
-            isLoaded && (
-        <div className="single_spots">
-                {
-                    single.id && (
-                        <>
-                            <div className="single_name">{single.name}</div>
+        <div className="getOneSpot_container">
+            {isLoaded && (
+                <div className="single_spots">
+                    {
+                        single.id && (
+                            <>
+                                <div className="single_name">{single.name}</div>
 
+                                <div className="spot_info_container">
+                                <div className="single_avgRating_star">
+                                    <i className="fa-solid fa-star" />
+                                    {single.avgStarRating ? parseFloat(single.avgStarRating).toFixed(1) : 'No Rating'}
+                                </div>
+                                <div className="dot">·</div>
+                                <div className="single_numReviews">
+                                    {`${single.numReviews} reviews`}
+                                </div>
+                                <div className="single_address">
+                                    <p>
+                                        {single.city},{single.state},{single.country}
+                                    </p>
+                                    </div>
+                                </div>
 
-                            <div className="single_address">
-                                <p>
-                                    {single.city},{single.state},{single.country}
-                                </p>
-                            </div>
-                            <div>
-                                {single.SpotImages.map((el) => (
-                                    <img
-                                        key={el.id}
-                                        className="single_img"
-                                        src={el.url}
-                                        alt={single.name}
-                                    />
-                                ))}
-                            </div>
-
-                            <div className="single_avgRating_star">
-                                <i className="fa-solid fa-star" />
-                                {single.avgStarRating ? parseFloat(single.avgStarRating).toFixed(1) : 'No Rating'}
-                            </div>
-                            <div className="single_numReviews">
-                                {`${single.numReviews} reviews`}
-                            </div>
-
-                            <div className="single_host_description">
-                                <p className="single_hostInfo">{`Entire vacation home hosted by ${single.Owner.firstName}`}</p>
-                                <p className="single_description">{single.description}</p>
-                            </div>
-
-                            <div className="review_spotId">
-                                <GetSpotReviews spotId={spotId} />
-
-                            </div>
-
-                            <div className="create_review_spotList">
-                                <CreateReviewsModal spotId={spotId} />
-
-                            </div>
+                                <div className="spot_img">
+                                    <div className="spot_previewImg">
+                                        <img src={single.SpotImages[0].url} alt={single.name} />
+                                    </div>
+                                    <div className="spot_other4_img">
+                                    {single.SpotImages.slice(1,5).map((el) => (
+                                        <img
+                                            key={el.id}
+                                            className="single_img"
+                                            src={el.url}
+                                            alt={single.name}
+                                        />
+                                    ))}
+                                        </div>
+                                </div>
 
 
 
 
+                                <div className="single_host_description">
+                                    <p className="single_hostInfo">{`Entire vacation home hosted by ${single.Owner.firstName}`}</p>
+                                    <p className="single_description">{single.description}</p>
+                                </div>
+
+                                <div className="review_spotId">
+                                    <GetSpotReviews spotId={spotId} />
+
+                                </div>
+
+                                <div className="create_review_spotList">
+                                    <CreateReviewsModal spotId={spotId} />
+
+                                </div>
 
 
-                        </>
-                    )
-                }
 
+
+
+
+                            </>
+                        )
+                    }
+
+                </div>
+            )}
             </div>
-                )
             );
   {
     /* <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500"

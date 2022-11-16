@@ -23,7 +23,7 @@ const UserReviews = () => {
 },[dispatch])
 
     if (reviewsArr.length === 0) {
-       return ('Sorry, You Do Not Have Any Reviews.')
+       return ('Sorry, You do not have any reviews.')
 
     }
 

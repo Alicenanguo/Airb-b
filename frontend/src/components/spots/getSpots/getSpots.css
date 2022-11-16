@@ -90,10 +90,19 @@
     justify-content: space-between;
     margin-left: 0;
 }
+
+p {
+    padding: 0;
+    margin: 0;
+
+}
+
 .spot_country {
-    margin-left: 10px;
+    padding: 3px;
+  margin: 1px;
 }
 
 .spot_price {
-    margin-left: 10px;
+    padding: 3px;
+  margin: 1px;
 }

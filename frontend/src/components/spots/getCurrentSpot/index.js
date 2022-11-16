@@ -43,20 +43,20 @@ const GetCurrentSpot = () => {
   if (isLoaded) {
     currentSpotArr = Object.values(currentSpot)
 
-    // if (currentSpotArr.length === 0) {
-    //   return "Sorry, you do not have any hosting";
-    // }
+    if (currentSpotArr.length === 0) {
+      return "Sorry, you do not have any hosting.";
+    }
   }
 
   return (
       isLoaded && (
     <>
-        {
+        {/* {
         currentSpotArr.length === 0 && (
           <div>
             Sorry, you do not have any hosting
         </div>
-      )}
+      )} */}
         < div className="currentUser_spot">
       <h1>All your hosting</h1>
       {currentSpotArr?.length > 0 &&

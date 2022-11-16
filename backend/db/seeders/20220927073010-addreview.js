@@ -172,6 +172,95 @@ module.exports = {
         stars: 4.5,
 
       },
+      {
+
+        spotId: 7,
+        userId: 4,
+        review: "This house has the greatest view ever. It's at the end of a dirt road which seems a challenge in the beginning but turns out to be quite manageable.",
+        stars: 4.5,
+
+      },
+      {
+
+        spotId: 8,
+        userId: 5,
+        review: "This house is absolutely amazing, there isn't anything that hasn't been thought of. We plan on returning as regulars, and you will absolutely love this beautiful home.",
+        stars: 4.7,
+
+      },
+      {
+
+        spotId: 8,
+        userId: 1,
+        review: "Amazing! Perfect, most relaxing getaway you could ask for. Super clean, beautiful, well appointed, easy. Kitchen was fun to cook in and has everything you need.",
+        stars: 4.3,
+
+      },
+      {
+
+        spotId: 9,
+        userId: 3,
+        review: "The coziest getaway with every amenity you might need. We can't wait to come back!",
+        stars: 4.0,
+
+      },
+      {
+
+        spotId: 9,
+        userId: 2,
+        review: "We have stayed in 3 other airbnbs on vacations this year, and this one was by far our favorite! The time and detail that was put into making this a cozy retreat was amazing!",
+        stars: 4.0,
+
+      },
+      {
+
+        spotId: 10,
+        userId: 1,
+        review: "What an amazing cabin! Kate and Gabe were so lovely and accommodating. Really appreciated the EV charger and all of their recommendations in big bear. Thanks for having us, guys!",
+        stars: 4.6,
+
+      },
+      {
+
+        spotId: 10,
+        userId: 3,
+        review: "Awesome cozy cabin! Very silent place. Kate and Gabe were super-responsive and helpful.",
+        stars: 4.5,
+
+      },
+      {
+
+        spotId: 11,
+        userId: 3,
+        review: "This place is absolutely amazing! I am a local to the area and grew up just 45 minutes from here and I was still in awe of how beautiful of an experience this was.",
+        stars: 4.3,
+
+      },
+      {
+
+        spotId: 11,
+        userId: 5,
+        review: "Haley's place was stunning! It's hard to decide if it was more beautiful at sunset or sunrise. Was worth it to go in the fall and see the pretty colors!",
+        stars: 4.5,
+
+      },
+      {
+
+        spotId: 12,
+        userId: 5,
+        review: "Gorgeous place, ultimate luxury in every aspect, heartfelt hospitality, so grateful for this stay!",
+        stars: 4.2,
+
+      },
+      {
+
+        spotId: 12,
+        userId: 4,
+        review: "The place is gorgeous with a lovely view of the valley and very close to Joshua Tree National Park. The jacuzzi was lovely and the outdoor shower was great in the morning!",
+        stars: 4.6,
+
+      },
+
 
 
 
