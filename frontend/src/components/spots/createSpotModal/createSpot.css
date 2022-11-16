@@ -13,3 +13,28 @@
     padding:10px;
     margin:20px;
 }
+
+.become_a_host {
+    font-family:'Arial, Helvetica, sans-serif';
+    font-size:16px;
+    border:none;
+    border-radius:35px;
+    padding:8px;
+    margin-right:40px;
+    background-color:white;
+    color:rgb(64, 60, 60);
+
+
+}
+
+.become_a_host:hover {
+    background-color:rgb(231, 223, 223);
+    cursor: pointer;
+}
+
+.upper_right_login_signup_host{
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    margin-right:50px
+}

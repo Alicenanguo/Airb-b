@@ -52,7 +52,13 @@ function Navigation({ isLoaded }) {
             alt="loading"
           />
         </NavLink>
+        <div className="upper_right_login_signup_host">
+
+        <div className='host_button'>
+       <CreateSpotModal />
+        </div>
         {isLoaded && sessionLinks}
+        </div>
         {/* {showLogInModal && (
       <div className='upper_right' onClose={() => setShowLogInModal(false)}>
         <LoginFormModal setShowLogInModal={setShowLogInModal} />
@@ -64,9 +70,6 @@ function Navigation({ isLoaded }) {
       </div>
     )}
       */}
-        <div className='host_button'>
-       <CreateSpotModal />
-        </div>
       </nav>
     </>
 

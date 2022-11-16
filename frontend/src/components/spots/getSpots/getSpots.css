@@ -1,0 +1,13 @@
+.all_spots{
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 60px 150px;
+    flex-wrap: wrap;
+    column-gap: 30px;
+}
+
+
+.spot_id {
+    width: 100%;
+
+}

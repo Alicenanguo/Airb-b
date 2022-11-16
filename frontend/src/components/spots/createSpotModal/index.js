@@ -12,7 +12,7 @@ function CreateSpotModal() {
 
   return (
     <>
-      <button className='header_right' onClick={() => setShowModal(true)}>Become a Host</button>
+      <button className='become_a_host' onClick={() => setShowModal(true)}>Become a Host</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <CreateSpot setShowModal={setShowModal} />

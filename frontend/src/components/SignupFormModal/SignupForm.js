@@ -32,7 +32,12 @@ function SignupForm() {
         })
       ).catch(async (res) => {
         const data = await res.json();
-        if (data && data.errors) setErrors(data.errors);
+        if (data && typeof data.errors === 'object') {
+          setErrors(Object.values(data.errors));
+        }
+        else if (data && data.errors) {
+          setErrors(data.errors)
+        }
       });
     }
     return setErrors([
