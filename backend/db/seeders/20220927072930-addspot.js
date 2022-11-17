@@ -24,7 +24,7 @@ module.exports = {
           lng: 30.7654321,
           name: "Magical & Romantic Beachfront Home",
           description:
-            "Beautiful oceanfront condominium with an unobstructed view to Monterey Bay & the Pacific Ocean;  just 20 minutes south of Santa Cruz & 30 minutes north of Monterey/Carmel. ",
+            "Beautiful oceanfront condominium with an unobstructed view to Monterey Bay & the Pacific Ocean;  just 20 minutes south of Santa Cruz & 30 minutes north of Monterey/Carmel.",
           price: 275,
         },
         {
@@ -102,7 +102,7 @@ module.exports = {
           lng: 68.7654321,
           name: "6 Bedroom Horseshoe Lane",
           description:
-            "This 6 bed, 4.5 bath home located on the western side of the valley offers everything you and your guests need plus so much more. Starting outside, enjoy an expansive lot, beautiful landscaping, a full-sized outdoor dining area, and your very own basketball court, all while taking in that priceless, four-peak Teton Range view. Inside, find space and amenities galore.",
+            "This 6 bed, 4.5 bath home located on the western side of the valley offers everything you and your guests need plus so much more. Starting outside, enjoy an expansive lot, beautiful landscaping.",
           price: 1058,
         },
         {
@@ -128,7 +128,7 @@ module.exports = {
           lng: 70.7654321,
           name: "Röra Haus - A Modern, Mountain A-frame",
           description:
-            "Welcome to Röra Haus! Our modern A-frame is nestled in the Valley High community in Garden Valley.  Minutes from Crouch,  Terrace Lakes Golf Course, outdoor theatre, hiking & biking trails and the Payette River. It's a prefect place to unwind, relax and spend time outdoors.",
+            "Welcome to Röra Haus! Our modern A-frame is nestled in the Valley High community in Garden Valley.  Minutes from Crouch,  Terrace Lakes Golf Course.",
           price: 230,
         },
         {
@@ -141,7 +141,7 @@ module.exports = {
           lng: 71.7654321,
           name: "Serene Modern Cabin - Ski + Hot Tub + Sled Hill",
           description:
-            "The Knoll Nook, located in Lower Moonridge - Big Bear Lake's most desirable neighborhood - is tucked against a secluded hillside and rests on a quiet cul de sac road. With a 1/3 acre of peaceful forest-like space, this is a spot for travelers to reset, relax, and recharge.",
+            "The Knoll Nook, located in Lower Moonridge - Big Bear Lake's most desirable neighborhood - is tucked against a secluded hillside and rests on a quiet cul de sac road.",
           price: 375,
         },
         {
@@ -154,7 +154,7 @@ module.exports = {
           lng: 72.7654321,
           name: "Pisgah Highlands off grid cabin",
           description:
-            "Come escape to our tiny modern off grid cabin situated in the middle of our private 125 acre mountain top property which backs up to Pisgah National Forest. Wake up to soaring mountain views, hike all day on the Blue Ridge Parkway, grill out and make S'mores over the fire pit.",
+            "Come escape to our tiny modern off grid cabin situated in the middle of our private 125 acre mountain top property which backs up to Pisgah National Forest. Wake up to soaring mountain views!",
           price: 119,
         },
         {
