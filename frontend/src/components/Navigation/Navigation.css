@@ -16,3 +16,19 @@
 
 }
 
+ul.profile-dropdown {
+    position: absolute;
+    right: 5%;
+    background-color: white;
+    border: 1px solid;
+    height: 180px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    width: 100px;
+}
+
+.profilebutton_div {
+    position: relative;
+}

@@ -14,7 +14,7 @@ function CreateReviewsModal({spotId}) {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Add Your Reviews</button>
+      <button onClick={() => setShowModal(true)}>Add Your Review</button>
 
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

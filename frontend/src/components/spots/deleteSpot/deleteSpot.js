@@ -21,7 +21,7 @@ const DeleteSpot = ({spotId}) => {
 
     }
     return (
-        <button onClick={onSubmit}>
+        <button className="listing_delete_button" onClick={onSubmit}>
             {/* <NavLink id="delte_button" to={'/spots/current'}> */}
                 Delete Listing
             {/* </NavLink> */}
