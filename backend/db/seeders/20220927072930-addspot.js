@@ -24,7 +24,7 @@ module.exports = {
           lng: 30.7654321,
           name: "Magical & Romantic Beachfront Home",
           description:
-            "Beautiful oceanfront condominium with an unobstructed view to Monterey Bay & the Pacific Ocean;  just 20 minutes south of Santa Cruz & 30 minutes north of Monterey/Carmel. ",
+            "Beautiful oceanfront condominium with an unobstructed view to Monterey Bay & the Pacific Ocean.",
           price: 275,
         },
         {
@@ -37,7 +37,7 @@ module.exports = {
           lng: -87.7654321,
           name: "Oceanfront Beach House",
           description:
-            "Our beautiful beach home is the perfect place for a family vacation. The gated/private front patio is equipped with a bbq grill and a shaded conversation/dining set.",
+            "Our beautiful beach home is the perfect place for a family vacation. The gated/private front patio is equipped with a bbq grill.",
           price: 650,
         },
         {
@@ -50,7 +50,7 @@ module.exports = {
           lng: 99.7654321,
           name: "Relaxing West Cliff Escape with Hot Tub!",
           description:
-            "This spacious house is perfect for a relaxing family getaway! Enjoy the backyard, hot tub, and quiet neighborhood while still being close enough to walk to the beach and many other attractions!",
+            "This spacious house is perfect for a relaxing family getaway! Enjoy the backyard, hot tub, and quiet neighborhood!",
           price: 302,
         },
         {
@@ -63,7 +63,7 @@ module.exports = {
           lng: 65.7654321,
           name: "Stylish waterfront oasis",
           description:
-            "Absolutely gorgeous inside and out, this modern, wooded sanctuary is a luxury home on Lopez Island, set in a secluded forest on a dramatic waterfront bluff, offering plenty of privacy just walking distance from the ferry.",
+            "Absolutely gorgeous inside and out, this modern, wooded sanctuary is a luxury home on Lopez Island.",
           price: 351,
         },
         {
@@ -76,7 +76,7 @@ module.exports = {
           lng: 66.7654321,
           name: "Ocean Road",
           description:
-            "Private ocean-front home on bluff with unobstructed ocean views above Irish Beach. First-class amenities and furnishings to sleep six. Watch whales and sunsets from the hot tub on the deck. A spectacular getaway!",
+            "Private ocean-front home on bluff with unobstructed ocean views above Irish Beach. Watch whales and sunsets from the hot tub on the deck.",
           price: 355,
         },
         {
@@ -89,7 +89,7 @@ module.exports = {
           lng: 67.7654321,
           name: "Beachfront home with a hot tub",
           description:
-            "Ocean's Doorstep has spectacular views that will leave you breathless. The views from the home span from Neah-Kah-Nie mountain down the beautiful sandy beaches of Manzanita towards the jetty.",
+            "Ocean's Doorstep has spectacular views that will leave you breathless. The views from the home span from Neah-Kah-Nie mountain down the beautiful sandy.",
           price: 350,
         },
         {
@@ -102,7 +102,7 @@ module.exports = {
           lng: 68.7654321,
           name: "6 Bedroom Horseshoe Lane",
           description:
-            "This 6 bed, 4.5 bath home located on the western side of the valley offers everything you and your guests need plus so much more. Starting outside, enjoy an expansive lot, beautiful landscaping, a full-sized outdoor dining area, and your very own basketball court, all while taking in that priceless, four-peak Teton Range view. Inside, find space and amenities galore.",
+            "This 6 bed, 4.5 bath home located on the western side of the valley offers everything you and your guests need plus so much more.",
           price: 1058,
         },
         {
@@ -128,7 +128,7 @@ module.exports = {
           lng: 70.7654321,
           name: "Röra Haus - A Modern, Mountain A-frame",
           description:
-            "Welcome to Röra Haus! Our modern A-frame is nestled in the Valley High community in Garden Valley.  Minutes from Crouch,  Terrace Lakes Golf Course, outdoor theatre, hiking & biking trails and the Payette River. It's a prefect place to unwind, relax and spend time outdoors.",
+            "Welcome to Röra Haus! Our modern A-frame is nestled in the Valley High community in Garden Valley. Minutes from Crouch.",
           price: 230,
         },
         {
@@ -141,7 +141,7 @@ module.exports = {
           lng: 71.7654321,
           name: "Serene Modern Cabin - Ski + Hot Tub + Sled Hill",
           description:
-            "The Knoll Nook, located in Lower Moonridge - Big Bear Lake's most desirable neighborhood - is tucked against a secluded hillside and rests on a quiet cul de sac road. With a 1/3 acre of peaceful forest-like space, this is a spot for travelers to reset, relax, and recharge.",
+            "The Knoll Nook, located in Lower Moonridge - Big Bear Lake's most desirable neighborhood - is tucked against a secluded hillside and rests on a quiet cul de sac road.",
           price: 375,
         },
         {
@@ -154,7 +154,7 @@ module.exports = {
           lng: 72.7654321,
           name: "Pisgah Highlands off grid cabin",
           description:
-            "Come escape to our tiny modern off grid cabin situated in the middle of our private 125 acre mountain top property which backs up to Pisgah National Forest. Wake up to soaring mountain views, hike all day on the Blue Ridge Parkway, grill out and make S'mores over the fire pit.",
+            "Come escape to our tiny modern off grid cabin situated in the middle of our private 125 acre mountain top property which backs up to Pisgah National Forest.",
           price: 119,
         },
         {
@@ -167,7 +167,7 @@ module.exports = {
           lng: 73.7654321,
           name: "Villa Kuro - A Serene and Minimal Hideaway",
           description:
-            "Designed with tranquility and relaxation in mind, Villa Kuro is a minimal organic modern hideaway fusing natural simplicity with contemporary luxuries.  Nestled on an unfenced 3.6 acres in front of a boulder hill, the property goes all the way up to the peak of the mountain.",
+            "Designed with tranquility and relaxation in mind, Villa Kuro is a minimal organic modern hideaway fusing natural simplicity with contemporary luxuries.",
           price: 555,
         },
 
