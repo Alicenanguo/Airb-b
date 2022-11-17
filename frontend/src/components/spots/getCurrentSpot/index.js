@@ -8,6 +8,7 @@ import DeleteSpot from "../deleteSpot/deleteSpot.js";
 
 import { getAllSpots, getCurrentSpot } from "../../../store/spots.js";
 import UserReviews from '../../reviews/userReviews'
+import './getCurrentSpot.css'
 
 const GetCurrentSpot = () => {
   const dispatch = useDispatch();
@@ -49,54 +50,65 @@ const GetCurrentSpot = () => {
   }
 
   return (
-      isLoaded && (
-    <>
-        {/* {
+    <div className="manage_listing_container">
+      {isLoaded && (
+        <>
+          {/* {
         currentSpotArr.length === 0 && (
           <div>
             Sorry, you do not have any hosting
         </div>
       )} */}
-        < div className="currentUser_spot">
-      <h1>All your hosting</h1>
-      {currentSpotArr?.length > 0 &&
-        currentSpotArr.map((spot) => (
-          <>
-            <div className="currentSpot_info" key={spot.id}>
-              <NavLink to={`/spots/${spot.id}`}>
-                <img
-                  className="spot_img"
-                  src={spot.previewImage}
-                  alt={spot.name}
-                />
-              </NavLink>
-            </div>
-            <div className="spot_address">
-              <p>{spot.address}</p>
-              <p>
-                {spot.city},{spot.state},{spot.country}
-              </p>
-            </div>
-            <div className="spot_price">{`${spot.price} /night`}</div>
+          < div className="currentUser_spot">
+            <div className="all_your_hosting">All your hosting</div>
+            {currentSpotArr?.length > 0 &&
+              currentSpotArr.map((spot) => (
+                <>
+                  <div className="currentSpot_info" key={spot.id}>
 
 
-                                <div className="edit_delete_button">
-                                    <div id="edit_button" to={`/spots/${spotId}/edit`}>
-                                        <UpdateSpotModal spot={spot} spotId={spot.id} />
-                                    </div>
-<div>
-                <DeleteSpot spotId={spot.id} />
-                </div>
-                                </div>
+                        <div>
+                          <img
+                        className="listing_spot_img"
+                        src={spot.previewImage}
+                        alt={spot.name}
+                      />
+                        </div>
+
+                    <div className="listing_right">
+
+                  <div className="listing_spot_address">
+                    <NavLink to={`/spots/${spot.id}`}>
+                      <div className="listing_spot_name">{spot.name}</div>
+                    </NavLink>
+                    <p className="listing_spot_address_name">{spot.address}</p>
+                    <p className="listing_spot_city">
+                      {spot.city},{spot.state},{spot.country}
+                    </p>
+                  <div className="listing_spot_price">{`${spot.price} /night`}</div>
+                  </div>
 
 
+                  <div className="edit_delete_button">
+                    <div id="listing_edit_button" to={`/spots/${spotId}/edit`}>
+                      <UpdateSpotModal spot={spot} spotId={spot.id} />
+                    </div>
+                    <div className="listing_delete_button">
+                      <DeleteSpot spotId={spot.id} />
+                      </div>
 
-          </>
-        ))}
-    </div>
+                  </div>
+                    </div>
+                    </div>
 
-      </>
-      )
+
+                </>
+              ))}
+          </div>
+
+        </>
+      )}
+      </div>
   )
 };
 export default GetCurrentSpot;

@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useSelector } from 'react-redux';
 import { Modal } from '../../../context/Modal';
 import UpdateSpot from './updateSpot';
+import './updateSpot.css'
 
 function UpdateSpotModal({spot,spotId}) {
   const [showModal, setShowModal] = useState(false);
@@ -12,7 +13,7 @@ function UpdateSpotModal({spot,spotId}) {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Edit Listing</button>
+      <button className='listing_edit_button' onClick={() => setShowModal(true)}>Edit Listing</button>
 
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>

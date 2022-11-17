@@ -1,0 +1,79 @@
+.manage_listing_container {
+    display:flex;
+    flex-direction: column;
+    margin-left: 50px;
+    justify-content: flex-start;
+}
+
+.listing_spot_img {
+    width: 600px;
+    height: 500px;
+    padding: 5px;
+    border-radius: 20px;
+    object-fit: cover;
+}
+
+.all_your_hosting {
+    font-size: 35px;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left:10px;
+    margin:20px;
+    font-weight: bolder;
+}
+
+
+.currentSpot_info {
+    border-top: 1px solid rgb(230, 212, 212);
+    padding:15px;
+    display:flex;
+    flex-direction: row;
+
+}
+
+.listing_spot_name {
+    margin: 10px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 20px;
+    color:rgb(205, 21, 21);
+
+}
+
+.listing_right {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin-left: 100px;
+}
+
+.edit_delete_button {
+    display: flex;
+    flex-direction:row;
+    margin-left: 55px;
+   margin-top: 100px;
+
+}
+
+.listing_spot_address {
+    font-family:Arial, Helvetica, sans-serif;
+    padding: 20px 50px;
+    font-size:20px;
+
+
+}
+
+.listing_spot_address_name,.listing_spot_city,.listing_spot_price {
+margin:10px;
+}
+
+.listing_edit_button,.listing_delete_button button {
+
+    background-color: rgba(255, 0, 0, 0.739);
+    border:0 solid white;
+    border-radius: 10px;
+    height: 35px;
+    width:150px;
+    cursor:pointer;
+    margin:10px;
+    margin-right: 30px;
+    color:white
+}

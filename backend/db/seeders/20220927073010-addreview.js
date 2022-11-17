@@ -15,9 +15,9 @@ module.exports = {
       {
 
         spotId: 1,
-        userId: 1,
+        userId: 4,
         review: "Amazing views and everything we needed for a comfortable stay. We saw a pod of about 20 dolphins and there were very few people on the beach. Already trying to figure out when we can come back.",
-        stars: 5.0,
+        stars: 4.5,
 
       },
       {
@@ -39,7 +39,7 @@ module.exports = {
       {
 
         spotId: 1,
-        userId: 4,
+        userId: 5,
         review: "We loved our stay here! It was the most beautiful and peaceful location! Josephine is a great host. The place was very clean and comfortable.",
         stars: 4.5,
 
@@ -49,13 +49,13 @@ module.exports = {
         spotId: 2,
         userId: 1,
         review: "This house was beautiful, we enjoyed the beach views and felt like Rajesh supplied everything any guest might need for a short visit. The master bed was so comfortable.",
-        stars: 5.0,
+        stars: 4.7,
 
       },
       {
 
         spotId: 2,
-        userId: 2,
+        userId: 5,
         review: "Rajesh's home, just steps away from the ocean and sandy beach is stunning!! Beautiful views, thoughtful amenities and location was the perfect choice for a weekend getaway.",
         stars: 4.6,
 
@@ -87,7 +87,7 @@ module.exports = {
       {
 
         spotId: 3,
-        userId: 3,
+        userId: 2,
         review: "Loved this house…the design, the comfort, the location!!! It was a perfect size for 6 people and we all had room to hang out and relax!",
         stars: 4.8,
 
@@ -113,7 +113,7 @@ module.exports = {
         spotId: 4,
         userId: 2,
         review: "Beautiful house and the garden was stunning. Great quiet location. The hot tub was super clean too. We had a great stay.",
-        stars: 5.0,
+        stars: 4.8,
 
       },
       {
@@ -135,15 +135,15 @@ module.exports = {
       {
 
         spotId: 5,
-        userId: 5,
+        userId: 4,
         review: "Absolutely beautiful home! Very clean. Clear instructions, notebook with recommendations and labels on light switches.",
-        stars: 5.0,
+        stars: 4.9,
 
       },
       {
 
         spotId: 5,
-        userId: 4,
+        userId: 1,
         review: "Great view, clean hot tub, ample cookware! Lots of pros here! Thanks for the stay.",
         stars: 4.7,
 
@@ -167,7 +167,7 @@ module.exports = {
       {
 
         spotId: 6,
-        userId: 2,
+        userId: 5,
         review: "Excellent home with a great view and amenities. Close to everything in town and in a great spot to get to the beach quickly.",
         stars: 4.5,
 
@@ -191,7 +191,7 @@ module.exports = {
       {
 
         spotId: 8,
-        userId: 1,
+        userId: 4,
         review: "Amazing! Perfect, most relaxing getaway you could ask for. Super clean, beautiful, well appointed, easy. Kitchen was fun to cook in and has everything you need.",
         stars: 4.3,
 
@@ -231,7 +231,7 @@ module.exports = {
       {
 
         spotId: 11,
-        userId: 3,
+        userId: 2,
         review: "This place is absolutely amazing! I am a local to the area and grew up just 45 minutes from here and I was still in awe of how beautiful of an experience this was.",
         stars: 4.3,
 
@@ -247,7 +247,7 @@ module.exports = {
       {
 
         spotId: 12,
-        userId: 5,
+        userId: 3,
         review: "Gorgeous place, ultimate luxury in every aspect, heartfelt hospitality, so grateful for this stay!",
         stars: 4.2,
 

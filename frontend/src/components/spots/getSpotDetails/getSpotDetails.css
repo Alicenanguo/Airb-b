@@ -1,23 +1,241 @@
-.spot_info_container {
-    display:flex;
-    flex-direction: row;
-    display: flex;
-    flex-direction: row;
-    flex-wrap: wrap;
-    justify-content: flex-start;
-    margin-bottom: 10px;
-    font-size: 14px;
+.getOneSpot_container {
+
+    /* display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: auto; */
 
 }
 
-.single_avgRating_star,.dot,.single_numReviews {
+.single_spots {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    margin: 20px 150px;
+
+}
+
+.spot_info_container {
+display:flex;
+flex-direction: row;
+font-size: 23px;
+}
+
+.single_avgRating_star,.dot,.single_numReviews,.single_address,.dot_2 {
     display: flex;
     place-items: center;
     justify-content: center;
+
+    padding:8px;
+    padding-right:3px;
+    padding-left:0;
+    font-size: 17px;
+
+    font-family:'Times New Roman', Times, serif;
 }
 
 .single_avgRating_star {
     margin:10px,20px
 }
 
+.single_name {
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 35px;
+    margin:6px;
+    margin-left: 0;
 
+
+}
+
+.dot {
+    font-weight:bolder;
+    padding-left:2px;
+}
+
+.single_address {
+    margin-left:5px;
+
+}
+
+.dot {
+    padding-left: 4px;
+    padding-right: 6px;
+    font-weight: bold;
+}
+
+.spot_img {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    width: 100%;
+
+    margin-bottom: 25px;
+    column-gap: 8px;
+    height: 400px;
+
+}
+
+
+.spot_previewImg {
+    width: 100%;
+     height: 404px;
+     object-fit: cover;
+
+}
+
+.spot_previewImg img{
+
+  /* object-fit: cover; */
+  width: 100%;
+  border-top-left-radius: 10px;
+  border-bottom-left-radius: 10px;
+  height:100%;
+
+}
+
+.spot_other4_img {
+    /* width: 100%;
+    height: 100%;
+    object-fit: cover; */
+    /* display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-rows: 1fr 1fr;
+  height: 600px;
+  width:100%; */
+  display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-rows:1fr 1fr;
+    column-gap: 4px;
+    row-gap: 4px;
+    width: 100%;
+    height: 100%;
+
+}
+
+
+.spot_other4_img img{
+    height: 200px;;
+    width:100%;
+
+    }
+
+.spot_other4_img img:nth-child(2) {
+    border-top-right-radius:10px;
+}
+
+.spot_other4_img img:nth-child(4) {
+    border-bottom-right-radius:10px
+}
+
+
+.single_host_description {
+    display: flex;
+    flex-direction:column;
+    width:100%;
+    padding-bottom: 15px;
+
+
+}
+
+.show_card {
+display:flex;
+flex-direction: row;
+}
+
+
+.single_hostInfo {
+    font-size: 23px;
+    font-weight: bold;
+    border-bottom: 2px solid rgb(213, 204, 204);
+  padding:10px;
+  margin-left: 0;
+
+}
+
+.list_content_container {
+    display: flex;
+    flex-direction: row;
+}
+
+.show_card {
+    border:2px solid rbg(221,221,221);
+    width:300px;
+    height: 150px;
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    border-radius: 10px;
+    background-color: rgb(246, 242, 242);
+    font-family: Arial, Helvetica, sans-serif;
+   margin:10px 40px;
+   margin-right: 30px;
+display:flex;
+flex-direction: column;
+justify-content: center;
+
+
+}
+
+
+
+.single_spot_price {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+
+}
+
+
+.card_star {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding-top: 20px;
+    margin-right: 2px;
+}
+
+#single_star{
+    color:red
+
+}
+
+.single_numRev {
+    margin-left:20px
+}
+
+.single_spot_price {
+    font-size: 20px;
+}
+
+.single_description {
+font-family: Arial, Helvetica, sans-serif;
+font-size: 17px;
+font-weight: lighter;
+margin-top: 15px;
+}
+
+
+.review_spotId {
+    border-top: 2px solid rbg(221,221,221);
+
+}
+
+.card_star_bottom {
+    border-top: 2px solid rgb(192, 181, 181);
+    display:flex;
+    flex-direction: row;
+    padding-top: 8px;
+    font-size: 20px;
+}
+.single_numRev_bottom {
+    margin-left: 50px;
+}
+
+.create_review_spotList button {
+    background-color: rgba(255, 0, 0, 0.739);
+    border:0 solid white;
+    border-radius: 10px;
+    height: 35px;
+    width:150px;
+    cursor:pointer;
+    margin:10px;
+    color:white
+}
