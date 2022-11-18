@@ -41,7 +41,7 @@ const GetSpots = () => {
                 <div className='all_spots_items'>
 
 
-            {spotsArr.map(spot => (
+            {spot&&spotsArr.map(spot => (
                 <div className='spot_item' key={spot.id}>
                     <NavLink to={`/spots/${spot.id}`}>
                         <img className='spot_img_all' src={spot.previewImage} alt={spot.name} />
