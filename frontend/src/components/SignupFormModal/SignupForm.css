@@ -2,7 +2,7 @@
     border-radius: 12px;
     border:2px solid;
     width:400px;
-    height:600px;
+    height:700px;
 
     display:flex;
     flex-direction:column;
@@ -26,7 +26,7 @@
     display:flex;
     justify-content: center;
     margin-left:25px;
-    width:340px;
+    width:400px;
     height: 40px;
     border-radius: 10px;
     border: 1px solid #222222;
@@ -48,11 +48,14 @@
 }
 
 .signup_table {
-    display:flex;
-    justify-content: center;
-    width:350px;
-    height: 40px;
-    border-radius: 12px;
+    margin-top: 0px;
+    display: flex;
+    width: 350px;
+    height: 14px;
+    padding: 10px;
+    border: 1px solid rgb(103, 97, 97);
+    border-radius: 10px;
+    font-size: 14px;
 }
 
 .submit_signup {
@@ -73,4 +76,25 @@
 
 #sign_up {
     margin-right:10px;
+
+}
+
+.signup_title {
+    font-size: 16px;
+    color: rgb(102, 87, 87);
+    margin-bottom: 0px;
+
+
+}
+
+.error {
+
+    font-size:16px;
+    color:rgb(33, 26, 26)
+
+}
+
+
+.error_container {
+margin:10px;
 }

@@ -1,1 +1,127 @@
+.updateSpot_form {
+    border-radius: 12px;
+    border:2px solid;
+    width:550px;
+    height:900px;
+    display:flex;
+    flex-direction:column;
 
+
+    font-weight:300;
+    padding:0 24px;
+    font-size: 25px;
+}
+
+.update_your_hosting {
+    display:flex;
+    justify-content: center;
+    border-bottom:0.6px solid grey;
+    font-family: 'Arial, Helvetica, sans-serif';
+    padding:10px;
+
+}
+
+.update_hosting_list_container {
+
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+
+}
+
+.update_hosting_errors {
+    margin: 5px;
+
+}
+
+.update_hosting_list input,.update_hosting_list textarea {
+    margin-top: 5px;
+    display: block;
+    width: 500px;
+    height: 14px;
+    padding: 10px 20px;
+    border: 1px solid rgb(229, 226, 226);
+    border-radius: 10px;
+    font-size: 14px;
+
+
+
+}
+.update_hosting_list textarea {
+    height: 80px;
+}
+
+.update_hosting_list {
+    display:flex;
+    flex-direction: column;
+}
+
+.update_hosting_title {
+    font-size: 16px;
+    color: rgb(102, 87, 87);
+    margin-bottom: 0px;
+}
+
+.update_hosting_update_button {
+    display:flex;
+    justify-content: center;
+    width:250px;
+    height: 40px;
+    border-radius: 12px;
+    margin-top:40px;
+    background-color: #ff385c;
+    color:white;
+    align-items:center;
+    border:none;
+    font-size:15px;
+}
+
+.update_hosting_cancel_button {
+    display:flex;
+    justify-content: center;
+    width:250px;
+    height: 40px;
+    border-radius: 12px;
+    margin-top:40px;
+    background-color: #ff385c;
+    color:white;
+    align-items:center;
+    border:none;
+    font-size:15px;
+    margin-left: 25px;
+}
+
+#update_hosting_submit_button {
+    display:flex;
+    flex-direction:row;
+    align-items:center;
+}
+
+.create_spot_submit_button button {
+    display:flex;
+    justify-content: center;
+    width:250px;
+    height: 40px;
+    border-radius: 12px;
+    margin-top:40px;
+    background-color: #ff385c;
+    color:white;
+    align-items:center;
+    border:none;
+    font-size:15px;
+    cursor:pointer;
+
+}
+
+.create_spot_submit_button {
+    margin-left: 70px;
+    margin-top: 0px;
+    cursor:pointer;
+
+
+}
+
+#create_container {
+    height:980px;
+}

@@ -50,12 +50,17 @@ const UserReviews = () => {
                                 <img className='user_review_Img_review' src={el.ReviewImages[0]?.url} />
                             </div>
                             <div className='user_review_right'>
-                            <p className='user_list_review_name'>{el.Spot?.name}</p>
-                            <div className='user_review_star'>
+                                <p className='user_list_review_name'>{el.Spot?.name}</p>
+
+                         <div className='list_star_group'>
+                                <div className='user_review_star'>
                                 <i className="fa-solid fa-star" />
                                 {el?.stars}
                             </div>
-                            <p className='user_review_content'>{el?.review}</p>
+                                <div className='user_review_content'>
+                                    <p>{el?.review}</p>
+                                    </div>
+                                    </div>
                             <div className='review_create_time'>
                                 {el?.createdAt.slice(0, 10)}
                                 </div>

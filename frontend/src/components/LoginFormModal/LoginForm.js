@@ -31,30 +31,30 @@ function LoginForm() {
         <form className='model_form' onSubmit={handleSubmit}>
           <div className="title_login">Log in</div>
           <div className="welcome">Welcome to Airbnb!</div>
-          <ul className="error_info">
+          <ul className="error_container">
             {errors.map((error, idx) => (
-              <li key={idx}>{error}</li>
+              <li className="error" key={idx}>{error}</li>
             ))}
           </ul>
-          <label className="label_info">
-            {/* Username or Email */}
+          <label className="update_hosting_title">
+            Username or Email
           <input
             className="placeholder_info"
               type="text"
               value={credential}
             onChange={(e) => setCredential(e.target.value)}
-            placeholder='Username or Email'
+            // placeholder='Username or Email'
               required
             />
           </label>
-          <label>
-            {/* Password */}
+          <label className="update_hosting_title">
+            Password
           <input
             className="placeholder_info"
               type="password"
               value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder='Password'
+            // placeholder='Password'
               required
             />
           </label>

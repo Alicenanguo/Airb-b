@@ -1,8 +1,26 @@
-.icon {
-    object-fit: contain;
-    height: 100px;
-    margin-left: 20px;
-    margin-top:0;
+.fa-house {
+    font-size: 40px;
+    color:#ff385c
+}
+
+.logo_name_one {
+    font-size: 30px;
+    color:#ff385c;
+    font-family: Arial, Helvetica, sans-serif;
+    margin-left: 5px;
+    margin-top: 5px;
+
+
+}
+
+.navLink {
+    text-decoration: none;
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    cursor:pointer;
+
+
 }
 
 .header_right {
@@ -15,8 +33,7 @@
     width:100%;
 
 }
-
-ul.profile-dropdown {
+.profile-dropdown {
     position: absolute;
     right: 5%;
     background-color: white;
@@ -26,9 +43,105 @@ ul.profile-dropdown {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    width: 100px;
+    width: 180px;
+    border: 1px solid rgb(203, 198, 198);
+    border-radius: 12px;
+    margin-top: 45px;
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    text-decoration: nong;
+    margin-right: 0;
 }
 
 .profilebutton_div {
     position: relative;
+    display: flex;
+    justify-content: center;
+
+}
+
+
+
+.header_container {
+    border-bottom: 1px solid rgb(210, 210, 210);
+    color: #222222;
+    position: sticky;
+    top: 0;
+    background-color: white;
+
+}
+
+.header_allthing {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    height: 80px;
+    padding-left: 80px;
+    padding-right: 80px;
+    margin: 80 200 0 200;
+
+}
+
+.upper_right {
+display:flex;
+
+}
+
+
+.fa-bars,
+.fa-circle-user {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    font-size: 17px;
+    margin-right: 13px;
+    border: none;
+}
+
+.upperRight_button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 80px;
+    color: grey;
+    border-radius: 20px;
+    border: 1px solid rgb(203, 198, 198);
+    margin-bottom: 10px;
+    background-color: white;
+    padding: 5px 5px 5px 16px;
+    margin: 5px;
+    cursor: pointer;
+}
+
+.header_login_signup {
+display:flex;
+justify-content: center;
+}
+
+
+#manage_listings {
+    text-decoration: none;
+}
+
+.info_navigation {
+    font-size:15px;
+    padding:5px;
+    margin-left: 0;
+
+}
+
+#user_email {
+    border-bottom:1px solid rgb(210, 210, 210);
+    margin:10px
+}
+
+.logout_button_drop {
+    font-size: 14px;
+    color:black;
+    cursor: pointer;
+    margin-top: 6px;
+    border-radius: 12px;
+    padding:5px;
+    border:0.5px solid grey
 }

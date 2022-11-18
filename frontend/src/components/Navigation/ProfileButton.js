@@ -80,21 +80,23 @@ function ProfileButton({isLoaded,setShowLogInModal, setShowSignUpModal}) {
 {/* <Header /> */}
         </button>
         {/* {showMenu && dropDown} */}
-      {showMenu && (
-        <ul className="profile-dropdown">
+        {showMenu && (
+          <div className="main_page_list_container">
+        <div className="profile-dropdown">
 
-          <li className='username_navigation'>{`Hello,${user.username}`}</li>
-          <li className="email_navigation">{user.email}</li>
+          <div className='info_navigation'>{`Hello,${user.username}`}</div>
+          <div id='user_email' className="info_navigation">{user.email}</div>
 
 
-            <div className="manage_navigation">
+            <div className="info_navigation">
               <NavLink id="manage_listings" to='/spots/current'>Manage your listings</NavLink>
           </div>
-          <div className="manage_reviews">
-            <NavLink id='manage_reviews' to='/reviews/current'>Manage your reviews</NavLink>
+          <div className="info_navigation">
+            <NavLink id='manage_listings' to='/reviews/current'>Manage your reviews</NavLink>
             </div>
-            <button onClick={logout}>Log Out</button>
-        </ul>
+            <button className="logout_button_drop" onClick={logout}>Log Out</button>
+            </div>
+            </div>
 
         )}
         </div>

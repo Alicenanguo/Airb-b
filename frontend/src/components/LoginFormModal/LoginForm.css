@@ -84,5 +84,80 @@
 #log_in {
 
     margin-right:10px;
+    cursor:pointer;
+
+}
+
+.login_signup_button {
+    display:flex;
+    justify-content: center;
+    width:100px;
+    height: 40px;
+    border-radius: 12px;
+    margin-top:40px;
+    background-color: #ff385c;
+    color:white;
+    align-items:center;
+    border:none;
+    font-size:15px;
+    margin: 15px 20px;
+
+}
+
+.mainpage_signup_button button {
+    display:flex;
+    justify-content: center;
+    width:100px;
+    height: 40px;
+    border-radius: 12px;
+    margin-top:40px;
+    background-color: #ff385c;
+    color:white;
+    align-items:center;
+    border:none;
+    font-size:15px;
+    margin: 15px 20px;
+    cursor:pointer;
+
+}
+
+.host_button {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.become_a_host {
+    display:flex;
+    justify-content: center;
+    width:150px;
+    height: 40px;
+    border-radius: 20px;
+    margin-top:40px;
+    background-color: white;
+    color:grey;
+    align-items:center;
+    border:none;
+    font-size:15px;
+    font-weight: bold;
+    margin: 20px 20px;
+    border: 0px solid rgb(0, 0, 0);
+}
+
+.become_a_host:hover {
+    background-color: rgba(154, 146, 146, 0.3);
+    cursor:pointer;
+}
+
+.main_page_list_container {
+    position: absolute;
+    width: 200px;
+    max-width: 400px;
+    right: -20px;
+    padding: 0;
+    background-color: white;
+    border-radius: 21px;
+    box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+    font-weight: 300;
 
 }

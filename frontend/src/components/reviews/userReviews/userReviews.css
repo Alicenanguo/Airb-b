@@ -43,5 +43,30 @@
     color:rgb(40, 5, 5);
     margin-top: 0;
     margin-left:0;
+    margin-bottom: 100px;
 
+}
+
+.list_star_group {
+font-size: 18px;
+}
+
+.user_review_star {
+    margin-bottom: 10px;
+}
+
+.user_review_content,.review_create_time {
+    margin:20px
+}
+
+.userReview_delete_button button {
+    background-color: rgba(255, 0, 0, 0.739);
+    border:0 solid white;
+    border-radius: 10px;
+    height: 35px;
+    width:150px;
+    cursor:pointer;
+    margin:10px;
+    margin-right: 30px;
+    color:white
 }

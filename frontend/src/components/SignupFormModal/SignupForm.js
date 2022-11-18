@@ -31,7 +31,9 @@ function SignupForm() {
           lastName,
         })
       ).catch(async (res) => {
+
         const data = await res.json();
+        console.log('erro_info_____',data.errors)
         if (data && typeof data.errors === 'object') {
           setErrors(Object.values(data.errors));
         }
@@ -52,69 +54,69 @@ function SignupForm() {
       <div className="title_signup">Sign Up</div>
       <div className="welcome">Welcome to Airbnb!</div>
 
-      <ul>
+      <ul className="error_container">
         {errors.map((error, idx) => (
-          <li key={idx}>{error}</li>
+          <li className='error' key={idx}>{error}</li>
         ))}
       </ul>
       <div className="table">
-      <label >
-
+      <label className="signup_title">
+      FirstName
         <input className="signup_table"
           type="text"
           value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
-          placeholder='FirstName'
+          // placeholder='FirstName'
           required
         />
       </label>
-      <label >
-
+      <label className="signup_title">
+      LastName
         <input className="signup_table"
           type="text"
           value={lastName}
           onChange={(e) => setLastName(e.target.value)}
-          placeholder='LastName'
+          // placeholder='LastName'
           required
         />
       </label>
-      <label >
-
+      <label className="signup_title">
+      Email
         <input className="signup_table"
           type="text"
           value={email}
           onChange={(e) => setEmail(e.target.value)}
-          placeholder='Email'
+          // placeholder='Email'
           required
         />
       </label>
-      <label >
-
+      <label className="signup_title">
+      Username
         <input className="signup_table"
           type="text"
           value={username}
           onChange={(e) => setUsername(e.target.value)}
-          placeholder='Username'
+          // placeholder='Username'
           required
         />
       </label>
-      <label >
-
+      <label className="signup_title">
+      Password
         <input className="signup_table"
           type="password"
           value={password}
           onChange={(e) => setPassword(e.target.value)}
-          placeholder='Password'
+          // placeholder='Password'
           required
         />
       </label>
-      <label >
-
+      <label className="signup_title">
+      Confirm Password
         <input className="signup_table"
           type="password"
           value={confirmPassword}
           onChange={(e) => setConfirmPassword(e.target.value)}
-          placeholder='Confirm Password'
+          // placeholder='Confirm Password'
           required
         />
         </label>

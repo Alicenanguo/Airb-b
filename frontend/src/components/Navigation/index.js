@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { NavLink } from "react-router-dom";
+import { NavLink, Link } from "react-router-dom";
 import { useSelector } from "react-redux";
 import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
@@ -44,22 +44,24 @@ function Navigation({ isLoaded }) {
 
   return (
     <>
-      <nav className="header">
-        <NavLink exact to="/">
-          <img
-            className="icon"
-            src="http://i.pinimg.com/originals/3c/bf/be/3cbfbe148597341fa56f2f87ade90956.png"
-            alt="loading"
-          />
-        </NavLink>
-        <div className="upper_right_login_signup_host">
+      <div className="header_container">
+        <nav className="header_allthing">
+          <div className="icon_left_group">
+            <NavLink className="navLink" exact to="/">
+              <i className="fa-solid fa-house" />
 
-        <div className='host_button'>
-       <CreateSpotModal />
-        </div>
-        {isLoaded && sessionLinks}
-        </div>
-        {/* {showLogInModal && (
+              <div className="logo_name_one">Airb-b</div>
+            </NavLink>
+          </div>
+          <div className="upper_right_login_signup_host">
+            <div className="host_button">
+              <CreateSpotModal />
+            <div className="header_login_signup">
+              {isLoaded && sessionLinks}
+            </div>
+          </div>
+            </div>
+          {/* {showLogInModal && (
       <div className='upper_right' onClose={() => setShowLogInModal(false)}>
         <LoginFormModal setShowLogInModal={setShowLogInModal} />
       </div>
@@ -70,18 +72,9 @@ function Navigation({ isLoaded }) {
       </div>
     )}
       */}
-      </nav>
+        </nav>
+      </div>
     </>
-
-    //         <NavLink exact to="/">
-    //         <img
-    //             className="icon"
-    //             src="http://i.pinimg.com/originals/3c/bf/be/3cbfbe148597341fa56f2f87ade90956.png"
-    //             alt="loading"
-    //           />
-    //         </NavLink>
-    //         {isLoaded && sessionLinks}
-    // </>
   );
 }
 

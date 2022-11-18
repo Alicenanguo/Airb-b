@@ -23,8 +23,9 @@ const CreateReviews = ({ spotId, setShowModal }) => {
     if (!review) errors.push("Review text is required");
     // if (stars < 0 || stars > 5) errors.push('Stars must be an number from 1 to 5')
     setValidationErrors(errors);
-  }, [review, stars]);
+    // console.log('errors_createReviews', errors)
 
+  }, [review, stars]);
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -56,7 +57,7 @@ const CreateReviews = ({ spotId, setShowModal }) => {
 
         {hasSubmitted && validationErrors.length > 0 && (
           <div className="err-div">
-            <ul className="error_info">
+            <ul className="error_container">
               {validationErrors.map((error, idx) => (
                 <li className="error" key={idx}>
                   {error}
@@ -83,7 +84,7 @@ const CreateReviews = ({ spotId, setShowModal }) => {
         </label>
 
         <div className="create_review_content">
-         
+
           <label>
             <div>Review</div>
 

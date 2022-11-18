@@ -1,12 +1,12 @@
 import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Route, useParams, useHistory } from "react-router-dom";
-import { getSpotsDetail, updateSpot,getAllSpots } from "../../../store/spots";
+import { getSpotsDetail, updateSpot, getAllSpots } from "../../../store/spots";
+import "./updateSpot.css";
 
-const UpdateSpot = ({spot,spotId,setShowModal }) => {
+const UpdateSpot = ({ spot, spotId, setShowModal }) => {
   const dispatch = useDispatch();
   const history = useHistory();
-
 
   const user = useSelector((state) => state.session.user);
   console.log("user_update", user);
@@ -61,153 +61,162 @@ const UpdateSpot = ({spot,spotId,setShowModal }) => {
       description,
       price,
     };
-    console.log('spotInfo',spotInfo)
+    console.log("spotInfo", spotInfo);
     // console.log('validation',validationErrors,validationErrors.length)
     if (validationErrors.length === 0) {
-      console.log('validation',validationErrors)
+      console.log("validation", validationErrors);
       const result = await dispatch(updateSpot(spotInfo));
-      console.log('update_result', result)
-      console.log('--------------')
+      console.log("update_result", result);
+      console.log("--------------");
       //await dispatch(getAllSpots())
-      if (result)
-      setShowModal(false)
-        history.push(`/spots/${result.id}`);
+      if (result) setShowModal(false);
+      history.push(`/spots/${result.id}`);
     }
   };
 
-
   const cancelSubmit = async (e) => {
     e.preventDefault();
-    setShowModal(false)
-    history.push(`/spots/${spotId}`);
-  }
+    setShowModal(false);
+    history.push(`/spots/current`);
+  };
 
-    return (
-        <form
-        className="updateSpot_form"
-        onSubmit={onSubmit}
-    >
-        <h2>Update your hosting</h2>
-        <ul className="errors">
-    {validationErrors.map(erros => (
-      <li key={erros}>{erros}</li>
-    ))}
-        </ul>
-        <label>
-            Name
-            <input
+  return (
+    <form className="updateSpot_form" onSubmit={onSubmit}>
+      <div className="update_your_hosting">
+        <h2>Update Hosting</h2>
+      </div>
+      <ul className="error_container">
+        {validationErrors.map((erros) => (
+          <li className="error" key={erros}>
+            {erros}
+          </li>
+        ))}
+      </ul>
+      <div className="update_hosting_list_container">
+        <div className="update_hosting_list">
+          <label>
+            <div className="update_hosting_title">Name</div>
+            <div className="update_hosting_input">
+              <input
                 id="name"
-                type='text'
-                name='name'
-                onChange={e => setName(e.target.value)}
+                type="text"
+                name="name"
+                onChange={(e) => setName(e.target.value)}
                 value={name}
               />
-        </label>
-        <label>
-            Address
+            </div>
+          </label>
+        </div>
+        <div className="update_hosting_list">
+          <label>
+            <div className="update_hosting_title">Address</div>
             <input
-                id="address"
-                type='text'
-                name='address'
-                onChange={e => setAddress(e.target.value)}
-                value={address}
-              />
-        </label>
-        <label>
-        City
-            <input
-                id="city"
-                type='text'
-                name='city'
-                onChange={e => setCity(e.target.value)}
-                value={city}
-              />
-        </label>
-        <label>
-        State
-            <input
-                id="state"
-                type='text'
-                name='state'
-                onChange={e => setState(e.target.value)}
-                value={state}
-              />
-        </label>
-        <label>
-        Country
-            <input
-                id="country"
-                type='text'
-                name='country'
-                onChange={e => setCountry(e.target.value)}
-                value={country}
-              />
-        </label>
-        <label>
-        Lat
-            <input
-                id="lat"
-                type='number'
-                name='lat'
-                onChange={e => setLat(e.target.value)}
-                value={lat}
-              />
-        </label>
-        <label>
-        Lng
-            <input
-                id="lng"
-                type='number'
-                name='lng'
-                onChange={e => setLng(e.target.value)}
-                value={lng}
-              />
-        </label>
-        <label>
-        Description
-        <textarea
-                id="description"
-                type='text'
-                name='escription'
-                onChange={e => setDescription(e.target.value)}
-                value={description}
+              id="address"
+              type="text"
+              name="address"
+              onChange={(e) => setAddress(e.target.value)}
+              value={address}
             />
-        </label>
-        <label>
-        Price
+          </label>
+        </div>
+        <div className="update_hosting_list">
+          <label>
+            <div className="update_hosting_title">City</div>
             <input
-                id="price"
-                type='number'
-                name='price'
-                onChange={e => setPrice(e.target.value)}
-                value={price}
-              />
-        </label>
-
-        <div
-            type="submit"
-            id="submit_button"
-            >
-                <button type='submit' className="update_button">
-                {/* <id='cancel_button' to={`/spots/${spotId}`}> */}
-                       Update
-
-                </button>
-           <button className="cancel_button" onClick={cancelSubmit}>
-                    {/* <NavLink id='cancel_button' to={`/spots/${spotId}`}> */}
-
-            Cancel
-                    {/* </NavLink> */}
-                </button>
-
-</div>
-
+              id="city"
+              type="text"
+              name="city"
+              onChange={(e) => setCity(e.target.value)}
+              value={city}
+            />
+          </label>
+        </div>
+        <div className="update_hosting_list">
+          <label>
+            <div className="update_hosting_title">State</div>
+            <input
+              id="state"
+              type="text"
+              name="state"
+              onChange={(e) => setState(e.target.value)}
+              value={state}
+            />
+          </label>
+        </div>
+        <div className="update_hosting_list">
+          <label>
+            <div className="update_hosting_title">Country</div>
+            <input
+              id="country"
+              type="text"
+              name="country"
+              onChange={(e) => setCountry(e.target.value)}
+              value={country}
+            />
+          </label>
+        </div>
+        <div className="update_hosting_list">
+          <label>
+            <div className="update_hosting_title">Lat</div>
+            <input
+              id="lat"
+              type="number"
+              name="lat"
+              onChange={(e) => setLat(e.target.value)}
+              value={lat}
+            />
+          </label>
+        </div>
+        <div className="update_hosting_list">
+          <label>
+            <div className="update_hosting_title">Lng</div>
+            <input
+              id="lng"
+              type="number"
+              name="lng"
+              onChange={(e) => setLng(e.target.value)}
+              value={lng}
+            />
+          </label>
+        </div>
+        <div className="update_hosting_list">
+          <label>
+            <div className="update_hosting_title">Description</div>
+            <textarea
+              id="description"
+              type="text"
+              name="escription"
+              onChange={(e) => setDescription(e.target.value)}
+              value={description}
+            />
+          </label>
+        </div>
+        <div className="update_hosting_list">
+          <label>
+            <div className="update_hosting_title">Price</div>
+            <input
+              id="price"
+              type="number"
+              name="price"
+              onChange={(e) => setPrice(e.target.value)}
+              value={price}
+            />
+          </label>
+        </div>
+      </div>
+      <div type="submit" id="update_hosting_submit_button">
+        <button type="submit" className="update_hosting_update_button">
+          {/* <id='cancel_button' to={`/spots/${spotId}`}> */}
+          Update
+        </button>
+        <button className="update_hosting_cancel_button" onClick={cancelSubmit}>
+          {/* <NavLink id='cancel_button' to={`/spots/${spotId}`}> */}
+          Cancel
+          {/* </NavLink> */}
+        </button>
+      </div>
     </form>
-
-)
-}
-
-
-
+  );
+};
 
 export default UpdateSpot;
