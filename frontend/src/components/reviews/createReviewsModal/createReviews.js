@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Route, useParams, useHistory } from "react-router-dom";
 import { createReviews, getAllSpotReviews } from "../../../store/reviews";
 import "./createReviews.css";
+import { getSpotsDetail } from '../../../store/spots'
 
 const CreateReviews = ({ spotId, setShowModal }) => {
   const dispatch = useDispatch();
@@ -42,6 +43,7 @@ const CreateReviews = ({ spotId, setShowModal }) => {
 
     const result = await dispatch(createReviews(reviewInfo, spotId))
       // console.log("createReviews_result", result);
+      .then(() => dispatch(getSpotsDetail(spotId)))
       .then(() => dispatch(getAllSpotReviews(spotId)))
       .catch(async (res) => {
         const data = await res.json();
@@ -51,7 +53,7 @@ const CreateReviews = ({ spotId, setShowModal }) => {
         if (res.status === 403) {
           setValidationErrors(["User already has a review for this spot"])
         }
-        
+
       })
 
       if (result) {

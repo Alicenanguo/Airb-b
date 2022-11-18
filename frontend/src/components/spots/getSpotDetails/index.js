@@ -102,9 +102,10 @@ const GetSingleSpot = () => {
                                   </div>
 
                   <div className="create_review_spotList">
+                    {currentUser.id && single.Owner.id!== currentUser.id && (
                     <CreateReviewsModal spotId={spotId} />
-                                  </div>
-                                  
+                    )}
+                    </div>
                   <GetSpotReviews spotId={spotId} />
                 </div>
               </div>
