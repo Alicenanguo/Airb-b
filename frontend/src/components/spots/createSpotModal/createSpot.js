@@ -206,7 +206,7 @@ const CreateSpot = ({ setShowModal }) => {
               <textarea
                 id="description"
                 type="text"
-                name="escription"
+                name="description"
                 onChange={(e) => setDescription(e.target.value)}
                               value={description}
                               required
