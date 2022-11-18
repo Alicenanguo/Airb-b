@@ -9,10 +9,10 @@ const UpdateSpot = ({ spot, spotId, setShowModal }) => {
   const history = useHistory();
 
   const user = useSelector((state) => state.session.user);
-  console.log("user_update", user);
+  // console.log("user_update", user);
 
-  // const spot = useSelector((state) => state.spots.singleSpot);
-  console.log("spot_update", spot);
+  //  const spot = useSelector((state) => state.spots.singleSpot);
+  // console.log("spot_update", spot);
 
   const [address, setAddress] = useState(spot.address);
   const [city, setCity] = useState(spot.city);
@@ -34,15 +34,17 @@ const UpdateSpot = ({ spot, spotId, setShowModal }) => {
     if (!state) errors.push("please input a vaild state");
     if (!country) errors.push("please input a vaild country");
     if (!name) errors.push("Please input a valid name");
+    if (lat < -90 || lat > 90) errors.push("LAT ERROR");
+    if (lng < -180 || lng > 180) errors.push("LNG ERROR");
     if (!description) errors.push("Please input a valid description");
     if (!price) errors.push("Please input a valid price");
 
     setValidationErrors(errors);
-  }, [address, city, state, country, name, description, price]);
+  }, [address, city, state, country, name, description, price, lat, lng]);
 
-  useEffect(() => {
-    dispatch(getSpotsDetail(spotId));
-  }, [dispatch]);
+  // useEffect(() => {
+  //   dispatch(getSpotsDetail(spotId));
+  // }, [dispatch]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -61,17 +63,20 @@ const UpdateSpot = ({ spot, spotId, setShowModal }) => {
       description,
       price,
     };
-    console.log("spotInfo", spotInfo);
+    // console.log("spotInfo", spotInfo);
     // console.log('validation',validationErrors,validationErrors.length)
-    if (validationErrors.length === 0) {
-      console.log("validation", validationErrors);
-      const result = await dispatch(updateSpot(spotInfo));
-      console.log("update_result", result);
-      console.log("--------------");
-      //await dispatch(getAllSpots())
-      if (result) setShowModal(false);
-      history.push(`/spots/${result.id}`);
-    }
+
+    const result = await dispatch(updateSpot(spotInfo));
+    //   .catch(async (res) => {
+    //     const data = await res.json();
+    //     console.log("data---------errors",data.errors)
+    //     if (data && data.errors) setValidationErrors(data.errors);
+    // })
+    console.log("update_result", result);
+    console.log("--------------");
+    //await dispatch(getAllSpots())
+    if (result) setShowModal(false);
+    history.push(`/spots/${result.id}`);
   };
 
   const cancelSubmit = async (e) => {
@@ -79,19 +84,22 @@ const UpdateSpot = ({ spot, spotId, setShowModal }) => {
     setShowModal(false);
     history.push(`/spots/current`);
   };
+  console.log("update_validationerror", validationErrors);
 
   return (
     <form className="updateSpot_form" onSubmit={onSubmit}>
       <div className="update_your_hosting">
         <h2>Update Hosting</h2>
       </div>
-      <ul className="error_container">
-        {validationErrors.map((erros) => (
-          <li className="error" key={erros}>
-            {erros}
-          </li>
-        ))}
-      </ul>
+      {hasSubmit && (
+        <ul className="error_container">
+          {validationErrors.map((erros) => (
+            <li className="error" key={erros}>
+              {erros}
+            </li>
+          ))}
+        </ul>
+      )}
       <div className="update_hosting_list_container">
         <div className="update_hosting_list">
           <label>
