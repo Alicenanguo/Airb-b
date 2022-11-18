@@ -46,15 +46,19 @@ const UserReviews = () => {
                 {reviews && (
                     reviewsArr.map(el=> (
                         <div className='user_review_el' key={el.id}>
-                            {el.ReviewImages.length > 0 ? (
-                                <div className='user_review_img'>
+                            {/* {el.ReviewImages.length > 0 ? (
+                                <div className='user_review_img'> */}
                                     {/* {console.log('el_-------img',el.ReviewImages[0].url)} */}
-                                    <img className='user_review_Img_review' src={el.ReviewImages[0]?.url} alt={el.Spot.previewImage} />
+                                    {/* <img className='user_review_Img_review' src={el.ReviewImages[0]?.url} alt={el.Spot.previewImage} />
                                 </div>
 
                             ) : <img className='user_review_Img_review' src={el.Spot.previewImage} />
 
-                            }
+                            } */}
+                <div className='user_review_img'>
+
+                            <img className='user_review_Img_review' src={el.Spot?.previewImage} alt={' '} />
+                        </div>
                             <div className='user_review_right'>
                                 <p className='user_list_review_name'>{el.Spot?.name}</p>
 

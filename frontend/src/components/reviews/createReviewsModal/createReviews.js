@@ -18,14 +18,16 @@ const CreateReviews = ({ spotId, setShowModal }) => {
   const [validationErrors, setValidationErrors] = useState([]);
   const [hasSubmitted, setHasSubmitted] = useState(false);
 
-  useEffect(() => {
-    const errors = [];
-    if (!review) errors.push("Review text is required");
-    // if (stars < 0 || stars > 5) errors.push('Stars must be an number from 1 to 5')
-    setValidationErrors(errors);
-    // console.log('errors_createReviews', errors)
+  // useEffect(() => {
+  //   const errors = [];
+  //   if (!review) errors.push("Review text is required");
+  //   // if (stars < 0 || stars > 5) errors.push('Stars must be an number from 1 to 5')
 
-  }, [review, stars]);
+  //   setValidationErrors(errors);
+  //   // console.log('errors_createReviews', errors)
+
+  // }, [review, stars]);
+
   const onSubmit = async (e) => {
     e.preventDefault();
 
@@ -37,22 +39,33 @@ const CreateReviews = ({ spotId, setShowModal }) => {
     };
     // console.log('reviewInfo', reviewInfo)
     // console.log('validationEroors',validationErrors)
-    if (validationErrors.length === 0) {
-      const result = await dispatch(createReviews(reviewInfo, spotId));
-      console.log("createReviews_result", result);
-      await dispatch(getAllSpotReviews(spotId));
+
+    const result = await dispatch(createReviews(reviewInfo, spotId))
+      // console.log("createReviews_result", result);
+      .then(() => dispatch(getAllSpotReviews(spotId)))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setValidationErrors(data.errors);
+
+
+        if (res.status === 403) {
+          setValidationErrors(["User already has a review for this spot"])
+        }
+        
+      })
 
       if (result) {
         setShowModal(false);
         history.push(`/spots/${spotId}`);
+
       }
-    }
+
   };
   const ratingStar = [1, 2, 3, 4, 5];
 
   return (
     <>
-      <form className="createReviews_form" onSubmit={onSubmit}>
+      <form className="createReviews_form_add" onSubmit={onSubmit}>
         <h2 className="review_info">Please Leave Your Review</h2>
 
         {hasSubmitted && validationErrors.length > 0 && (

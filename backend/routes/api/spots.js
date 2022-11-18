@@ -36,12 +36,12 @@ const validateSpot = [
     // .notNull()
     .withMessage("Country is required"),
   check("lat")
-      .exists({ checkFalsy: true })
-    .isDecimal({ min: -90, max: 90 })
-      .withMessage("Latitude should between -90 and 90"),
+    .exists({ checkFalsy: true })
+    .isFloat({ min: -90, max: 90 })
+    .withMessage("Latitude should between -90 and 90"),
   check("lng")
-      .exists({ checkFalsy: true })
-      .isDecimal({min:-180,max:180})
+    .exists({ checkFalsy: true })
+    .isFloat({min:-180,max:180})
       .withMessage("Longitude should between -180 and 180"),
   check("name")
     .exists({ checkFalsy: true })
@@ -53,7 +53,7 @@ const validateSpot = [
     .withMessage("Description is required"),
   check("price")
     .exists({ checkFalsy: true })
-    .isDecimal({min:1})
+    .isFloat({min:1})
     .withMessage("Price should be greater than 0"),
 
   handleValidationErrors,

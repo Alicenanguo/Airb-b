@@ -1,8 +1,8 @@
-.createReviews_form {
+.createReviews_form_add {
     border-radius: 12px;
     border:2px solid;
     width:400px;
-    height:420px;
+    height:480px;
     display:flex;
     flex-direction:column;
 

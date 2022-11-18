@@ -36,10 +36,12 @@ const CreateSpot = ({ setShowModal }) => {
     if (!country) errors.push("please input a vaild country");
     if (!name) errors.push("Please input a valid name");
     if (!description) errors.push("Please input a valid description");
-    if (!price) errors.push("Please input a valid price");
-    if (!previewImage) errors.push("need a image fot the spot");
+    if (!price || price <=0 ) errors.push("Please input a price greater than 0");
+    if (!previewImage) errors.push("need a image fot the spot")
+    if (lat < -90 || lat > 90) errors.push("Latitude should between -90 and 90");
+    if (lng < -180 || lng > 180) errors.push("Longitude should between -180 and 180");
     setValidationErrors(errors);
-  }, [address, city, state, country, name, description, price, previewImage]);
+  }, [address, city, state, country, name, description, price, previewImage,lat,lng]);
 
   const onSubmit = async (e) => {
     e.preventDefault();
@@ -62,7 +64,7 @@ const CreateSpot = ({ setShowModal }) => {
       preview: true,
     };
     //console.log(submitInfo)
-    if (validationErrors.length === 0) {
+    // if (validationErrors.length === 0) {
       const result = await dispatch(createSpot(spotInfo, imgInfo));
       //console.log('createSpot_result', result)
 
@@ -70,7 +72,7 @@ const CreateSpot = ({ setShowModal }) => {
         setShowModal(false);
         history.push(`/spots/${result.id}`);
       }
-    }
+    // }
 
     // setAddress('');
     // setCity('');
@@ -93,7 +95,7 @@ const CreateSpot = ({ setShowModal }) => {
 
         {hasSubmitted && validationErrors.length > 0 && (
           <div className="err-div">
-            <ul className="error_info">
+            <ul className="error_container">
               {validationErrors.map((error, idx) => (
                 <li className="error" key={idx}>
                   {error}
@@ -111,7 +113,8 @@ const CreateSpot = ({ setShowModal }) => {
                 type="text"
                 name="name"
                 onChange={(e) => setName(e.target.value)}
-                value={name}
+                              value={name}
+                              required
               />
             </label>
           </div>
@@ -123,7 +126,8 @@ const CreateSpot = ({ setShowModal }) => {
                 type="text"
                 name="address"
                 onChange={(e) => setAddress(e.target.value)}
-                value={address}
+                              value={address}
+                              required
               />
             </label>
           </div>
@@ -136,7 +140,8 @@ const CreateSpot = ({ setShowModal }) => {
                 type="text"
                 name="city"
                 onChange={(e) => setCity(e.target.value)}
-                value={city}
+                              value={city}
+                              required
               />
             </label>
           </div>
@@ -149,7 +154,8 @@ const CreateSpot = ({ setShowModal }) => {
                 type="text"
                 name="state"
                 onChange={(e) => setState(e.target.value)}
-                value={state}
+                              value={state}
+                              required
               />
             </label>
           </div>
@@ -162,7 +168,8 @@ const CreateSpot = ({ setShowModal }) => {
                 type="text"
                 name="country"
                 onChange={(e) => setCountry(e.target.value)}
-                value={country}
+                              value={country}
+                              required
               />
             </label>
           </div>
@@ -175,7 +182,8 @@ const CreateSpot = ({ setShowModal }) => {
                 type="number"
                 name="lat"
                 onChange={(e) => setLat(e.target.value)}
-                value={lat}
+                              value={lat}
+                              required
               />
             </label>
           </div>
@@ -187,7 +195,8 @@ const CreateSpot = ({ setShowModal }) => {
                 type="number"
                 name="lng"
                 onChange={(e) => setLng(e.target.value)}
-                value={lng}
+                              value={lng}
+                              required
               />
             </label>
           </div>
@@ -199,7 +208,8 @@ const CreateSpot = ({ setShowModal }) => {
                 type="text"
                 name="escription"
                 onChange={(e) => setDescription(e.target.value)}
-                value={description}
+                              value={description}
+                              required
               />
             </label>
           </div>
@@ -211,7 +221,8 @@ const CreateSpot = ({ setShowModal }) => {
                 type="number"
                 name="price"
                 onChange={(e) => setPrice(e.target.value)}
-                value={price}
+                              value={price}
+                              required
               />
             </label>
           </div>
@@ -224,7 +235,8 @@ const CreateSpot = ({ setShowModal }) => {
                 type="url"
                 name="previewImage"
                 onChange={(e) => setPreviewImage(e.target.value)}
-                value={previewImage}
+                              value={previewImage}
+                              required
               />
             </label>
           </div>
