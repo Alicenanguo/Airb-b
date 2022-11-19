@@ -1,11 +1,8 @@
-.reviews_by_spotId {
 
-
-}
 
 .reviews_by_spotId {
     display:flex;
-    flex-direction: row;
+    flex-direction: rowgit ;
 }
 
 .review_by_name {
@@ -18,9 +15,12 @@
     font-family:Arial, Helvetica, sans-serif;
     font-size: 15px;
     margin: 6px;
+    margin-left: 0;
 }
 
 .review_content {
+
+
     font-family:Arial, Helvetica, sans-serif;
     font-size: 15px;
     margin: 6px;

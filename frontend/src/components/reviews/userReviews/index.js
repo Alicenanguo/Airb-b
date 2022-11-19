@@ -33,6 +33,8 @@ const UserReviews = () => {
       dispatch(getUserReview());
   };
 
+    // if (!reviews.ReviewImages) return null;
+
   return (
     <div className="user_reviews_Info_conntainer">
       <p className="user_review_name">{`${sessionUser.firstName},This is your Reviws`}</p>
@@ -41,7 +43,7 @@ const UserReviews = () => {
         {reviews &&
           reviewsArr.map((el) => (
             <div className="user_review_el" key={el.id}>
-              {el.ReviewImages && el.ReviewImages.length > 0 && (
+              {/* {el.ReviewImages && el.ReviewImages.length > 0 && (
                 <div className="user_review_img">
                   <img
                     className="user_review_Img_review"
@@ -49,14 +51,16 @@ const UserReviews = () => {
                     alt={el.Spot.previewImage}
                   />
                 </div>
-                  )}
+                  )} */}
 
-{!el.ReviewImages[0] && (<div className='user_review_img'>
+                  {/* {!el.ReviewImages[0] && ( */}
+                      <div className='user_review_img'>
+                            <img className='user_review_Img_review' src={el.Spot?.previewImage} alt={' '} />
+                        </div>
 
-<img className='user_review_Img_review' src={el.Spot?.previewImage} alt={' '} />
-</div>)}
+{/* )} */}
 
-              {console.log('el_-------img',el.ReviewImages[0])}
+
               <div className="user_review_right">
                 <p className="user_list_review_name">{el.Spot?.name}</p>
 
