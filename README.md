@@ -1,12 +1,13 @@
 # Airb-b
+Airb-b is a website clone, inspired by Airbnb. Airb-b is an online marketplace that connects people who want to rent out their homes with people who are looking for accommodations in specific locales.
 
-Live site:
+Live site: https://airb-b.herokuapp.com/
 
 ## WIKI Link:
 * [Backend Routes](https://github.com/Alicenanguo/Airb-b/wiki/Backend-Routes)
-* Database Schema
-* Feature List
-* Frontend Routes
+* [Database Schema](https://github.com/Alicenanguo/Airb-b/wiki/Database-Schema)
+* [Feature List](https://github.com/Alicenanguo/Airb-b/wiki/Feature-List)
+* [Frontend Routes](https://github.com/Alicenanguo/Airb-b/wiki/Frontend-Routes)
 
 ## Tech Stack
 Frameworks, Platforms, and Libraries:
@@ -23,5 +24,8 @@ Hosting:
 
 ![Heroku](https://img.shields.io/badge/heroku-%23430098.svg?style=for-the-badge&logo=heroku&logoColor=white)
 
-## Landing Page
-You can access to Login Page, Signup Page here. Also, we have a demo user button for you to check the website.
+## Features Driections:
+
+### Home Page Demo User:
+You will be able to test the features without sign up by click on the 'Demo User' button.
+
