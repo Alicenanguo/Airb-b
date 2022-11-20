@@ -1,15 +1,18 @@
 # Airb-b
+
 Airb-b is a website clone, inspired by Airbnb. Airb-b is an online marketplace that connects people who want to rent out their homes with people who are looking for accommodations in specific locales.
 
 Live site: https://airb-b.herokuapp.com/
 
 ## WIKI Link:
-* [Backend Routes](https://github.com/Alicenanguo/Airb-b/wiki/Backend-Routes)
-* [Database Schema](https://github.com/Alicenanguo/Airb-b/wiki/Database-Schema)
-* [Feature List](https://github.com/Alicenanguo/Airb-b/wiki/Feature-List)
-* [Frontend Routes](https://github.com/Alicenanguo/Airb-b/wiki/Frontend-Routes)
+
+- [Backend Routes](https://github.com/Alicenanguo/Airb-b/wiki/Backend-Routes)
+- [Database Schema](https://github.com/Alicenanguo/Airb-b/wiki/Database-Schema)
+- [Feature List](https://github.com/Alicenanguo/Airb-b/wiki/Feature-List)
+- [Frontend Routes](https://github.com/Alicenanguo/Airb-b/wiki/Frontend-Routes)
 
 ## Tech Stack
+
 Frameworks, Platforms, and Libraries:
 
 ![JavaScript](https://img.shields.io/badge/javascript-%23323330.svg?style=for-the-badge&logo=javascript&logoColor=%23F7DF1E) ![Express.js](https://img.shields.io/badge/express.js-%23404d59.svg?style=for-the-badge&logo=express&logoColor=%2361DAFB) ![React](https://img.shields.io/badge/react-%2320232a.svg?style=for-the-badge&logo=react&logoColor=%2361DAFB)
@@ -26,6 +29,27 @@ Hosting:
 
 ## Features Driections:
 
+### User Sign Up Page:
+
+![user Signup](./images/signup.png)
+
 ### Home Page Demo User:
+
 You will be able to test the features without sign up by click on the 'Demo User' button.
 
+![home page](./images/homepage.png)
+
+### Spot Details Page:
+
+![spot details](./images/spotdetailpage.png)
+
+### Create New Spot Page:
+
+![create new spot](./images/createspot.png)
+
+
+### User Review Page:
+![user review page](./images/userreviewpage.png)
+
+### Create Review:
+![create review](./images/createreview.png)
