@@ -9,13 +9,13 @@
     display:flex;
     justify-content: center;
     border-bottom:0.6px solid grey;
-    font-family: 'Arial, Helvetica, sans-serif';
+   
     padding:10px;
     margin:20px;
 }
 
 .become_a_host {
-    font-family:'Arial, Helvetica, sans-serif';
+
     font-size:16px;
     border:none;
     border-radius:35px;
