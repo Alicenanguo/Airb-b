@@ -33,7 +33,8 @@ const UserReviews = () => {
       dispatch(getUserReview());
   };
 
-    // if (!reviews.ReviewImages) return null;
+    // if (!reviews.ReviewImages) return null
+    // if (!reviews.ReviewImages?.length > 0) return null
 
   return (
     <div className="user_reviews_Info_conntainer">
@@ -43,7 +44,7 @@ const UserReviews = () => {
         {reviews &&
           reviewsArr.map((el) => (
             <div className="user_review_el" key={el.id}>
-              {/* {el.ReviewImages && el.ReviewImages.length > 0 && (
+              {el.ReviewImages && el.ReviewImages.length > 0 && (
                 <div className="user_review_img">
                   <img
                     className="user_review_Img_review"
@@ -51,14 +52,18 @@ const UserReviews = () => {
                     alt={el.Spot.previewImage}
                   />
                 </div>
-                  )} */}
+                  )}
 
-                  {/* {!el.ReviewImages[0] && ( */}
+                  {!el.ReviewImages?.length > 0 && (
                       <div className='user_review_img'>
                             <img className='user_review_Img_review' src={el.Spot?.previewImage} alt={' '} />
                         </div>
 
-{/* )} */}
+                   )}
+
+                  {/* <div className='user_review_img'>
+                            <img className='user_review_Img_review' src={el.Spot?.previewImage} alt={' '} />
+                        </div> */}
 
 
               <div className="user_review_right">
@@ -67,10 +72,12 @@ const UserReviews = () => {
                 <div className="list_star_group">
                   <div className="user_review_star">
                     <i className="fa-solid fa-star" />
-                    {el?.stars}
+                              {/* {el?.stars} */}
+                              {parseFloat(el?.stars).toFixed(1)}
                   </div>
                   <div className="user_review_content">
-                    <p>{el?.review}</p>
+                              <p>{el?.review}</p>
+
                   </div>
                 </div>
                 <div className="review_create_time">

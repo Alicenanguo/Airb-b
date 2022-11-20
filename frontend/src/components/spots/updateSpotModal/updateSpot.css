@@ -16,14 +16,13 @@
     display:flex;
     justify-content: center;
     border-bottom:0.6px solid grey;
-    font-family: 'Arial, Helvetica, sans-serif';
-    padding:10px;
+    padding:5px;
 
 }
 
 .update_hosting_list_container {
 
-    margin-top: 5px;
+    margin-top: 2px;
     display: flex;
     flex-direction: column;
     justify-content: center;
@@ -31,12 +30,12 @@
 }
 
 .update_hosting_errors {
-    margin: 5px;
+    margin: 3px;
 
 }
 
 .update_hosting_list input,.update_hosting_list textarea {
-    margin-top: 5px;
+    margin-top: 3px;
     display: block;
     width: 500px;
     height: 14px;
@@ -98,7 +97,7 @@
     display:flex;
     flex-direction:row;
     align-items:center;
-    
+
 }
 
 .create_spot_submit_button button {
@@ -127,4 +126,20 @@
 
 #create_container {
     height:1000px;
+}
+
+#create_your_hosting {
+    margin-top: 0;
+    padding: 5px;
+}
+
+#submit_button_create {
+    margin-top: 30px;
+    margin-left: 30px;
+    width:350px;
+}
+
+#description_create_hosting {
+   height:60px;
+
 }

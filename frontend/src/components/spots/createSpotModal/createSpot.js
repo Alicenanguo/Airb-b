@@ -89,7 +89,7 @@ const CreateSpot = ({ setShowModal }) => {
   return (
     <>
       <form id='create_container' className="updateSpot_form" onSubmit={onSubmit}>
-        <div className="update_your_hosting">
+        <div id='create_your_hosting' className="update_your_hosting">
           <h2>Become a Host</h2>
         </div>
 
@@ -204,7 +204,7 @@ const CreateSpot = ({ setShowModal }) => {
             <label>
               <div className="update_hosting_title">Description</div>
               <textarea
-                id="description"
+                id="description_create_hosting"
                 type="text"
                 name="description"
                 onChange={(e) => setDescription(e.target.value)}
@@ -244,7 +244,7 @@ const CreateSpot = ({ setShowModal }) => {
           <div className="create_spot_submit_button">
             <button
               type="submit"
-              id="submit_button"
+              id="submit_button_create"
 
               // disabled={validationErrors.length >0}
             >
