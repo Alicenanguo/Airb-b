@@ -47,6 +47,9 @@ You will be able to test the features without sign up by click on the 'Demo User
 
 ![create new spot](./images/createspot.png)
 
+### User Hosting Page:
+![user hosting page](./images/userhostingpage.png)
+
 
 ### User Review Page:
 ![user review page](./images/userreviewpage.png)
