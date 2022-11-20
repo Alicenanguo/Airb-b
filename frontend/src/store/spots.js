@@ -163,13 +163,13 @@ const spotReducer = (state = initialState, action) => {
       case CREATE:
         let newCreate = {
           ...state,
-          allSpots: {
-            ...state.allSpots,
-            [action.newSpot.id]: action.newSpot,
-          },
-          singleSpot: {
-            ...state.singleSpot
-          }
+          // allSpots: {
+          //   ...state.allSpots,
+            singleSpot: {
+              ...state.singleSpot,
+              [action.newSpot.id]: action.newSpot,
+            },
+            // }
         }
         console.log('newState_create:', newCreate)
         return newCreate;

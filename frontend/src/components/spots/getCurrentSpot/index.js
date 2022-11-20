@@ -83,7 +83,7 @@ const GetCurrentSpot = () => {
                     </NavLink>
                     <p className="listing_spot_address_name">{spot.address}</p>
                     <p className="listing_spot_city">
-                      {spot.city},{spot.state},{spot.country}
+                          { spot.city }, { spot.state }, { spot.country }
                     </p>
                   <div className="listing_spot_price">{`${spot.price} /night`}</div>
                   </div>

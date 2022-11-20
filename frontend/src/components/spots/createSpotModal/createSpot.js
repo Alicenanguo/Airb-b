@@ -2,11 +2,13 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Route, useParams, useHistory } from "react-router-dom";
 import { createSpot } from "../../../store/spots";
+import {getAllSpotReviews} from '../../../store/reviews'
 import "../updateSpotModal/updateSpot.css";
 
 const CreateSpot = ({ setShowModal }) => {
   const dispatch = useDispatch();
   const history = useHistory();
+  const {spotId} = useParams()
 
   const user = useSelector((state) => state.session.user);
   console.log("user_create", user);
@@ -67,6 +69,7 @@ const CreateSpot = ({ setShowModal }) => {
     // if (validationErrors.length === 0) {
       const result = await dispatch(createSpot(spotInfo, imgInfo));
       //console.log('createSpot_result', result)
+   
 
       if (result) {
         setShowModal(false);
@@ -176,7 +179,7 @@ const CreateSpot = ({ setShowModal }) => {
 
           <div className="update_hosting_list">
             <label>
-              <div className="update_hosting_title">Lat</div>
+              <div className="update_hosting_title">Latitude</div>
               <input
                 id="lat"
                 type="number"
@@ -189,7 +192,7 @@ const CreateSpot = ({ setShowModal }) => {
           </div>
           <div className="update_hosting_list">
             <label>
-              <div className="update_hosting_title">Lng</div>
+              <div className="update_hosting_title">Longitude</div>
               <input
                 id="lng"
                 type="number"

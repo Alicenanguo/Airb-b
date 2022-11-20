@@ -175,7 +175,7 @@ const UpdateSpot = ({ spot, spotId, setShowModal }) => {
         </div>
         <div className="update_hosting_list">
           <label>
-            <div className="update_hosting_title">Lat</div>
+            <div className="update_hosting_title">Latitude</div>
             <input
               id="lat"
               type="number"
@@ -188,7 +188,7 @@ const UpdateSpot = ({ spot, spotId, setShowModal }) => {
         </div>
         <div className="update_hosting_list">
           <label>
-            <div className="update_hosting_title">Lng</div>
+            <div className="update_hosting_title">Longitude</div>
             <input
               id="lng"
               type="number"

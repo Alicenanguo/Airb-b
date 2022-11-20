@@ -26,7 +26,7 @@ const GetSpotReviews = ({spotId}) => {
         //console.log("USE EFFECT RUNNING")
         dispatch(getAllSpotReviews(spotId))
         .then(() => setIsLoaded(true))
-    }, [dispatch])
+    }, [dispatch,spotId])
 
     let reviewsArr;
     console.log('reviewsArr____getspotReviews',reviews)
