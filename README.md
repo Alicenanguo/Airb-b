@@ -31,25 +31,25 @@ Hosting:
 
 ### User Sign Up Page:
 
-![user Signup](./images/signup.png)
+[user Signup](./images/signup.png)
 
 ### Home Page Demo User:
 
 You will be able to test the features without sign up by click on the 'Demo User' button.
 
-![home page](./images/homepage.png)
+[home page](./images/homepage.png)
 
 ### Spot Details Page:
 
-![spot details](./images/spotdetailpage.png)
+[spot details](./images/spotdetailpage.png)
 
 ### Create New Spot Page:
 
-![create new spot](./images/createspot.png)
+[create new spot](./images/createspot.png)
 
 
 ### User Review Page:
-![user review page](./images/userreviewpage.png)
+[user review page](./images/userreviewpage.png)
 
 ### Create Review:
-![create review](./images/createreview.png)
+[create review](./images/createreview.png)
