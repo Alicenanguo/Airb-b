@@ -90,8 +90,12 @@ module.exports = (sequelize, DataTypes) => {
       allowNull: false,
       validate: {
 
-          min:0
-        
+        check(value) {
+          if (isNaN(value) || value <= 0) {
+            throw new Error("Price can not less than 0.")
+          }
+        }
+
 
       }
     }
