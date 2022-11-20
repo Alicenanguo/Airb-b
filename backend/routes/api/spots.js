@@ -53,7 +53,7 @@ const validateSpot = [
     .withMessage("Description is required"),
   check("price")
     .exists({ checkFalsy: true })
-    .isFloat({min:1})
+    .isFloat({min:0})
     .withMessage("Price should be greater than 0"),
 
   handleValidationErrors,
