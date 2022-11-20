@@ -45,11 +45,11 @@ You will be able to test the features without sign up by click on the 'Demo User
 
 ### Create New Spot Page:
 
-[create new spot](./images/createspot.png)
+![create new spot](./images/createspot.png)
 
 
 ### User Review Page:
-[user review page](./images/userreviewpage.png)
+![user review page](./images/userreviewpage.png)
 
 ### Create Review:
-[create review](./images/createreview.png)
+![create review](./images/createreview.png)
