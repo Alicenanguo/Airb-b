@@ -92,7 +92,7 @@ const UpdateSpot = ({ spot, spotId, setShowModal }) => {
   console.log("update_validationerror", validationErrors);
 
   return (
-    <form className="updateSpot_form" onSubmit={onSubmit}>
+    <form id='updateSpot_form_container' className="updateSpot_form" onSubmit={onSubmit}>
       <div className="update_your_hosting">
         <h2>Update Hosting</h2>
       </div>
