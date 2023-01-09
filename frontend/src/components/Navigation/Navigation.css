@@ -6,7 +6,7 @@
 .logo_name_one {
     font-size: 30px;
     color:#ff385c;
-    
+
     margin-left: 5px;
     margin-top: 5px;
 
@@ -98,21 +98,7 @@ display:flex;
     border: none;
 }
 
-.upperRight_button {
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    height: 40px;
-    width: 80px;
-    color: grey;
-    border-radius: 20px;
-    border: 1px solid rgb(203, 198, 198);
-    margin-bottom: 10px;
-    background-color: white;
-    padding: 5px 5px 5px 16px;
-    margin: 5px;
-    cursor: pointer;
-}
+
 
 .header_login_signup {
 display:flex;

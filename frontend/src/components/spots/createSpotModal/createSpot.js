@@ -69,7 +69,7 @@ const CreateSpot = ({ setShowModal }) => {
     // if (validationErrors.length === 0) {
       const result = await dispatch(createSpot(spotInfo, imgInfo));
       //console.log('createSpot_result', result)
-   
+
 
       if (result) {
         setShowModal(false);
@@ -230,19 +230,7 @@ const CreateSpot = ({ setShowModal }) => {
             </label>
           </div>
 
-          <div className="update_hosting_list">
-            <label>
-              <div className="update_hosting_title">Image Url</div>
-              <input
-                id="previewImage"
-                type="url"
-                name="previewImage"
-                onChange={(e) => setPreviewImage(e.target.value)}
-                              value={previewImage}
-                              required
-              />
-            </label>
-          </div>
+
 
           <div className="create_spot_submit_button">
             <button
