@@ -55,7 +55,9 @@ const GetSingleSpot = () => {
 
               <div className="spot_img">
                 <div className="spot_previewImg">
-                  <img src={single.SpotImages[0].url} alt={single.name} />
+                  <img src={single.SpotImages[0].url} alt={single.name}
+                   onError={e => { e.currentTarget.src = "/default.jpeg"; }}
+                   />
                 </div>
                 <div className="spot_other4_img">
                   {single.SpotImages.slice(1, 5).map((el) => (
@@ -64,6 +66,8 @@ const GetSingleSpot = () => {
                       className="single_img"
                       src={el.url}
                       alt={single.name}
+                      onError={e => { e.currentTarget.src = "/default.jpeg"; }}
+
                     />
                   ))}
                 </div>

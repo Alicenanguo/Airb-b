@@ -44,7 +44,13 @@ const GetSpots = () => {
             {spot&&spotsArr.map(spot => (
                 <div className='spot_item' key={spot.id}>
                     <NavLink to={`/spots/${spot.id}`}>
-                        <img className='spot_img_all' src={spot.previewImage} alt={spot.name} />
+                        <img
+                            className='spot_img_all'
+                            src={spot.previewImage}
+                            alt={spot.name}
+                            onError={e => { e.currentTarget.src = "/default.jpeg"; }}
+
+                        />
                     </NavLink>
                     <div className='spot_info'>
                     <div className='spot_city_state_star'>
