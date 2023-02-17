@@ -4,6 +4,7 @@ import { NavLink, Route, useParams } from "react-router-dom";
 import { updateSpot } from "../../../store/spots.js";
 import { getSpotsDetail } from "../../../store/spots.js";
 import CreateReviewsModal from "../../reviews/createReviewsModal/index.js";
+import BookingFormModal from '../createSpotModal'
 import "./getSpotDetails.css";
 
 import GetSpotReviews from "../../reviews/spotReviews";
@@ -21,7 +22,8 @@ const GetSingleSpot = () => {
   const currentUser = useSelector((state) => state.session.user);
 
   useEffect(() => {
-    dispatch(getSpotsDetail(spotId)).then(() => setIsLoaded(true));
+    dispatch(getSpotsDetail(spotId))
+    .then(() => setIsLoaded(true));
   }, [dispatch, spotId]);
 
   if (!single) return null;
@@ -30,6 +32,8 @@ const GetSingleSpot = () => {
     <div className="getOneSpot_container">
       {isLoaded && (
         <div className="single_spots">
+          {currentUser && (<BookingFormModal listing = {single}/>)}
+          
           {single.id && (
             <>
               <div className="single_name">{single.name}</div>

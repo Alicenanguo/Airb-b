@@ -5,7 +5,7 @@ const GET_BOOKINGS = "bookings/GET_bookings";
 const DELETE_BOOKINGS = "bookings/DELETE_booking";
 const EDIT_BOOKINGS = "bookings/EDIT_booking";
 
-
+//todo:action
 const createBookingAction = booking => ({
     type: CREATE_BOOKING,
     booking
@@ -26,19 +26,7 @@ const editBookingAction = (booking) => ({
     booking
 });
 
-
-export const createBooking = (booking) => async dispatch => {
-    const response = await csrfFetch(`/api/bookings`, {
-        method: "POST",
-        body: JSON.stringify(booking),
-    })
-
-    if (response.ok) {
-        const newBooking = await response.json()
-        await dispatch(createBookingAction(newBooking));
-        return newBooking
-    }
-}
+//todo:thunk
 
 export const getBookings = () => async dispatch => {
     const response = await csrfFetch('/api/bookings');
@@ -50,13 +38,16 @@ export const getBookings = () => async dispatch => {
     }
 };
 
-export const deleteBooking = (id) => async dispatch => {
-    const response = await csrfFetch(`/api/bookings/${id}`, {
-        method: "DELETE"
-    });
+export const createBooking = (booking) => async dispatch => {
+    const response = await csrfFetch(`/api/bookings`, {
+        method: "POST",
+        body: JSON.stringify(booking),
+    })
 
-    if(response.ok) {
-        dispatch(deleteBookingAction(id));
+    if (response.ok) {
+        const newBooking = await response.json()
+        await dispatch(createBookingAction(newBooking));
+        return newBooking
     }
 }
 
@@ -73,26 +64,44 @@ export const editBooking = (booking) => async dispatch => {
     }
 }
 
+export const deleteBooking = (id) => async dispatch => {
+    const response = await csrfFetch(`/api/bookings/${id}`, {
+        method: "DELETE"
+    });
+
+    if(response.ok) {
+        dispatch(deleteBookingAction(id));
+    }
+}
+
+
+
+// todo: reduce stuff
 const initialState = {};
-export default function listingsReducer(state = initialState, action) {
+
+export default function bookingReducer(state = initialState, action) {
     let newState;
     switch(action.type) {
-        case CREATE_BOOKING:
-            newState = {...state}
-            newState[action.booking.id] = action.booking;
-            return newState
         case GET_BOOKINGS:
             newState = {};
             action.bookings.forEach(booking => newState[booking.id] = booking);
             return newState;
-        case DELETE_BOOKINGS:
+
+        case CREATE_BOOKING:
             newState = {...state}
-            delete newState[action.bookingId];
-            return newState;
+            newState[action.booking.id] = action.booking;
+            return newState
+
         case EDIT_BOOKINGS:
             newState = {...state}
             newState[action.booking.id] = action.booking;
             return newState;
+        
+        case DELETE_BOOKINGS:
+            newState = {...state}
+            delete newState[action.bookingId];
+            return newState;
+
         default:
             return state;
     }
