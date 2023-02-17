@@ -1,9 +1,10 @@
 import { csrfFetch } from "./csrf";
 
+const GET_SPOT_BOOKINGS = "bookings/GET__SPOT_bookings";
+const GET_USER_BOOKINGS = 'bookings/GET_USER_bookings'
 const CREATE_BOOKING = "bookings/CREATE_booking";
-const GET_BOOKINGS = "bookings/GET_bookings";
-const DELETE_BOOKINGS = "bookings/DELETE_booking";
 const EDIT_BOOKINGS = "bookings/EDIT_booking";
+const DELETE_BOOKINGS = "bookings/DELETE_booking";
 
 //todo:action
 const createBookingAction = booking => ({
@@ -96,7 +97,7 @@ export default function bookingReducer(state = initialState, action) {
             newState = {...state}
             newState[action.booking.id] = action.booking;
             return newState;
-        
+
         case DELETE_BOOKINGS:
             newState = {...state}
             delete newState[action.bookingId];
