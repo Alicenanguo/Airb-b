@@ -7,14 +7,26 @@ const EDIT_BOOKINGS = "bookings/EDIT_booking";
 const DELETE_BOOKINGS = "bookings/DELETE_booking";
 
 //todo:action
-const createBookingAction = booking => ({
+const getSpotBookingsAction = (bookings) => ({
+    type: GET_SPOT_BOOKINGS,
+    bookings
+});
+
+const getUserBookingsAction = (bookings) => ({
+    type: GET_USER_BOOKINGS,
+    bookings
+});
+
+
+const createBookingAction = (booking) => ({
     type: CREATE_BOOKING,
     booking
 })
 
-const getBookingsAction = (bookings) => ({
-    type: GET_BOOKINGS,
-    bookings
+
+const editBookingAction = (booking) => ({
+    type: EDIT_BOOKINGS,
+    booking
 });
 
 const deleteBookingAction = (bookingId) => ({
@@ -22,14 +34,8 @@ const deleteBookingAction = (bookingId) => ({
     bookingId
 });
 
-const editBookingAction = (booking) => ({
-    type: EDIT_BOOKINGS,
-    booking
-});
-
 //todo:thunk
-
-export const getBookings = () => async dispatch => {
+export const getSPOTBookings = () => async dispatch => {
     const response = await csrfFetch('/api/bookings');
 
     if (response.ok) {
