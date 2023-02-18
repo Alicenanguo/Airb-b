@@ -35,18 +35,28 @@ const deleteBookingAction = (bookingId) => ({
 });
 
 //todo:thunk
-export const getSPOTBookings = () => async dispatch => {
-    const response = await csrfFetch('/api/bookings');
+export const getSpotBookings = () => async dispatch => {
+    const response = await csrfFetch(`/api/spots/${spotId}/bookings`);
 
     if (response.ok) {
         const bookings = await response.json();
-        dispatch(getBookingsAction(bookings));
+        dispatch(getSpotBookingsAction(bookings));
+        return bookings;
+    }
+};
+
+export const getUserBookings = () => async dispatch => {
+    const response = await csrfFetch('/api/bookings/current');
+
+    if (response.ok) {
+        const bookings = await response.json();
+        dispatch(getUserBookingsAction(bookings));
         return bookings;
     }
 };
 
 export const createBooking = (booking) => async dispatch => {
-    const response = await csrfFetch(`/api/bookings`, {
+    const response = await csrfFetch(`/api/spots/${spotId}/bookings`, {
         method: "POST",
         body: JSON.stringify(booking),
     })
