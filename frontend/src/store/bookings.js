@@ -106,25 +106,47 @@ const initialState = {allBookings: {}, singleBooking: {}, userBookings: {}};
 export default function bookingReducer(state = initialState, action) {
     let newState;
     switch(action.type) {
-        case GET_BOOKINGS:
-            newState = {};
-            action.bookings.forEach(booking => newState[booking.id] = booking);
+        case GET_SPOT_BOOKINGS:
+            newState = { ...state };
+            let allBookings = {};
+            action.bookings.forEach(booking => (allBookings[booking.id] = booking));
+            newState.allBookings = allBookings;
+            return newState;
+
+        case GET_USER_BOOKINGS:
+            newState = { ...state };
+            let userBookings = {};
+            action.bookings.forEach(booking => (userBookings[booking.id] = booking ));
+            newState.userBookings = userBookings;
             return newState;
 
         case CREATE_BOOKING:
-            newState = {...state}
-            newState[action.booking.id] = action.booking;
+            newState = {...state,allBookings: { ...state.allBookings }, singleBooking: {}}
+            let newBooking = { ...action.booking };
+            newState.allBookings[action.booking.id] = newBooking;
+            newState.singleBooking = newBooking;
             return newState
 
         case EDIT_BOOKINGS:
             newState = {...state}
-            newState[action.booking.id] = action.booking;
+            newState.allBookings = { ...state.allBookings, [action.booking.id]: { ...state.allBookings[action.booking.id], ...action.booking } }
+            newState.singleBooking = { ...state.singleBooking, ...action.booking }
             return newState;
 
         case DELETE_BOOKINGS:
-            newState = {...state}
-            delete newState[action.bookingId];
-            return newState;
+            const deleted = {
+                ...state,
+                allBookings: { ...state.allBookings },
+                singleBooking: { ...state.singleBooking },
+                userBookings: { ...state.userBookings }
+              }
+            delete deleted.allBookings[action.id];
+            delete deleted.userBookings[action.id];
+            if (action.id == newState.singleBooking.id) {
+                delete deleted.singleBooking
+            }
+
+            return deleted;
 
         default:
             return state;
