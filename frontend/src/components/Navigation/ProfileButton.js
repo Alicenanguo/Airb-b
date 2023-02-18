@@ -87,7 +87,9 @@ function ProfileButton({isLoaded,setShowLogInModal, setShowSignUpModal}) {
           <div className='info_navigation'>{`Hello,${user.username}`}</div>
           <div id='user_email' className="info_navigation">{user.email}</div>
 
-
+          <div className="info_navigation">
+              <NavLink id="manage_listings" to='/bookings/current'>Trips</NavLink>
+          </div>
             <div className="info_navigation">
               <NavLink id="manage_listings" to='/spots/current'>Manage your listings</NavLink>
           </div>

@@ -72,6 +72,8 @@ const GetCurrentSpot = () => {
                         className="listing_spot_img"
                         src={spot.previewImage}
                         alt={spot.name}
+                        onError={e => { e.currentTarget.src = "/default.jpeg"; }}
+
                       />
                         </div>
 
