@@ -58,6 +58,9 @@ export const getUserBookings = () => async dispatch => {
 export const createBooking = (booking) => async dispatch => {
     const response = await csrfFetch(`/api/spots/${spotId}/bookings`, {
         method: "POST",
+        headers: {
+            "Content-Type": "application/json",
+          },
         body: JSON.stringify(booking),
     })
 
@@ -71,6 +74,9 @@ export const createBooking = (booking) => async dispatch => {
 export const editBooking = (booking) => async dispatch => {
     const response = await csrfFetch(`/api/bookings/${booking.id}`, {
         method: "PUT",
+        headers: {
+            "Content-Type": "application/json",
+          },
         body: JSON.stringify(booking),
     });
 
@@ -88,13 +94,14 @@ export const deleteBooking = (id) => async dispatch => {
 
     if(response.ok) {
         dispatch(deleteBookingAction(id));
+        return response;
     }
 }
 
 
 
 // todo: reduce stuff
-const initialState = {};
+const initialState = {allBookings: {}, singleBooking: {}, userBookings: {}};
 
 export default function bookingReducer(state = initialState, action) {
     let newState;
