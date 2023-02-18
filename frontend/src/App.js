@@ -13,6 +13,7 @@ import CreateSpotModal from "./components/spots/createSpotModal";
 import UpdateSpot from "./components/spots/updateSpotModal";
 import UserReviews from "./components/reviews/userReviews/index";
 import Bookings from "./components/Bookings";
+import GetCurrentBookings from "./components/Bookings/GetCurrentBookings.js";
 
 function App() {
   const dispatch = useDispatch();
@@ -38,6 +39,10 @@ function App() {
             <GetCurrenSpot />
           </Route>
 
+          <Route exact path="/bookings/current">
+            <GetCurrentBookings />
+          </Route>
+
           <Route exact path="/spots/:spotId/edit">
             <UpdateSpot />
           </Route>
@@ -46,9 +51,9 @@ function App() {
             <GetSingleSpot />
           </Route>
 
-          <Route path="/bookings">
+          {/* <Route path="/bookings">
             <Bookings />
-          </Route>
+          </Route> */}
 
           <Route exact path="/">
             <GetSpots />

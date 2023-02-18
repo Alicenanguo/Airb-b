@@ -35,7 +35,7 @@ const deleteBookingAction = (bookingId) => ({
 });
 
 //todo:thunk
-export const getSpotBookings = () => async dispatch => {
+export const getSpotBookings = (spotId) => async dispatch => {
     const response = await csrfFetch(`/api/spots/${spotId}/bookings`);
 
     if (response.ok) {
@@ -56,12 +56,13 @@ export const getUserBookings = () => async dispatch => {
 };
 
 export const createBooking = (booking) => async dispatch => {
+    const { spotId, startDate, endDate } = booking
     const response = await csrfFetch(`/api/spots/${spotId}/bookings`, {
         method: "POST",
         headers: {
             "Content-Type": "application/json",
           },
-        body: JSON.stringify(booking),
+        body: JSON.stringify({startDate,endDate}),
     })
 
     if (response.ok) {
@@ -116,7 +117,8 @@ export default function bookingReducer(state = initialState, action) {
         case GET_USER_BOOKINGS:
             newState = { ...state };
             let userBookings = {};
-            action.bookings.forEach(booking => (userBookings[booking.id] = booking ));
+            console.log('action-in-getUserBooking-reduce',action)
+            action.bookings.Bookings.forEach(booking => (userBookings[booking.id] = booking ));
             newState.userBookings = userBookings;
             return newState;
 
