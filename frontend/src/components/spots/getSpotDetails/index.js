@@ -4,7 +4,7 @@ import { NavLink, Route, useParams } from "react-router-dom";
 import { updateSpot } from "../../../store/spots.js";
 import { getSpotsDetail } from "../../../store/spots.js";
 import CreateReviewsModal from "../../reviews/createReviewsModal/index.js";
-import BookingFormModal from '../createSpotModal'
+import BookingFormModal from "../../CreateBookingModal/index.js";
 import "./getSpotDetails.css";
 
 import GetSpotReviews from "../../reviews/spotReviews";
@@ -32,7 +32,7 @@ const GetSingleSpot = () => {
     <div className="getOneSpot_container">
       {isLoaded && (
         <div className="single_spots">
-          {/* {currentUser && (<BookingFormModal listing = {single}/>)} */}
+          {currentUser && (<BookingFormModal spot = {single}/>)}
 
           {single.id && (
             <>

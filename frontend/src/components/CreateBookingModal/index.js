@@ -3,7 +3,7 @@ import { Modal } from '../../context/Modal';
 import BookingForm from './BookingForm';
 
 
-function BookingFormModal({listing}) {
+function BookingFormModal({spot}) {
   const [showModal, setShowModal] = useState(false);
 
   return (
@@ -11,7 +11,7 @@ function BookingFormModal({listing}) {
       <button onClick={() => setShowModal(true)}>Make a reservation</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
-          <BookingForm setShowModal = {setShowModal} listing = {listing}/>
+          <BookingForm setShowModal = {setShowModal} spot = {spot}/>
         </Modal>
       )}
     </>

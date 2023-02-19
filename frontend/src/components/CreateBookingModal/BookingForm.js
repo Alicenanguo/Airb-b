@@ -1,17 +1,20 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { createBooking } from "../../store/bookings";
-import { useHistory } from "react-router-dom";
+import { useHistory, useParams } from "react-router-dom";
+import "./createBooking.css";
 
-function BookingForm({ setShowModal, listing }) {
+function BookingForm({ setShowModal, spot }) {
   const history = useHistory();
   const dispatch = useDispatch();
+  const { spotId } = useParams();
 
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
-
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [errors, setErrors] = useState([]);
+
+  const currentUser = useSelector((state) => state.session.user);
 
   const today = new Date();
 
@@ -30,10 +33,10 @@ function BookingForm({ setShowModal, listing }) {
     setHasSubmitted(true);
 
     const data = {
-      listingId: listing.id,
+      spotId: spot.id,
       startDate,
       endDate,
-      totalCost: night * listing.price,
+      totalCost: night * spot.price,
     };
 
     if (new Date(endDate) > new Date(startDate)) {
@@ -56,15 +59,22 @@ function BookingForm({ setShowModal, listing }) {
     }
   };
 
+  let sum = night * `${spot.price}`;
   let priceInfo;
   if (new Date(endDate) > new Date(startDate)) {
     priceInfo = (
       <p>
-        Total price = {night} x ${listing.price}
+        {" "}
+        ${spot.price} x {night} nights <span>${sum.toFixed(0)}</span>
       </p>
     );
   } else {
-    priceInfo = <p>Total price = 0 x ${listing.price}</p>;
+    priceInfo = (
+      <p>
+        {" "}
+        ${spot.price} x 0 nights <span>${0}</span>{" "}
+      </p>
+    );
   }
 
   return (
@@ -93,8 +103,31 @@ function BookingForm({ setShowModal, listing }) {
 
         <button type="submit">Submit</button>
         <button onClick={() => setShowModal(false)}>Cancel</button>
+        <div className="text-nocharge">You won't be charged yet</div>
       </form>
-      {priceInfo}
+
+      <div className="second-part"></div>
+      <div>{priceInfo}</div>
+
+      <div>
+        <div>
+          Cleaning fee
+          <span>$100</span>
+        </div>
+      </div>
+
+      <div>
+        <div>
+        Service fee
+          <span>$0</span>
+        </div>
+      </div>
+
+      <div className="third-part">
+        
+      </div>
+
+
     </>
   );
 }
