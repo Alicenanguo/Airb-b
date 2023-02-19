@@ -8,6 +8,8 @@ import BookingFormModal from "../../CreateBookingModal/index.js";
 import "./getSpotDetails.css";
 
 import GetSpotReviews from "../../reviews/spotReviews";
+import BookingCalendar from "./Calendar.js";
+import { getSpotBookings, getUserBookings } from "../../../store/bookings.js";
 
 const GetSingleSpot = () => {
   const dispatch = useDispatch();
@@ -23,6 +25,7 @@ const GetSingleSpot = () => {
 
   useEffect(() => {
     dispatch(getSpotsDetail(spotId))
+      dispatch(getUserBookings())
     .then(() => setIsLoaded(true));
   }, [dispatch, spotId]);
 
@@ -203,6 +206,10 @@ const GetSingleSpot = () => {
                         <div>Indoor fireplace</div>
                       </div>
 
+                    </div>
+
+                    <div className="calendar-part">
+                      <BookingCalendar spotId={spotId}/>
                     </div>
 
                   </div>

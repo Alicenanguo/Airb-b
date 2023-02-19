@@ -62,7 +62,7 @@ export const createBooking = (booking) => async dispatch => {
         headers: {
             "Content-Type": "application/json",
           },
-        body: JSON.stringify({startDate,endDate}),
+        body: JSON.stringify(booking),
     })
 
     if (response.ok) {
@@ -110,7 +110,7 @@ export default function bookingReducer(state = initialState, action) {
         case GET_SPOT_BOOKINGS:
             newState = { ...state };
             let allBookings = {};
-            action.bookings.forEach(booking => (allBookings[booking.id] = booking));
+            action.bookings?.Booking?.forEach(booking => (allBookings[booking.id] = booking));
             newState.allBookings = allBookings;
             return newState;
 
