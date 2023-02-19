@@ -2,7 +2,6 @@ import React, { useEffect, useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Calendar } from 'react-date-range';
 import { getSpotBookings } from '../../../store/bookings';
-import bookingDays from './bookingDays';
 import './Calendar.css'
 import 'react-date-range/dist/styles.css';
 import 'react-date-range/dist/theme/default.css';
@@ -59,7 +58,7 @@ function BookingCalendar({ spotId }) {
     console.log('booked',booked)
 
     return (
-        <div className='calender-container'>
+        <div className='calendar-container'>
             <div className='spot-calender'>
             <Calendar className="calender-this-month"
                         minDate={new Date()}

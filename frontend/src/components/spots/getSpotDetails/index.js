@@ -35,7 +35,7 @@ const GetSingleSpot = () => {
     <div className="getOneSpot_container">
       {isLoaded && (
         <div className="single_spots">
-          {currentUser && (<BookingFormModal spot = {single}/>)}
+
 
           {single.id && (
             <>
@@ -209,6 +209,7 @@ const GetSingleSpot = () => {
                     </div>
 
                     <div className="calendar-part">
+                      <div>Calendar</div>
                       <BookingCalendar spotId={spotId}/>
                     </div>
 
@@ -227,6 +228,9 @@ const GetSingleSpot = () => {
                         : "No Rating"}
 
                       <div className="single_numRev">{`${single.numReviews} reviews`}</div>
+                    </div>
+                    <div className="">
+                    {currentUser && (<BookingFormModal spot = {single}/>)}
                     </div>
                   </div>
                 </div>
