@@ -1,7 +1,8 @@
 .user_reviews_Info_conntainer {
     display:flex;
     flex-direction: column;
-    margin-left: 50px;
+    margin: 10px 100px;
+    padding:10px 100px;
     justify-content: flex-start;
 }
 
