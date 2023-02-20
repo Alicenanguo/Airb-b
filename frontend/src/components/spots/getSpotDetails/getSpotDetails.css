@@ -1,10 +1,16 @@
+.getOneSpot_container {
+    margin: 0 70px;
+    padding:0 80px
 
+}
 
 .single_spots {
     display: flex;
     flex-direction: column;
     justify-content: center;
     margin: 20px 150px;
+    margin: 0 70px;
+    padding:0 80px
 
 }
 
@@ -263,5 +269,37 @@ margin-top: 15px;
 
 .offer-details {
     display:flex;
-  
+
+}
+
+
+.show_card {
+    /* margin-top: 48px; */
+    width: 30%;
+    height: 150px;
+    max-height: auto;
+    padding: 24px;
+    border-radius: 12px;
+    border: 1px solid rgb(221, 221, 221);
+    box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
+    position: sticky;
+    top: 128px;
+
+
+}
+
+.show-card-top-part {
+    display: flex;
+    justify-content: space-between;
+    padding-bottom:40px
+}
+
+.card_star {
+padding-top:0
+}
+
+.list_content_container {
+    margin: 0 70px;
+    padding:0 80px
+
 }

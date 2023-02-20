@@ -8,6 +8,8 @@
     flex-direction: column;
     justify-content: flex-start;
     align-items: center;
+    margin: 0 70px;
+    padding:0 80px
 }
 
 

@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Modal } from '../../context/Modal';
 import BookingForm from './BookingForm';
+import './createBooking.css'
 
 
 function BookingFormModal({spot}) {
@@ -8,7 +9,7 @@ function BookingFormModal({spot}) {
 
   return (
     <>
-      <button onClick={() => setShowModal(true)}>Make a reservation</button>
+      <button className='booking-button' onClick={() => setShowModal(true)}>Reservation</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <BookingForm setShowModal = {setShowModal} spot = {spot}/>

@@ -218,6 +218,7 @@ const GetSingleSpot = () => {
 
 
                   <div className="show_card">
+                    <div className="show-card-top-part">
                     <div className="single_spot_price">
                       <p>{`$${single.price} /night`}</p>
                     </div>
@@ -228,7 +229,8 @@ const GetSingleSpot = () => {
                         : "No Rating"}
 
                       <div className="single_numRev">{`${single.numReviews} reviews`}</div>
-                    </div>
+                      </div>
+                      </div>
                     <div className="">
                     {currentUser && (<BookingFormModal spot = {single}/>)}
                     </div>
