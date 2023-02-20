@@ -365,6 +365,14 @@ padding-top:0
 }
 
 .offer_part-second {
+
     display: grid;
-    colu
+  grid-template-columns: repeat(2, 1fr);
+  grid-gap: 10px;
+  border-bottom: 1px solid rgb(210, 210, 210);
+}
+
+.text-offer-part{
+    padding-top: 5px;
+    padding-left: 10px;
 }

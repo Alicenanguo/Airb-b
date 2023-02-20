@@ -148,7 +148,7 @@ const GetSingleSpot = () => {
                     <div className="offer-part">
                       <div className="text-offer">What this place offers</div>
 
-                      <div className="offer_part-second"></div>
+                      <div className="offer_part-second">
                       <div className="offer-details">
                       <img
                         className="aircover-icon"
@@ -156,7 +156,7 @@ const GetSingleSpot = () => {
                         alt="kitchen"
                         onError={e => { e.currentTarget.src = "/default.jpeg"; }}
                         />
-                        <div>Kitchen</div>
+                        <div className="text-offer-part">Kitchen</div>
                       </div>
 
                       <div className="offer-details">
@@ -166,7 +166,7 @@ const GetSingleSpot = () => {
                         alt="pets"
                         onError={e => { e.currentTarget.src = "/default.jpeg"; }}
                         />
-                        <div>Pets allowed</div>
+                        <div className="text-offer-part">Pets allowed</div>
                       </div>
 
                       <div className="offer-details">
@@ -176,7 +176,7 @@ const GetSingleSpot = () => {
                         alt="backyard"
                         onError={e => { e.currentTarget.src = "/default.jpeg"; }}
                         />
-                        <div>Backyard</div>
+                        <div className="text-offer-part">Backyard</div>
                       </div>
 
                       <div className="offer-details">
@@ -186,7 +186,7 @@ const GetSingleSpot = () => {
                         alt="parking"
                         onError={e => { e.currentTarget.src = "/default.jpeg"; }}
                         />
-                        <div>Free Parking</div>
+                        <div className="text-offer-part">Free Parking</div>
                       </div>
 
                       <div className="offer-details">
@@ -196,7 +196,7 @@ const GetSingleSpot = () => {
                         alt="air condition"
                         onError={e => { e.currentTarget.src = "/default.jpeg"; }}
                         />
-                        <div>Central air conditioning</div>
+                        <div className="text-offer-part">Central air conditioning</div>
                       </div>
 
                       <div className="offer-details">
@@ -206,13 +206,14 @@ const GetSingleSpot = () => {
                         alt="fireplace"
                         onError={e => { e.currentTarget.src = "/default.jpeg"; }}
                         />
-                        <div>Indoor fireplace</div>
+                        <div className="text-offer-part">Indoor fireplace</div>
                       </div>
 
-                    </div>
+                      </div>
+                      </div>
 
                     <div className="calendar-part">
-                      <div>Calendar</div>
+                      <div className="text-offer">Calendar</div>
                       <BookingCalendar spotId={spotId}/>
                     </div>
 

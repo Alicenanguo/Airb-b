@@ -5,6 +5,7 @@
     height:480px;
     display:flex;
     flex-direction:column;
+    z-index: 1;
 
 
 
@@ -22,7 +23,7 @@
     display:flex;
     justify-content: center;
     border-bottom:0.6px solid grey;
- 
+
     padding:10px;
     font-size:25px;
     font-weight: bold;
@@ -68,7 +69,7 @@
     color:rgb(58, 48, 48)
 }
 
-textarea {
+#review {
     resize: none;
     width: 90%;
     font-size: 14px;
