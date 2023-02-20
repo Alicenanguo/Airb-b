@@ -80,10 +80,10 @@ const GetCurrentSpot = () => {
                     <div className="listing_right">
 
                   <div className="listing_spot_address">
-                    <NavLink to={`/spots/${spot.id}`}>
+                    <NavLink className='navlink' to={`/spots/${spot.id}`}>
                       <div className="listing_spot_name">{spot.name}</div>
                     </NavLink>
-                    <p className="listing_spot_address_name">{spot.address}</p>
+                    <p className="listing_spot_address_name" id='listing-spot-address'>{spot.address}</p>
                     <p className="listing_spot_city">
                           { spot.city }, { spot.state }, { spot.country }
                     </p>
