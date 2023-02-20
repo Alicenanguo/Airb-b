@@ -144,9 +144,10 @@ flex-direction: row;
 .single_hostInfo {
     font-size: 23px;
     font-weight: bold;
-    border-bottom: 2px solid rgb(213, 204, 204);
+    border-bottom: 1px solid rgb(210, 210, 210);
   padding:10px;
   margin-left: 0;
+  padding-bottom: 20px;
 
 }
 
@@ -223,6 +224,7 @@ margin-top: 15px;
     flex-direction: row;
     padding-top: 8px;
     font-size: 20px;
+    padding-bottom: 15px;
 }
 .single_numRev_bottom {
     margin-left: 50px;
@@ -302,4 +304,67 @@ padding-top:0
     margin: 0 70px;
     padding:0 80px
 
+}
+
+.text-bedroom-number {
+    font-weight: lighter;
+    font-size: 15px;
+    padding-top: 5px;
+    color:rgb(80, 78, 78)
+
+}
+
+.icon-parts-container {
+    padding: 32px 0px;
+     border-top: 1px solid rgb(210, 210, 210);
+
+}
+
+.icon-parts img {
+    width: 26px;
+    height: 26px;
+    padding-top: 2px;
+    padding-right: 12px;
+
+}
+
+.icon-parts-text-top {
+
+    font-weight: bold;
+    margin-bottom: 4px;
+    color: #6b6767;
+    font-size:17px
+}
+
+.icon-parts{
+    margin-bottom: 20px;
+}
+
+.icon-parts-text-bottom{
+    color: #6b6767;
+    font-size:14px
+}
+
+.text-aircover {
+    color: #6b6767;
+    font-size:16px
+
+}
+
+.single_description{
+    color: #6b6767;
+    font-size:16px;
+    line-height:1.5;
+    padding:20px 0;
+    margin-bottom: 15px;
+
+}
+.text-offer{
+    font-size: 22px;
+    padding-bottom: 18px;
+}
+
+.offer_part-second {
+    display: grid;
+    colu
 }

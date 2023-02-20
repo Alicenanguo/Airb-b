@@ -84,9 +84,10 @@ const GetSingleSpot = () => {
                 <div className="list_content_container">
                   <div className="host_content">
                     <p className="single_hostInfo">{`Entire home hosted by ${single.Owner.firstName}`}
-                    <p>6 guests · 3 bedrooms · 2 baths</p>
+                    <p className="text-bedroom-number">6 guests · 3 bedrooms · 2 baths</p>
                     </p>
 
+                    <div className="icon-parts-container">
                     <div className="icon-parts">
                       <img
                         className="spot-detail-icon"
@@ -95,8 +96,8 @@ const GetSingleSpot = () => {
                         onError={e => { e.currentTarget.src = "/default.jpeg"; }}
                       />
                       <div className="icon-parts-text">
-                        <div>{`${single.Owner.firstName} is a Superhost`} </div>
-                        <div>Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</div>
+                        <div className="icon-parts-text-top">{`${single.Owner.firstName} is a Superhost`} </div>
+                        <div className="icon-parts-text-bottom">Superhosts are experienced, highly rated hosts who are committed to providing great stays for guests.</div>
                         </div>
                     </div>
 
@@ -108,8 +109,8 @@ const GetSingleSpot = () => {
                         onError={e => { e.currentTarget.src = "/default.jpeg"; }}
                       />
                       <div className="icon-parts-text">
-                      <div>Great check-in experience</div>
-                        <div>90% of recent guests gave the check-in process a 5-star rating.</div>
+                      <div className="icon-parts-text-top">Great check-in experience</div>
+                        <div className="icon-parts-text-bottom">90% of recent guests gave the check-in process a 5-star rating.</div>
                         </div>
                     </div>
 
@@ -121,10 +122,11 @@ const GetSingleSpot = () => {
                         onError={e => { e.currentTarget.src = "/default.jpeg"; }}
                       />
                       <div className="icon-parts-text">
-                        <div>Free cancellation</div>
-                        <div>Any time before you check in.</div>
+                        <div className="icon-parts-text-top">Free cancellation</div>
+                        <div className="icon-parts-text-bottom">Any time before you check in.</div>
                         </div>
-                    </div>
+                      </div>
+                      </div>
 
                     <div className="aircover-part">
                     <img
@@ -133,7 +135,7 @@ const GetSingleSpot = () => {
                         alt="aircover"
                         onError={e => { e.currentTarget.src = "/default.jpeg"; }}
                       />
-                      <div>
+                      <div className="text-aircover">
                       Every booking includes free protection from Host cancellations, listing inaccuracies, and other issues like trouble checking in.
                       </div>
 
@@ -146,6 +148,7 @@ const GetSingleSpot = () => {
                     <div className="offer-part">
                       <div className="text-offer">What this place offers</div>
 
+                      <div className="offer_part-second"></div>
                       <div className="offer-details">
                       <img
                         className="aircover-icon"

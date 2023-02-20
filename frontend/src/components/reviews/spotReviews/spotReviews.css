@@ -2,6 +2,7 @@
 
 .reviews_by_spotId {
     display:flex;
+    flex-direction: column;
     flex-direction: rowgit ;
 }
 
@@ -26,4 +27,10 @@
     margin: 6px;
     margin-right: 10px;
     margin-left: 0;
+}
+
+.review_el{
+    padding-bottom: 20px;
+    padding-top: 10px;
+    border-top: 0.5px dashed rgb(204, 196, 196);
 }
