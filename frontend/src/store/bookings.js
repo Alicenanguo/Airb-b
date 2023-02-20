@@ -136,19 +136,17 @@ export default function bookingReducer(state = initialState, action) {
             return newState;
 
         case DELETE_BOOKINGS:
-            const deleted = {
-                ...state,
+           newState= {
                 allBookings: { ...state.allBookings },
                 singleBooking: { ...state.singleBooking },
                 userBookings: { ...state.userBookings }
               }
-            delete deleted.allBookings[action.id];
-            delete deleted.userBookings[action.id];
-            if (action.id == newState.singleBooking.id) {
-                delete deleted.singleBooking
-            }
+              delete newState.allBookings[action.id];
+              delete newState.userBookings[action.id];
+            if (action.id == newState.singleBooking.id) { newState.singleBooking = {} }
+            console.log("newstate-in-delete-booking",newState)
 
-            return deleted;
+            return newState;
 
         default:
             return state;

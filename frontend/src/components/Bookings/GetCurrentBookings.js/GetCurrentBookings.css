@@ -19,3 +19,9 @@
     color:grey;
     padding-top: 15px;
 }
+
+#booking-cancel-button {
+    margin-top: 100px;
+    margin-left: 0;
+    padding-left: 50px;
+}

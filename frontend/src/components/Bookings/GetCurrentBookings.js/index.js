@@ -24,11 +24,28 @@ const GetCurrentBookings = () => {
 
   useEffect(() => {
     if (currentUser) {
-      dispatch(getUserBookings()).then(() => {
+       dispatch(getUserBookings()).then(() => {
         setIsLoaded(true);
       });
     }
   }, [dispatch]);
+
+
+  const bookingCancel = async (id) => {
+    if (window.confirm("Do you want to delete this Review?")) {
+      const result = await dispatch(deleteBooking(id));
+      console.log("resule_delte_bookings", result);
+      if (result)
+        // history.push('/reviews/current')
+        dispatch(getUserBookings());
+    }
+  };
+
+  //   = async (id) => {
+  //    await dispatch(deleteBooking(id))
+  //   // if (result)
+  //   //   await dispatch(getUserBookings());
+  // }
 
   let currentBookingsArr;
   if (isLoaded) currentBookingsArr = Object.values(currentBookings);
@@ -51,12 +68,6 @@ const GetCurrentBookings = () => {
     );
   }
 
-  const bookingCancel = async (id) => {
-    if (window.alert('Want to cancel your reservation?')) {
-      await dispatch(deleteBooking(id))
-    }
-
-  }
 
   return (
     isLoaded && (
@@ -93,15 +104,17 @@ const GetCurrentBookings = () => {
                       <div className="listed-spot-info-time">{`${el?.startDate.slice(
                         0,
                         10
-                      )} to ${el?.endDate.slice(0, 10)}`}</div>
+                        )} to ${el?.endDate.slice(0, 10)}`}</div>
+
+                        <div className='listing_delete_button' id='booking-cancel-button'>
+                  {new Date() < new Date(el.startDate) && (
+                      <button onClick={() => bookingCancel(el?.Spot.id)}> Cancel Reservation </button>
+                  )}
+                    </div>
                     </div>
                   </div>
 
-                  <div className='user-bookings-delete-button'>
-                  {new Date() < new Date(el.startDate) && (
-                      <button onClick={(e) => bookingCancel(el.id)}> Cancel Reservation </button>
-                  )}
-                    </div>
+
                     </>
                 ))}
               </div>
