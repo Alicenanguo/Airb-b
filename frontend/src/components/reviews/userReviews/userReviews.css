@@ -7,8 +7,8 @@
 }
 
 .user_review_Img_review {
-    width: 600px;
-    height: 500px;
+    width: 400px;
+    height: 300px;
     padding: 5px;
     border-radius: 20px;
     object-fit: cover;
@@ -28,6 +28,7 @@
     flex-direction: row;
     border-top: 1px solid rgb(230, 212, 212);
     padding:15px;
+    padding-top: 50px;
 }
 
 .user_review_right {

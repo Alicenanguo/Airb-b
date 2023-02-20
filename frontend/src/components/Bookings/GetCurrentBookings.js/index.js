@@ -51,20 +51,28 @@ const GetCurrentBookings = () => {
     );
   }
 
+  const bookingCancel = async (id) => {
+    if (window.alert('Want to cancel your reservation?')) {
+      await dispatch(deleteBooking(id))
+    }
+
+  }
+
   return (
     isLoaded && (
       <>
-        <div className="user-booking-container">
-          <div className="text-trips">Trips </div>
+        <div className="user_reviews_Info_conntainer">
+          <div className="user_review_name">Trips </div>
 
           {currentBookingsArr?.length > 0 && (
             <>
-              <div className="userBooing-element">
+              <div className="user_single_review">
                 {currentBookingsArr.map((el) => (
-                  <div className="userBookings-info" key={el.id}>
-                    <div className="userBooking-img">
+                  <>
+                  <div className="user_review_el" key={el.id}>
+                    <div className="user_review_img">
                       <img
-                        className="listing_spot_img"
+                        className="user_review_Img_review"
                         src={el?.Spot?.previewImage}
                         alt={el?.Spot?.name}
                         onError={(e) => {
@@ -73,9 +81,9 @@ const GetCurrentBookings = () => {
                       />
                     </div>
 
-                    <div className="listing_spot_address">
-                      <NavLink to={`/spots/${el?.Spot.id}`}>
-                        <div className="listing_spot_name">
+                    <div className="user_review_right">
+                      <NavLink className='navlink' to={`/spots/${el?.Spot.id}`}>
+                        <div id='booking-address-trips' className="user_list_review_name">
                           {el?.Spot?.name}
                         </div>
                       </NavLink>
@@ -88,6 +96,13 @@ const GetCurrentBookings = () => {
                       )} to ${el?.endDate.slice(0, 10)}`}</div>
                     </div>
                   </div>
+
+                  <div className='user-bookings-delete-button'>
+                  {new Date() < new Date(el.startDate) && (
+                      <button onClick={(e) => bookingCancel(el.id)}> Cancel Reservation </button>
+                  )}
+                    </div>
+                    </>
                 ))}
               </div>
             </>

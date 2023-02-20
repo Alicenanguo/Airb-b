@@ -7,8 +7,8 @@
 }
 
 .listing_spot_img {
-    width: 600px;
-    height: 500px;
+    width: 400px;
+    height: 300px;
     padding: 5px;
     border-radius: 20px;
     object-fit: cover;
@@ -28,6 +28,7 @@
     padding:15px;
     display:flex;
     flex-direction: row;
+    padding-top: 50px;
 
 }
 
