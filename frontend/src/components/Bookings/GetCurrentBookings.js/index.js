@@ -108,7 +108,7 @@ const GetCurrentBookings = () => {
 
                         <div className='listing_delete_button' id='booking-cancel-button'>
                   {new Date() < new Date(el.startDate) && (
-                      <button onClick={() => bookingCancel(el?.Spot.id)}> Cancel Reservation </button>
+                      <button onClick={() => bookingCancel(el?.id)}> Cancel Reservation </button>
                   )}
                     </div>
                     </div>

@@ -4,6 +4,7 @@ import { NavLink, Route, useParams, useHistory } from "react-router-dom";
 
 import { getUserReview } from "../../../store/reviews";
 import { deleteReview } from "../../../store/reviews";
+// import EditReviewModal from "../EditReviewModal";
 import "./userReviews.css";
 
 const UserReviews = () => {
@@ -84,14 +85,22 @@ const UserReviews = () => {
                   {el?.createdAt.slice(0, 10)}
                 </div>
 
+                {/* <div className="edit_delete_button"> */}
+                  {/* <div  id="listing_edit_button">
+                     {/* to={`/reviews/${reviewId}/edit`}> */}
+                    {/* <EditReviewModal reviews={reviews} reviewId={el?.id} />
+                    </div> */} */}
+
+
                 <div className="userReview_delete_button">
                   <button onClick={() => handleDeleted(el.id)}>
                     Delete Review
                   </button>
                   {/* {console.log("el_______", el)} */}
-                </div>
+                  </div>
+                  </div>
               </div>
-            </div>
+            // </div>
           ))}
       </div>
     </div>

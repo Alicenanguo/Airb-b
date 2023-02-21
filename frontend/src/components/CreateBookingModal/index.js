@@ -9,12 +9,14 @@ function BookingFormModal({spot}) {
 
   return (
     <>
+      <div className='create-booking'>
       <button className='booking-button' onClick={() => setShowModal(true)}>Reservation</button>
       {showModal && (
         <Modal onClose={() => setShowModal(false)}>
           <BookingForm setShowModal = {setShowModal} spot = {spot}/>
         </Modal>
-      )}
+        )}
+        </div>
     </>
   );
 }

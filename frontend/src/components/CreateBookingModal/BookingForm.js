@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { createBooking,getSpotBookings } from "../../store/bookings";
+import { createBooking, getSpotBookings } from "../../store/bookings";
 import { useHistory, useParams } from "react-router-dom";
 import bookingDays from "../spots/getSpotDetails/Booked";
 import "./createBooking.css";
@@ -13,39 +13,37 @@ function BookingForm({ setShowModal, spot }) {
 
   const [isLoaded, setIsLoaded] = useState(false);
 
-
   const [startDate, setStartDate] = useState("");
   const [endDate, setEndDate] = useState("");
   const [hasSubmitted, setHasSubmitted] = useState(false);
   const [errors, setErrors] = useState([]);
 
   const currentUser = useSelector((state) => state.session.user);
-  const booking = useSelector(state => state.booking?.userBookings)
-  console.log('booking-in-create-booking',booking)
+  const booking = useSelector((state) => state.booking?.userBookings);
+  console.log("booking-in-create-booking", booking);
 
   useEffect(() => {
-    dispatch(getSpotBookings(spotId))
-    .then(() => setIsLoaded(true))
-}, [dispatch, spotId])
+    dispatch(getSpotBookings(spotId)).then(() => setIsLoaded(true));
+  }, [dispatch, spotId]);
 
   let bookingArr;
-  if (isLoaded) bookingArr = Object.values(booking)
-  console.log('bookingArr-in-create-booking',bookingArr)
+  if (isLoaded) bookingArr = Object.values(booking);
+  console.log("bookingArr-in-create-booking", bookingArr);
 
-  let booked = []
-    for (let i = 0; i < bookingArr?.length; i++) {
-        if (bookingArr[i].spotId == spotId) {
-            booked =booked.concat(bookingDays(bookingArr[i].startDate,bookingArr[i].endDate))
-        }
+  let booked = [];
+  for (let i = 0; i < bookingArr?.length; i++) {
+    if (bookingArr[i].spotId == spotId) {
+      booked = booked.concat(
+        bookingDays(bookingArr[i].startDate, bookingArr[i].endDate)
+      );
     }
-  console.log('booked-in-create-Booking', booked)
+  }
+  console.log("booked-in-create-Booking", booked);
 
   // if (booked.includes(startDate) || booked.includes(endDate)) {
   //   errors.push('Sorry, this spot is already booked for the specified dates')
 
   // }
-
-
 
   const today = new Date();
 
@@ -64,61 +62,70 @@ function BookingForm({ setShowModal, spot }) {
     setHasSubmitted(true);
 
     const data = {
-            spotId: spot.id,
-            startDate,
-            endDate,
-          };
+      spotId: spot.id,
+      startDate,
+      endDate,
+    };
 
-  //   if (currentUser) {
-  //     const data = {
-  //       spotId: spot.id,
-  //       startDate,
-  //       endDate,
-  //     };
-  //     setHasSubmitted(true);
+    //   if (currentUser) {
+    //     const data = {
+    //       spotId: spot.id,
+    //       startDate,
+    //       endDate,
+    //     };
+    //     setHasSubmitted(true);
 
-  //     const exitedBookings = await dispatch(createBooking(data))
-  //       .then(() => setShowModal(false))
-  //       .then(() => history.push(`/bookings`))
-  //       .catch(async res => {
-  //         const data = await res.json();
-  //         if (data && data.errors) setErrors(data.errors);
-  //       })
-  //     if (exitedBookings) {
-  //       setErrors([errors]);
-  //       history.push(`/bookings/current`)
-  //     } else {
-  //       setHasSubmitted(true);
+    //     const exitedBookings = await dispatch(createBooking(data))
+    //       .then(() => setShowModal(false))
+    //       .then(() => history.push(`/bookings`))
+    //       .catch(async res => {
+    //         const data = await res.json();
+    //         if (data && data.errors) setErrors(data.errors);
+    //       })
+    //     if (exitedBookings) {
+    //       setErrors([errors]);
+    //       history.push(`/bookings/current`)
+    //     } else {
+    //       setHasSubmitted(true);
 
-  //     }
-  //   }
-  // }
+    //     }
+    //   }
+    // }
 
-    if (booked.includes(startDate) || booked.includes(endDate)) {
-      setErrors([]);
-      return dispatch(createBooking(data))
-        .then(() => setShowModal(false))
-        .then(() => history.push(`/bookings`))
-        .catch(async (res) => {
-          const data = await res.json();
-          if (data && data.errors) setErrors(data.errors);
-        });
-    } else {
-      let error = [];
-      error.push(
-        "Make suer your checkout date is later than your checkin date"
-      );
-      setErrors(error);
-      setHasSubmitted(true);
-      return;
-    }
+    // if (booked.includes(startDate) || booked.includes(endDate)) {
+    //setErrors([]);
+    console.log("+++++++++++++++++++++");
+    setHasSubmitted(true);
+    return dispatch(createBooking(data))
+      .then(() => setShowModal(false))
+      .then(() => history.push(`/bookings`))
+      .catch(async (res) => {
+        const data = await res.json();
+        if (data && data.errors) setErrors(data.errors);
+      });
+    // }
+    //   else {
+    //     await dispatch(createBooking(data))
+    //   }
+    // else {
+    //   let error = [];
+    //   error.push(
+    //     "Sorry, this spot is already booked for the specified dates"
+    //   );
+    //   setErrors(error);
+
+    //   return;
+    // }
   };
 
   let sum;
-  if (!night) sum = 0
-  else{sum = night * spot.price;}
+  if (!night) sum = 0;
+  else {
+    sum = night * spot.price;
+  }
 
-  console.log("sum*************", night);
+  console.log("sum*************", errors);
+
   let priceInfo;
   if (new Date(endDate) > new Date(startDate)) {
     priceInfo = (
@@ -134,8 +141,7 @@ function BookingForm({ setShowModal, spot }) {
       <>
         <div>${spot.price} x 0 nights</div>
         <span>${0}</span>
-        </>
-
+      </>
     );
   }
 
@@ -146,7 +152,7 @@ function BookingForm({ setShowModal, spot }) {
 
         <form onSubmit={handleSubmit}>
           <ul>
-            {errors.map((error, idx) => (
+            {Object.values(errors).map((error, idx) => (
               <li className="error" key={idx}>
                 {error}
               </li>
@@ -155,42 +161,47 @@ function BookingForm({ setShowModal, spot }) {
 
           <div className="creat-booking-first-part">
             <div className="check-in-booking-input">
-            <label className="text-check">CHECK-IN</label>
-            <input
-              type="date"
-              required
-              value={startDate}
-              // min={`${year}-${month}-${date}`}
-              onChange={(e) => setStartDate(e.target.value)}
-              min={`${new Date().toLocaleDateString('en-ca')}`}
-              max={`${new Date().getFullYear() + 2}-12-31`}
+              <label className="text-check">CHECK-IN</label>
+              <input
+                type="date"
+                required
+                value={startDate}
+                // min={`${year}-${month}-${date}`}
+                onChange={(e) => setStartDate(e.target.value)}
+                min={`${new Date().toLocaleDateString("en-ca")}`}
+                max={`${new Date().getFullYear() + 2}-12-31`}
               />
             </div>
 
-            <div className="check-in-booking-input" id='create-booking-checkout'>
-            <label className="text-check">CHECKOUT</label>
-            <input
-              type="date"
-              required
-              value={endDate}
+            <div
+              className="check-in-booking-input"
+              id="create-booking-checkout"
+            >
+              <label className="text-check">CHECKOUT</label>
+              <input
+                type="date"
+                required
+                value={endDate}
                 onChange={(e) => setEndDate(e.target.value)}
-                min={`${new Date(new Date(startDate).getTime() + (1000 * 3600 * 48)).toLocaleDateString('en-ca')}`}
+                min={`${new Date(
+                  new Date(startDate).getTime() + 1000 * 3600 * 48
+                ).toLocaleDateString("en-ca")}`}
                 max={`${new Date().getFullYear() + 2}-12-31`}
               />
-              </div>
+            </div>
           </div>
 
           <div className="create-booking-second-part">
             <div className="second-part-el">{priceInfo}</div>
 
             <div className="second-part-el">
-                Cleaning fee
-                <span>$100</span>
+              Cleaning fee
+              <span>$100</span>
             </div>
 
             <div className="second-part-el">
-                Service fee
-                <span>$60</span>
+              Service fee
+              <span>$60</span>
             </div>
           </div>
 
@@ -201,11 +212,19 @@ function BookingForm({ setShowModal, spot }) {
 
           <div className="create-booking-fourth-part">
             <div className="create-booking-button">
-          <button className='submit_button' type="submit">Submit</button>
-              <button className='submit_button'id='create-booking-cancel' onClick={() => setShowModal(false)}>Cancel</button>
-              </div>
-            <div className="text-nocharge">You won't be charged yet</div>
+              <button className="submit_button" type="submit">
+                Submit
+              </button>
+              <button
+                className="submit_button"
+                id="create-booking-cancel"
+                onClick={() => setShowModal(false)}
+              >
+                Cancel
+              </button>
             </div>
+            <div className="text-nocharge">You won't be charged yet</div>
+          </div>
         </form>
       </div>
     </>

@@ -310,6 +310,7 @@ router.post(
           booking.toJSON().endDate >= new Date(startDate))
       ) {
         arr.push("test");
+        console.log('%%%%%%%%%%%%%%%%%%%%%%%%%%%')
         return res.status(403).json({
           message: "Sorry, this spot is already booked for the specified dates",
           statusCode: 403,

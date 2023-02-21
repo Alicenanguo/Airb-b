@@ -98,7 +98,7 @@ const validateBooking = [
 
 router.put("/:bookingId", requireAuth, validateBooking, async (req, res) => {
 
-    const updateBooking = await Booking .findByPk(req.params.bookingId)
+    const updateBooking = await Booking.findByPk(req.params.bookingId)
     const { startDate, endDate } = req.body
 
     if (!updateBooking) {
@@ -132,7 +132,8 @@ res.status(200).json(updateBooking)
 //DELETE a BOOKING
 router.delete('/:bookingId', requireAuth, async (req, res) => {
     const findBooking = await Booking.findByPk(req.params.bookingId)
-    const{startDate,endDate} = req.body
+    // const{startDate,endDate} = req.body
+    console.log('findBooking', req.params.bookingId)
 
     if (!findBooking) {
         res.status(404).json({
@@ -141,12 +142,13 @@ router.delete('/:bookingId', requireAuth, async (req, res) => {
 
         })
     }
-    else if (new Date(startDate) >= findBooking.startDate) {
-        res.status(403).json({
-            "message": "Bookings that have been started can't be deleted",
-            "statusCode": 403
-        })
-    } else {
+    // else if (new Date(startDate) >= findBooking.startDate) {
+    //     res.status(403).json({
+    //         "message": "Bookings that have been started can't be deleted",
+    //         "statusCode": 403
+    //     })
+    // }
+    else {
         findBooking.destroy()
         res.status(200).json({
             "message": "Successfully deleted",
