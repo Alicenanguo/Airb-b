@@ -85,11 +85,11 @@ const UserReviews = () => {
                   {el?.createdAt.slice(0, 10)}
                 </div>
 
-                {/* <div className="edit_delete_button"> */}
-                  {/* <div  id="listing_edit_button">
-                     {/* to={`/reviews/${reviewId}/edit`}> */}
-                    {/* <EditReviewModal reviews={reviews} reviewId={el?.id} />
-                    </div> */} */}
+                <div className="edit_delete_button">
+                   <div  id="listing_edit_button"
+                     to={`/reviews/${el?.id}/edit`}>
+                    <EditReviewModal reviews={reviews} reviewId={el?.id} />
+                    </div>
 
 
                 <div className="userReview_delete_button">
