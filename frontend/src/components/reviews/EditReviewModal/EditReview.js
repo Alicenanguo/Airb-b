@@ -14,7 +14,7 @@ const EditReview = ({ reviews, reviewId, setShowModal }) => {
   const history = useHistory();
 
   const user = useSelector((state) => state.session.user);
-  const product = useSelector((state) => state.products.singleProduct);
+  const spot = useSelector((state) => state.spots.singleSpot);
   // const userReview = useSelector(state => state.reviews?.userReviews)
   // console.log("userReview-in-edit0review",userReview)
 

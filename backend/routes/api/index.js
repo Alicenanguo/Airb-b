@@ -10,6 +10,10 @@ const reviewsRouter = require('./reviews.js')
 
 const { restoreUser, requireAuth } = require('../../utils/auth.js');
 
+const mapsRouter = require('./maps');
+
+
+
 // const { requireAuth } = require('../../utils/auth')
 
 // router.get('/test', requireAuth, (req, res) => {
@@ -33,7 +37,9 @@ router.use('/bookings', bookingsRouter)
 
 router.use('/spot-images', spotImagesRouter)
 
-router.use('/review-images',reviewImagesRouter)
+router.use('/review-images', reviewImagesRouter)
+
+router.use('/maps', mapsRouter);
 
 router.post('/test', (req, res) => {
   res.json({ requestBody: req.body });
