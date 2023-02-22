@@ -98,7 +98,7 @@ function BookingForm({ setShowModal, spot }) {
     setHasSubmitted(true);
     return dispatch(createBooking(data))
       .then(() => setShowModal(false))
-      .then(() => history.push(`/bookings`))
+      .then(() => history.push(`/bookings/current`))
       .catch(async (res) => {
         const data = await res.json();
         if (data && data.errors) setErrors(data.errors);

@@ -279,8 +279,9 @@ margin-top: 15px;
 
 .show_card {
     /* margin-top: 48px; */
-    width: 30%;
-    height: 150px;
+    min-width: 200px;
+    max-width: 30%;
+    height: 200px;
     max-height: auto;
 
     border-radius: 12px;
