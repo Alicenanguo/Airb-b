@@ -2,13 +2,12 @@ import { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { NavLink, Route, useParams, useHistory } from "react-router-dom";
 import {
-  editReviewTHUNK,
   getAllProductReviews,
   getUserReview,
-} from "../../../store/review";
-import { getOneProductThunk } from "../../../store/product";
+} from "../../../store/reviews";
+import { editReviewTHUNK } from "../../../store/reviews";
 import "./EditReview.css";
-import UserReviews from "../UserReviews";
+import UserReviews from "../userReviews";
 
 const EditReview = ({ reviews, reviewId, setShowModal }) => {
   const dispatch = useDispatch();

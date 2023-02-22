@@ -4,7 +4,7 @@ import { NavLink, Route, useParams, useHistory } from "react-router-dom";
 
 import { getUserReview } from "../../../store/reviews";
 import { deleteReview } from "../../../store/reviews";
-// import EditReviewModal from "../EditReviewModal";
+import EditReviewModal from "../EditReviewModal";
 import "./userReviews.css";
 
 const UserReviews = () => {
