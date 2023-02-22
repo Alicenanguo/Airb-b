@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useHistory, NavLink } from "react-router-dom";
 import { GoogleMap, useJsApiLoader, Marker } from '@react-google-maps/api';
 import './HomeMap.css';
-import { googleMapsAPIKey } from '../../../../../backend/config';
+// import { googleMapsAPIKey } from '../../../../../backend/config';
 
 const containerStyle = {
     width: '100vw',
@@ -63,3 +63,5 @@ function AllSpotMap({apiKey,markers,spots}) {
     )
 
 }
+
+export default React.memo(AllSpotMap);

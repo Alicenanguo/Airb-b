@@ -14,6 +14,7 @@ import UpdateSpot from "./components/spots/updateSpotModal";
 import UserReviews from "./components/reviews/userReviews/index";
 import Bookings from "./components/Bookings";
 import GetCurrentBookings from "./components/Bookings/GetCurrentBookings.js";
+import HomePageMap from "./components/Maps/HomeMap";
 
 function App() {
   const dispatch = useDispatch();
@@ -54,6 +55,10 @@ function App() {
           {/* <Route path="/bookings">
             <Bookings />
           </Route> */}
+
+          <Route exact path="/map">
+            <HomePageMap />
+          </Route>
 
           <Route exact path="/">
             <GetSpots />

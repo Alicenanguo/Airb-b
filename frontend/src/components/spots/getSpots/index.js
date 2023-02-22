@@ -72,7 +72,11 @@ const GetSpots = () => {
 </div>
                 </div>
             ))}
-</div>
+                </div>
+                <NavLink to={'/map'} className='all-spots-map-container'>
+                <div>Show map</div>
+                <img src='https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTlnFHTl4JFYCkc5_vgDwHLMAbg2-VjU55h9g&usqp=CAU' />
+            </NavLink>
         </div>
     )
             )
