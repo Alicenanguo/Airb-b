@@ -17,6 +17,7 @@ const MapContainer = () => {
   if (!key) {
     return null;
   }
+  console.log('key-in-map',key)
 
   return (
     <Maps apiKey={key} />

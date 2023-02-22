@@ -15,6 +15,7 @@ import UserReviews from "./components/reviews/userReviews/index";
 import Bookings from "./components/Bookings";
 import GetCurrentBookings from "./components/Bookings/GetCurrentBookings.js";
 import HomePageMap from "./components/Maps/HomeMap";
+// import MapContainer from "./components/Maps";
 
 function App() {
   const dispatch = useDispatch();
@@ -59,6 +60,10 @@ function App() {
           <Route exact path="/map">
             <HomePageMap />
           </Route>
+
+          {/* <Route exact path="/googleMap">
+            <MapContainer />
+          </Route> */}
 
           <Route exact path="/">
             <GetSpots />

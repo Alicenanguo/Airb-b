@@ -12,10 +12,13 @@ const center = {
 };
 
 const Maps = ({ apiKey }) => {
+  console.log('API keys++++++++', apiKey)
   const { isLoaded } = useJsApiLoader({
     id: 'google-map-script',
     googleMapsApiKey: apiKey,
   });
+
+  console.log('Maps',Maps)
 
   return (
     <>

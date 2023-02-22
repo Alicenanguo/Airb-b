@@ -10,6 +10,8 @@ import "./getSpotDetails.css";
 import GetSpotReviews from "../../reviews/spotReviews";
 import BookingCalendar from "./Calendar.js";
 import { getSpotBookings, getUserBookings } from "../../../store/bookings.js";
+import Maps from "../../Maps/Maps.js";
+// import MapContainer from "../../Maps/index.js";
 
 const GetSingleSpot = () => {
   const dispatch = useDispatch();
@@ -265,6 +267,7 @@ const GetSingleSpot = () => {
       )}
     </div>
   );
+  // <MapContainer />
   {
     /* <div class="mapouter"><div class="gmap_canvas"><iframe width="600" height="500"
                 id="gmap_canvas" src="https://maps.google.com/maps?q=2880%20Broadway,%20New%20York&t=&z=13&ie=UTF8&iwloc=&output=embed"
