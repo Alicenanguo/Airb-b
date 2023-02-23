@@ -199,9 +199,9 @@ justify-content: center;
   }
 
   .footer-div {
-    height: 60px;
+    height: 45px;
     color: white;
-    background-color: #FDEBD2;
+    background-color: #ff385c;
     border-top: 1px solid rgb(255 255 255 / 10%);
     display: flex;
     flex-wrap: wrap;

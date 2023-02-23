@@ -17,6 +17,7 @@ import GetCurrentBookings from "./components/Bookings/GetCurrentBookings.js";
 import HomePageMap from "./components/Maps/HomeMap";
 // import MapContainer from "./components/Maps";
 import Search from "./components/Search/Search";
+import Footer from "./components/Navigation/Footer";
 
 function App() {
   const dispatch = useDispatch();
@@ -79,6 +80,7 @@ function App() {
           </Route>
         </Switch>
       )}
+           <Footer />
     </>
   );
 }
