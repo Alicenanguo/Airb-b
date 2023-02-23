@@ -18,6 +18,7 @@ const { check } = require("express-validator");
 const { handleValidationErrors } = require("../../utils/validation");
 const user = require("../../db/models/user");
 const { parse } = require("pg-protocol");
+const { Sequelize, Op } = require('sequelize');
 
 const router = express.Router();
 
@@ -66,7 +67,7 @@ router.get("/current", requireAuth, async (req, res) => {
       ownerId: req.user.id,
     },
   });
-  //console.log("findSpot",findSpot)
+  console.log("findSpot",findSpot)
   for (let i = 0; i < findSpot.length; i++) {
     const countRating = await Review.findAll({
       where: {
@@ -586,5 +587,68 @@ router.delete("/:spotId", requireAuth, async (req, res) => {
     });
   }
 });
+
+//search
+router.get('/search/:keyword', async (req, res) => {
+  const keyword = req.params.keyword.toLowerCase();
+
+  const spots = await Spot.findAll({
+    where: {
+      [Op.or]: [
+        {
+          name: Sequelize.where(
+            Sequelize.fn("LOWER", Sequelize.col("name")),
+            { [Op.like]: `%${keyword}%` }
+          )
+
+        },
+        {
+          city: Sequelize.where(
+              Sequelize.fn("LOWER", Sequelize.col("city")),
+              { [Op.like]: `%${keyword}%` }
+          )
+      },
+      {
+          state: Sequelize.where(
+              Sequelize.fn("LOWER", Sequelize.col("state")),
+              { [Op.like]: `%${keyword}%` }
+          )
+      }
+
+      ]
+    },
+    raw: true,
+    nest: true,
+  });
+  console.log(spots)
+  for (let i = 0; i < spots.length; i++) {
+    // const countRating = await Review.findAll({
+    //   where: {
+    //     userId: req?.user?.id,
+    //   },
+    //   attributes: [[sequelize.fn("AVG", sequelize.col("stars")), "avgRating"]],
+    // });
+
+    const getImage = await SpotImage.findOne({
+      where: {
+        spotId: spots[i].id,
+        preview: true,
+      },
+      attributes: ["url"],
+    });
+
+    if (getImage) {
+      url = getImage.url;
+    } else {
+      url = null;
+    }
+    // spots[i].dataValues.avgRating = parseFloat(
+    //   Number(countRating[0].dataValues.avgRating).toFixed(1)
+    // );
+
+    spots[i].previewImage = url;
+  }
+return res.json({spots})
+})
 
 module.exports = router;
