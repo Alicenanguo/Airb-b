@@ -75,7 +75,7 @@ export const createReviews = (reviewInfo, spotId) => async (dispatch) => {
 
 export const editReviewTHUNK = (review, reviewId) => async (dispatch) => {
   console.log(review, reviewId, ")))))))");
-  const res = await fetch(`/api/reviews/${reviewId}`, {
+  const res = await csrfFetch(`/api/reviews/${reviewId}`, {
     method: "PUT",
     headers: { "Content-Type": "application/json" },
     body: JSON.stringify(review),

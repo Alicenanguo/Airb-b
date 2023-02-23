@@ -100,7 +100,7 @@ const UserReviews = () => {
                   </div>
                   </div>
               </div>
-            // </div>
+            </div>
           ))}
       </div>
     </div>
