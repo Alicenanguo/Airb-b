@@ -100,9 +100,9 @@ module.exports = {
           country: "USA",
           lat: 47.1234567,
           lng: 68.7654321,
-          name: "6 Bedroom Horseshoe Lane",
+          name: "Horseshoe Lane",
           description:
-            "This 6 bed, 4.5 bath home located on the western side of the valley offers everything you and your guests need plus so much more. Starting outside, enjoy an expansive lot, beautiful landscaping.",
+            "This home located on the western side of the valley offers everything you and your guests need plus so much more. Starting outside, enjoy an expansive lot, beautiful landscaping.",
           price: 1058,
         },
         {
