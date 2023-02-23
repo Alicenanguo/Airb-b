@@ -153,10 +153,10 @@ const EditReview = ({ reviews, reviewId, setShowModal }) => {
         </div>
 
         <div className="create_product_submit">
-          <button type="submit" id="submit_button" className="update-submit-review">
+          <button type="submit" className="submit_button" id="update-review">
             Update Review
           </button>
-          <button id="submit_button" className="cancel-edit-review" onClick={cancelSubmit}>
+          <button className="submit_button" id='cancel-review' onClick={cancelSubmit}>
             Cancel
           </button>
         </div>
