@@ -8,6 +8,7 @@ const CREATE = "spots/CREATE";
 //const ADDIMG ='spot/ADD_IMG'
 const UPDATE = "spots/UPDATE";
 const DELETE = "spots/DELETE";
+const SEARCH = 'Products/search'
 
 // todo:define action creators
 
@@ -42,6 +43,14 @@ const actionRemove = (spotId) => ({
   type: DELETE,
   spotId,
 });
+
+const actionSearch = (products) => ({
+  type: SEARCH,
+  products
+
+})
+
+
 
 // todo:thunks section
 export const getAllSpots = () => async (dispatch) => {
@@ -132,10 +141,18 @@ export const deleteSpot = (spotId) => async dispatch => {
 
 }
 
+export const searchThunk = (keyword) => async dispatch => {
+  const res = await fetch(`/api/spots/search/${keyword}`)
+  if (res.ok) {
+    const data = await res.json()
+    dispatch(actionSearch(data))
+    return data
+  }
+}
 
 
 // todo: reduce stuff
-const initialState = { allSpots: {}, singleSpot: {} };
+const initialState = { allSpots: {}, singleSpot: {}, searchSpots:{}};
 
 const spotReducer = (state = initialState, action) => {
   let newState = {};
@@ -218,6 +235,16 @@ const spotReducer = (state = initialState, action) => {
       }
       delete deleted.allSpots[action.spotId]
       return deleted;
+
+      case SEARCH:
+        newState = { ...state, searchSpots: {} };
+        console.log("action-in-search-reduce",action)
+        action.spots?.Spots?.forEach(spot => {
+          newState.searchSpots[spot.id] = spot
+        })
+        console.log("newState_search_reducer:", newState);
+        return newState;
+
 
         default:
           return state;
