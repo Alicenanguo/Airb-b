@@ -5,6 +5,7 @@ import ProfileButton from "./ProfileButton";
 import LoginFormModal from "../LoginFormModal";
 import SignupFormModal from "../SignupFormModal";
 import CreateSpotModal from "../spots/createSpotModal";
+import SearchBar from "./SearchBar";
 
 import "./Navigation.css";
 
@@ -52,6 +53,10 @@ function Navigation({ isLoaded }) {
 
               <div className="logo_name_one">Airb-b</div>
             </NavLink>
+          </div>
+
+          <div>
+            <SearchBar />
           </div>
           <div className="upper_right_login_signup_host">
             <div className="host_button">

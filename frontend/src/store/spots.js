@@ -44,9 +44,9 @@ const actionRemove = (spotId) => ({
   spotId,
 });
 
-const actionSearch = (products) => ({
+const actionSearch = (spots) => ({
   type: SEARCH,
-  products
+  spots
 
 })
 
@@ -239,7 +239,7 @@ const spotReducer = (state = initialState, action) => {
       case SEARCH:
         newState = { ...state, searchSpots: {} };
         console.log("action-in-search-reduce",action)
-        action.spots?.Spots?.forEach(spot => {
+        action.spots?.spots?.forEach(spot => {
           newState.searchSpots[spot.id] = spot
         })
         console.log("newState_search_reducer:", newState);

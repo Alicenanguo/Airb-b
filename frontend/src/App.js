@@ -16,6 +16,7 @@ import Bookings from "./components/Bookings";
 import GetCurrentBookings from "./components/Bookings/GetCurrentBookings.js";
 import HomePageMap from "./components/Maps/HomeMap";
 // import MapContainer from "./components/Maps";
+import Search from "./components/Search/Search";
 
 function App() {
   const dispatch = useDispatch();
@@ -57,9 +58,13 @@ function App() {
             <Bookings />
           </Route> */}
 
-          <Route exact path="/map">
-            <HomePageMap />
+          <Route path="/search/:keyword">
+            <Search />
           </Route>
+
+          {/* <Route exact path="/map">
+            <HomePageMap />
+          </Route> */}
 
           {/* <Route exact path="/googleMap">
             <MapContainer />
