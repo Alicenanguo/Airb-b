@@ -149,3 +149,131 @@ justify-content: center;
 .fa-bars {
     padding-left: 12px;
 }
+
+
+.searchBar-container{
+    width: 100%;
+    height: 40px;
+
+}
+
+.searchBar-form {
+    display: flex;
+    align-items: center;
+    background-color: #f4f4f4;
+    width: 100%;
+    border: 2px solid black;
+    border-radius: 50px;
+    outline: none;
+
+}
+.searchBar-input {
+    background-color: #f4f4f4;
+    width: 100%;
+    padding: 10px 35px 10px 15px;
+    border: none;
+    color: black;
+    /* border: 2px solid black; */
+    border-radius: 50px 0 0 50px;
+    outline: none;
+  }
+
+  .fa-sharp.fa-solid.fa-magnifying-glass {
+    font-size: 1.3rem;
+    color: black;
+  }
+
+  .searchBar-button {
+    background: transparent;
+    border: none;
+    width: 10%;
+    border-radius: 0 50px 50px 0;
+    padding: 10px 20px 10px;
+    cursor: pointer;
+    display: flex;
+    justify-content:center;
+
+  }
+  .searchBar-button:hover {
+    background-color: #d3d3d3;
+  }
+
+  .footer-div {
+    height: 60px;
+    color: white;
+    background-color: #FDEBD2;
+    border-top: 1px solid rgb(255 255 255 / 10%);
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-items: center;
+    padding: 0 12px;
+    font-size: 15px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+  }
+
+  .footer-individual-div {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center ;
+    align-items: center;
+    column-gap: 6px;
+    font-size: 12px;
+
+
+
+  }
+  .right_box {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content:center;
+    align-items: center;
+  }
+
+  .footer-individual-div a {
+    color: #4a154b;
+    cursor: pointer;
+    width: 25px;
+
+  }
+  .footer-individual-div a:hover {
+    color:blue
+  }
+
+
+  .fa-brands.fa-github:focus-visible {
+    outline: unset;
+    background-color: unset;
+  }
+
+  .fa-brands.fa-github {
+    cursor: pointer;
+  }
+
+  .footer-individual-div img {
+    cursor: pointer;
+    padding-right: 0;
+  }
+
+  .footer-individual-div img:hover {
+      background-color: black
+
+  }
+
+  .fa-github {
+    padding-left: 0px;
+
+  }
+
+  #linkedin_icon {
+    padding-right:0
+  }
+
+  #developer_ls {
+    font-size:16px
+  }
+  .left_box {
+    font-size: 16px;
+  }

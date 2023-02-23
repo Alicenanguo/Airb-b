@@ -46,13 +46,18 @@ const Search = () => {
                                 className="search-product-img"
                                 alt="images"
                               ></img>
-                            </div>
-                            <div className="search-product-name">{el?.name}</div>
+                                  </div>
+                              </NavLink>
+
+                              <div className="search-text-all">
+                                  <div className="search-spot-name">{el?.name}</div>
+                              <div className="search-spot-address">{el?.city}, {el?.state}</div>
 
                             <div className="search-product-price">
                               ${parseFloat(el?.price).toFixed(2)}
-                            </div>
-                          </NavLink>
+                                  </div>
+                                  </div>
+
                         </div>
                       );
                     })}
@@ -61,13 +66,12 @@ const Search = () => {
                 ) : (
                   <>
                     <div className="no-search-result">
-                      Sorry, we could not find any item for "{keyword}"!
+                      Sorry, we do not have spot for "{keyword}"!
                     </div>
                       <div className="text-find-else">
 
                         <NavLink className="text-find-else" to={"/"}>
-                          <i class="fa-solid fa-face-smile"></i>
-                          Find spot here
+                          Expore your spot <span className="here">here</span>
                         </NavLink>
                       </div>
                   </>

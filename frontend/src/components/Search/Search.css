@@ -1,0 +1,64 @@
+.search-container {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    margin: 0 70px;
+    padding: 0 80px;
+    padding-top: 10px;
+    margin-top: 10px;
+}
+
+.search-product-img {
+    width: 300px;
+    height: 300px;
+    padding: 10px;
+    border-radius: 10px;
+    object-fit: cover;
+
+}
+
+.search-result-info{
+    display: flex;
+    flex-wrap: wrap;
+    width: auto;
+    justify-content: center;
+    max-width: 2000px;
+    padding: 10px 5px;
+    margin: 10px 5px;
+    font-family: Arial, Helvetica, sans-serif;
+    color: #1e1d1d;
+
+}
+
+.search-text-all{
+    padding-left: 10px;
+    font-family:Arial, Helvetica, sans-serif;
+    font-size: 15px;
+    margin-bottom: 15px;
+
+}
+
+.search-spot-name {
+    padding-bottom: 6px;
+}
+
+.search-spot-address {
+    padding-bottom: 6px;
+}
+
+.no-search-result{
+    font-size: 25px;
+    padding-bottom: 16px;
+
+}
+
+.text-find-else{
+    text-decoration: none;
+    color:black;
+    font-size: 18px;
+}
+
+.here {
+    text-decoration: underline;
+}
