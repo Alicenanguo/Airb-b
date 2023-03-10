@@ -289,6 +289,7 @@ margin-top: 15px;
     box-shadow: rgb(0 0 0 / 12%) 0px 6px 16px;
     position: sticky;
     top: 128px;
+    /* z-index:-1; */
 
 
 }

@@ -32,7 +32,7 @@ const SearchBar = () => {
       <form onSubmit={onSubmit} className="searchBar-form">
         <input
           className="searchBar-input"
-          placeholder="Search for spot"
+          placeholder="Search destinations"
           value={keyword}
           onChange={(e) => setKeyword(e.target.value)}
           // required={true}

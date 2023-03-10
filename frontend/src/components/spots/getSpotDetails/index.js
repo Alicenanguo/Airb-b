@@ -39,7 +39,7 @@ const GetSingleSpot = () => {
         <div className="single_spots">
 
 
-          {single.id && (
+          {/* {single.id && ( */}
             <>
               <div className="single_name">{single.name}</div>
 
@@ -64,7 +64,7 @@ const GetSingleSpot = () => {
 
               <div className="spot_img">
                 <div className="spot_previewImg">
-                  <img src={single.SpotImages[0].url} alt={single.name}
+                  <img src={single?.SpotImages[0]?.url} alt={single.name}
                    onError={e => { e.currentTarget.src = "/default.jpeg"; }}
                    />
                 </div>
@@ -262,7 +262,7 @@ const GetSingleSpot = () => {
                 </div>
               </div>
             </>
-          )}
+          {/* )} */}
         </div>
       )}
     </div>
