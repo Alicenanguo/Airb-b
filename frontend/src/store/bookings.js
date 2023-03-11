@@ -36,7 +36,7 @@ const deleteBookingAction = (bookingId) => ({
 
 //todo:thunk
 export const getSpotBookings = (spotId) => async dispatch => {
-    const response = await csrfFetch(`/api/spots/${spotId}/bookings`);
+    const response = await fetch(`/api/spots/${spotId}/bookings`);
 
     if (response.ok) {
         const bookings = await response.json();
